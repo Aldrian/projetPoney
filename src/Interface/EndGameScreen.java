@@ -1,21 +1,25 @@
 package Interface;
+
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.screen.GameScreen;
 import org.mini2Dx.core.screen.ScreenManager;
 import org.mini2Dx.core.screen.Transition;
+import org.mini2Dx.core.screen.transition.FadeInTransition;
+import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
 public class EndGameScreen implements GameScreen {
     public static int ID = 3;
 
+    private float loadingTime = 1f;
+    
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
     
     public void initialise(GameContainer gc) {}
 
-    @SuppressWarnings("rawtypes")
-	public void update(GameContainer gc, ScreenManager screenManager, float delta) {
+    public void update(GameContainer gc, ScreenManager screenManager, float delta) {
         
     }
 
@@ -23,7 +27,7 @@ public class EndGameScreen implements GameScreen {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	g.drawString("Game over ! ", 360, 300);
+    	g.drawString("Game over !", 360, 300);
     }
 
     

@@ -1,4 +1,5 @@
 package Interface;
+
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.screen.GameScreen;
@@ -18,7 +19,7 @@ public class LoadingScreen implements GameScreen {
     /**************************************************************/
     
     public void initialise(GameContainer gc) {}
-    @SuppressWarnings("rawtypes")
+
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
         if(loadingTime > 0f) {
             loadingTime -= delta;

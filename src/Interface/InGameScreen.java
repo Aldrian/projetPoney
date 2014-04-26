@@ -1,4 +1,5 @@
 package Interface;
+
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.screen.GameScreen;
@@ -9,10 +10,14 @@ import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
     boolean jeuFini;
+    Map m;
+    Player P1 = new Player();
+    MyInputProcessor in;
     
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
@@ -20,9 +25,14 @@ public class InGameScreen implements GameScreen {
     
 
     public void initialise(GameContainer gc) {
+    	m = new Map();
+    	m.initialise(null);
     	jeuFini = false;
+    	in = new MyInputProcessor(P1);
+    	Gdx.input.setInputProcessor(in);
+    	
     }
-    @SuppressWarnings("rawtypes")
+
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
@@ -31,10 +41,10 @@ public class InGameScreen implements GameScreen {
             screenManager.enterGameScreen(EndGameScreen.ID, new FadeOutTransition(),
         new FadeInTransition());
         }
-    	
     }
 
-    public void interpolate(GameContainer gc, float alpha) {
+    public void interpolate(GameContainer gc, float alpha) {	
+    	P1.interpolate(alpha);
     }
 
     public void render(GameContainer gc, Graphics g) {
@@ -55,10 +65,12 @@ public class InGameScreen implements GameScreen {
         
         g.fillRect(0, 540, 360, 60); 
         g.fillRect(440, 540, 360, 60);*/	
-        
-        Map m = new Map();
+    	
+       
+     
         m.render(g);
-        
+        P1.render(g);
+       
         
    }
     

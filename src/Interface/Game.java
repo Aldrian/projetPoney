@@ -1,6 +1,9 @@
 package Interface;
+
 import org.mini2Dx.core.game.Mini2DxGame;
 import org.mini2Dx.core.game.ScreenBasedGame;
+import org.mini2Dx.core.graphics.Graphics;
+
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
