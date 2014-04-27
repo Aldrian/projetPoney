@@ -3,7 +3,6 @@ package Interface;
 import org.mini2Dx.core.geom.Point;
 
 
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +13,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Animator implements ApplicationListener {
 
-    private static final int    FRAME_COLS = 5;     // #1
+    private static final int    FRAME_COLS = 4;     // #1
 
     Animation           walkAnimation;      // #3
     Texture             walkSheet;      // #4
@@ -32,9 +31,8 @@ public class Animator implements ApplicationListener {
     }
 
 	@Override
-	public void create() {
+    public void create() {
         walkSheet = new Texture(Gdx.files.internal("res\\img\\J1\\1.png")); // #9
-        System.out.println(walkSheet.getWidth());
         TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight());
     	
 		/*walkSheet[0] = new Texture(Gdx.files.internal("res\\img\\J1\\stand.png"));
@@ -65,7 +63,8 @@ public class Animator implements ApplicationListener {
 		position.x = x;
 		position.y = y;
 	}
-	@Override
+
+    @Override
     public void render() {
         //Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);                        // #14
         stateTime += Gdx.graphics.getDeltaTime();           // #15

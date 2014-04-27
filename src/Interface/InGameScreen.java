@@ -16,7 +16,7 @@ public class InGameScreen implements GameScreen {
     public static int ID = 2;
     boolean jeuFini;
     Map m;
-    Player P1 = new Player();
+    Player P1;
     MyInputProcessor in;
     
     /**************************************************************/
@@ -28,6 +28,8 @@ public class InGameScreen implements GameScreen {
     	m = new Map();
     	m.initialise(null);
     	jeuFini = false;
+    	
+    	P1 = new Player();
     	in = new MyInputProcessor(P1);
     	Gdx.input.setInputProcessor(in);
     	
@@ -66,11 +68,8 @@ public class InGameScreen implements GameScreen {
         g.fillRect(0, 540, 360, 60); 
         g.fillRect(440, 540, 360, 60);*/	
     	
-       
-     
         m.render(g);
         P1.render(g);
-       
         
    }
     
