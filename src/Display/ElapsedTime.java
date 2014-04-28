@@ -29,7 +29,38 @@ public class ElapsedTime {
 		time += Gdx.graphics.getDeltaTime();
 	}
 
+	/* GESTION 2 
+	public class ElapsedTime {
+		
+		float miliCount = 0;
+		float secCount = 0;
+		float minCount = 0;
+		
+				
+		public float sec() {
+			return secCount;
+		}
+		public float min() {
+			return minCount;
+		}
+
+		public void update() 
+		{
+			miliCount += Gdx.graphics.getDeltaTime();
+			if(miliCount >= 1){
+			    miliCount = 0;
+			    secCount  ++;
+			    if(secCount  == 60){
+			        secCount  = 0;
+			        minCount++;
+			    }
+			}
+		}
 
 
+
+
+	}
+*/
 
 }
