@@ -46,6 +46,7 @@ public class InGameScreen implements GameScreen {
             //Fade to EndGameScreen
             screenManager.enterGameScreen(EndGameScreen.ID, new FadeOutTransition(), new FadeInTransition());
         }
+    	w.update();
     	in.keyboardProcessing();
     }
 
