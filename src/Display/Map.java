@@ -1,4 +1,4 @@
-package Interface;
+package Display;
 
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
@@ -28,7 +28,7 @@ public class Map {
 	
 	public void initialise(GameContainer gc)
 	{
-		fond.setPosition(0, 0);
+		fond.setPosition(0, 50);
 	    fond.flip(false, true);
 	    
 	    
@@ -41,13 +41,13 @@ public class Map {
         
         g.drawSprite(fond);
 		String text = f.readString();
-		int x = 0, y =0, pos = 0;
+		int x = 0, y =50, pos = 0;
 		int i = 0, j =0;
 		
 		for (j = 0; j < 10; j++)
 		{
-			y=j*60;
-			
+			y=(j*60) + 50;
+						
 			for (i = 0; i < 10; i++)
 			{
 				

@@ -1,4 +1,4 @@
-package Interface;
+package Display;
 import org.mini2Dx.core.geom.Point;
 import org.mini2Dx.core.graphics.Graphics;
 

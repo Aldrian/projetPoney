@@ -1,4 +1,4 @@
-package Interface;
+package Display;
 
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
@@ -8,10 +8,12 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
-public class EndGameScreen implements GameScreen {
-    public static int ID = 3;
+
+public class LoadingScreen implements GameScreen {
+    public static int ID = 1;
 
     private float loadingTime = 1f;
+
     
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
@@ -20,14 +22,21 @@ public class EndGameScreen implements GameScreen {
     public void initialise(GameContainer gc) {}
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
-        
+        if(loadingTime > 0f) {
+            loadingTime -= delta;
+            if(loadingTime < 0f) {
+                //Fade to InGameScreen after 4 seconds
+                screenManager.enterGameScreen(InGameScreen.ID, new FadeOutTransition(),
+            new FadeInTransition());
+            }
+        }
     }
 
     public void interpolate(GameContainer gc, float alpha) {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	g.drawString("Game over !", 360, 300);
+    	g.drawString("Loading...", 360, 300);
     }
 
     

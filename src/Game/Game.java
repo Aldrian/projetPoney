@@ -1,8 +1,9 @@
-package Interface;
+package Game;
+
 
 import org.mini2Dx.core.game.Mini2DxGame;
 import org.mini2Dx.core.game.ScreenBasedGame;
-import org.mini2Dx.core.graphics.Graphics;
+import Display.*;
 
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
@@ -35,9 +36,10 @@ public class Game extends ScreenBasedGame {
         cfg.title = "Projet Poney";
         cfg.useGL20 = true;
         cfg.width = 800;
-        cfg.height = 600;
+        cfg.height = 650;
         cfg.useCPUSynch = false;
         cfg.vSyncEnabled = true;
+        cfg.resizable = false;
         cfg.addIcon("res/img/icon-256.png", FileType.Internal);
         cfg.addIcon("res/img/icon-64.png", FileType.Internal);
         cfg.addIcon("res/img/icon-32.png", FileType.Internal);
