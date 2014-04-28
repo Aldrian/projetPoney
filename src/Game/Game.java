@@ -1,10 +1,9 @@
 package Game;
 
+import Display.*;
 
 import org.mini2Dx.core.game.Mini2DxGame;
 import org.mini2Dx.core.game.ScreenBasedGame;
-import Display.*;
-
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;

@@ -19,7 +19,7 @@ public class InGameScreen implements GameScreen {
     public static int ID = 2;
     private boolean jeuFini;
 
-	Map m;
+	Window w;
     Player P1;
     MyInputProcessor in;
     
@@ -29,8 +29,8 @@ public class InGameScreen implements GameScreen {
     
 
     public void initialise(GameContainer gc) {
-    	m = new Map();
-    	m.initialise(null);
+    	w = new Window();
+    	w.initialise(null);
     	jeuFini = false;
     	
     	P1 = new Player();
@@ -72,7 +72,7 @@ public class InGameScreen implements GameScreen {
         g.fillRect(0, 540, 360, 60); 
         g.fillRect(440, 540, 360, 60);*/	
     	
-        m.render(g);
+        w.render(g);
         P1.render(g);
         
    }
