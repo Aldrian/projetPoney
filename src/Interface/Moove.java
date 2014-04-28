@@ -48,6 +48,11 @@ public class Moove
 		return ((direction.x == origin.x && direction.y == origin.y) ? true : false);
 	}
 	
+	public void incrementDirection(float x, float y){
+		origin = new Point(direction);
+		direction = new Point(direction.x + x,direction.y + y);
+	}
+	
 	public Point getOrigin()
 	{
 		return origin;
