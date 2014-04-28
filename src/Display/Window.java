@@ -18,12 +18,20 @@ public class Window {
 
 	public void initialise(GameContainer gc) {
 		map.initialise(gc);	
-		timer.start();
+		
+	}
+	
+	public void update()
+	{
+		timer.update();
 	}
 	
 	public void render(Graphics g) {
-		map.render(g);
 		g.setColor(Color.PINK);		
-		g.drawString(timer.GetElapsedTime(), 0, 0);
+		//BitmapFont.getBounds(String str).width
+		g.drawString("Temps écoulé : ", 330, 10);
+		g.drawString(timer.GetElapsedTime(), 360, 30);
+		map.render(g);
+		
 	}
 }
