@@ -28,6 +28,7 @@ public class EndGameScreen implements GameScreen {
 
     public void render(GameContainer gc, Graphics g) {
     	g.drawString("Game over !", 360, 300);
+    	
     }
 
     
