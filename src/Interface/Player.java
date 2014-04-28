@@ -13,11 +13,11 @@ public class Player
 {
 	private Animator animation; // Animation associée
 
-    private Moove mouvement; // Mouvement courant du joueur
+    private Move mouvement; // Mouvement courant du joueur
     
     public Player() 
     {
-    	mouvement = new Moove(new Point(400,200),new Point(400,200));
+    	mouvement = new Move(new Point(400,200),new Point(400,200));
           
         // Init l'affiche du joeur
         animation = new Animator(new Point(400,200));
