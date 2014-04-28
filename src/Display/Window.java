@@ -4,11 +4,16 @@ import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class Window {
 	
 	ElapsedTime timer;
 	Map map;
+	
+	//Utility
+	BitmapFont bmp = new BitmapFont();
+	float h,w;
 	
 	public Window()
 	{ 
@@ -28,9 +33,12 @@ public class Window {
 	
 	public void render(Graphics g) {
 		g.setColor(Color.PINK);		
-		//BitmapFont.getBounds(String str).width
-		g.drawString("Temps écoulé : ", 330, 10);
-		g.drawString(timer.GetElapsedTime(), 360, 30);
+		
+			w = bmp.getBounds("Temps écoulé :").width;
+		g.drawString("Temps écoulé : ", (800-w)/2, 10);
+			h = bmp.getBounds("Temps écoulé : ").height;
+			w = bmp.getBounds(timer.GetElapsedTime()).width;
+		g.drawString(timer.GetElapsedTime(), (800-w)/2, 10+h+4);
 		map.render(g);
 		
 	}
