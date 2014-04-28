@@ -1,33 +1,51 @@
 package Interface;
 
 
+import org.mini2Dx.core.geom.Point;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
-
-public class MyInputProcessor implements InputProcessor {
-	Player P;
+/**
+ * Gestion du clavier associé à un joueur
+ * @author Gaëtan
+ *
+ */
+public class MyInputProcessor implements InputProcessor 
+{
 	
-	/*
+	private Player P; // Joueur associé
+	private Point direction; // Direction donné au Joueur
+	
+	
+	/**
 	 * Constructeur principal prenant en paramètre le joueur associé
+	 * @param p
 	 */
 	public MyInputProcessor(Player p)
 	{
 		this.P = p;
+		direction = new Point();
+	}
+	
+	public void keyboardProcessing(){
+		P.update(direction);
 	}
 	
 	@Override
-	public boolean keyDown(int key) {
+	public boolean keyDown(int key) 
+	{
 		
 		switch(key)
 		{
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite demandé");
-			P.update(1);
+			direction.set(2f,0f);
+			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche demandé");
-			P.update(0);
+			direction.set(-2f,0f);
+			
 		break;
 		}
 		return true;
@@ -35,7 +53,18 @@ public class MyInputProcessor implements InputProcessor {
 	
 	@Override
 	public boolean keyUp(int key) {
-		return false;
+		switch(key)
+		{
+		case Keys.RIGHT :
+			System.out.println("Déplacement à droite arrêté");
+			direction.set(0f,0f);
+		break;
+		case Keys.LEFT : 
+			System.out.println("Déplacement à gauche arrêté");
+			direction.set(0f,0f);
+		break;
+		}
+		return true;
 	}
 
 

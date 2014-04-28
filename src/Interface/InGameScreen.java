@@ -14,8 +14,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
-    boolean jeuFini;
-    Map m;
+    private boolean jeuFini;
+
+	Map m;
     Player P1;
     MyInputProcessor in;
     
@@ -40,9 +41,9 @@ public class InGameScreen implements GameScreen {
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
     	if(jeuFini) {
             //Fade to EndGameScreen
-            screenManager.enterGameScreen(EndGameScreen.ID, new FadeOutTransition(),
-        new FadeInTransition());
+            screenManager.enterGameScreen(EndGameScreen.ID, new FadeOutTransition(), new FadeInTransition());
         }
+    	in.keyboardProcessing();
     }
 
     public void interpolate(GameContainer gc, float alpha) {	
@@ -97,4 +98,12 @@ public class InGameScreen implements GameScreen {
     public int getId() {
         return ID;
     }
+    
+    public boolean isJeuFini() {
+		return jeuFini;
+	}
+
+	public void setJeuFini(boolean jeuFini) {
+		this.jeuFini = jeuFini;
+	}
 }
