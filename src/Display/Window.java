@@ -13,6 +13,7 @@ public class Window {
 	
 	//Utility
 	BitmapFont bmp = new BitmapFont();
+	String buf;
 	float h,w;
 	
 	public Window()
@@ -28,19 +29,12 @@ public class Window {
 	
 	public void update()
 	{
-		timer.update();
 	}
 	
 	public void render(Graphics g) {
 		g.setColor(Color.PINK);		
 		
-			w = bmp.getBounds("Temps écoulé :").width;
-		g.drawString("Temps écoulé : ", (800-w)/2, 10);
-			h = bmp.getBounds("Temps écoulé : ").height;
-			w = bmp.getBounds(timer.GetElapsedTime()).width;
-		g.drawString(timer.GetElapsedTime(), (800-w)/2, 10+h+4);
-		
-		/* GESTION 2	
+			
 		// Affichage du temps
 			buf = timer.sec() + "s";
 			if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
@@ -49,7 +43,7 @@ public class Window {
 				h = bmp.getBounds("Temps écoulé : ").height;
 				w = bmp.getBounds(buf).width;
 			g.drawString(buf, (800-w)/2, 10+h+4);
-		*/
+		
 		
 		map.render(g);
 		
