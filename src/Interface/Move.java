@@ -3,19 +3,19 @@ package Interface;
 import org.mini2Dx.core.geom.Point;
 
 
-public class Moove
+public class Move 
 {
 
 	private Point origin;
 	private Point direction;
 	
-	public Moove()
+	public Move()
 	{
 		origin = new Point();
 		direction = new Point();
 	}
 	
-	public Moove(Point origin, Point direction) {
+	public Move(Point origin, Point direction) {
 		super();
 		this.origin = origin;
 		this.direction = direction;

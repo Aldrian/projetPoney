@@ -13,14 +13,14 @@ public class Player
 {
 	private Animator animation; // Animation associée
 
-    private Moove mouvement; // Mouvement courant du joueur
+    private Move mouvement; // Mouvement courant du joueur
     
     public Player() 
     {
-    	mouvement = new Moove(new Point(400,200),new Point(400,200));
+    	mouvement = new Move(new Point(0,60),new Point(0,60));
           
         // Init l'affiche du joeur
-        animation = new Animator(new Point(400,200));
+       animation = new Animator(new Point(0,60));
         animation.create();
      }
      
@@ -30,7 +30,7 @@ public class Player
       */
      public void update(Point direction) 
      {
-         mouvement.incrementDirection(direction.x, direction.y);
+        mouvement.incrementDirection(direction.x, direction.y);
      }
      
      /**
@@ -54,6 +54,6 @@ public class Player
       */
      public void render(Graphics g) 
      {
-          animation.render();
+        animation.render();
      }
 }

@@ -29,13 +29,16 @@ public class InGameScreen implements GameScreen {
     
 
     public void initialise(GameContainer gc) {
+    	// Initialisation de la map
     	w = new Window();
     	w.initialise(null);
     	jeuFini = false;
     	
+    	//Initialisation du poney et du déplacement
     	P1 = new Player();
     	in = new MyInputProcessor(P1);
     	Gdx.input.setInputProcessor(in);
+    	
     	
     }
 
@@ -55,23 +58,7 @@ public class InGameScreen implements GameScreen {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	/*g.drawRect(0, 0, 800, 600);
-    	
-        g.setColor(Color.PINK);
-        g.fillRect(0, 0, 800, 600);
-        
-        g.setColor(Color.MAGENTA);
-        
-        g.fillRect(0, 0, 360, 60);     
-        g.fillRect(440, 0, 360, 60);  
-        
-        g.fillRect(60, 180, 680, 60);
-        
-        g.fillRect(0, 360, 250, 60);
-        g.fillRect(550, 360, 250, 60);
-        
-        g.fillRect(0, 540, 360, 60); 
-        g.fillRect(440, 540, 360, 60);*/	
+    		
     	
         w.render(g);
         P1.render(g);

@@ -28,7 +28,7 @@ public class Animator implements ApplicationListener
 
     private float stateTime;  // temps
     
-    private Moove mouvement; // Mouvement demandé au joueur (pas de lerp)
+    private Move mouvement; // Mouvement demandé au joueur (pas de lerp)
     
     private int typeAnimation; // Donne le type d'animation demandé
     
@@ -39,7 +39,7 @@ public class Animator implements ApplicationListener
     public Animator(Point origin)
     {
     	this.position = origin;
-    	mouvement = new Moove(origin,origin);
+    	mouvement = new Move(origin,origin);
     }
 
     /**
@@ -88,7 +88,7 @@ public class Animator implements ApplicationListener
 	 * @param x
 	 * @param y
 	 */
-	public void update(float x, float y, Moove mouvement)
+	public void update(float x, float y, Move mouvement)
 	{
 		position.x = x;
 		position.y = y;
