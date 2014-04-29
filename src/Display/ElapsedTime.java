@@ -1,35 +1,57 @@
 package Display;
 
-import java.text.DecimalFormat;
-
-import com.badlogic.gdx.Gdx;
-
-
 public class ElapsedTime {
 	
-	Float time = (float) 0;
+	int secCount = 0;
+	int minCount = 0;
 	
+	private Timer t;
+			
 	public ElapsedTime()
 	{
+		t = new Timer();
+		t.start();
+	}
+	
+	class Timer extends Thread{
+		boolean enMarche;
+		public Timer(){
+			enMarche=true;
+		}
+		public void run(){
+			enMarche=true;
+			while(enMarche){
+				secCount ++;
+				if (secCount == 60)
+				{
+					secCount = 0;
+					minCount++;
+				}
+				try{
+					sleep(1000);
+				}
+				catch(InterruptedException esleep){}
+			}		
+		}
+		public void arret(){
+			enMarche=false;
+		}
+		
+		
 		
 	}
-	
-	public String GetElapsedTime()
-	{		
-		String buf = new DecimalFormat("##").format(time)+"s";
-		if (time > 60)
-		{
-			buf = (int)(time/60)+"m"+new DecimalFormat("##").format(time%+60)+"s";
-		}
-		return buf;
+	public int sec() {
+		return secCount;
 	}
-	
-	public void update() 
-	{
-		time += Gdx.graphics.getDeltaTime();
+	public int min() {
+		return minCount;
 	}
+
+	
 
 
 
 
 }
+
+
