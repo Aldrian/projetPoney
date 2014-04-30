@@ -1,6 +1,6 @@
-package Game;
+package Core;
 
 public abstract class Monster extends Entity
 {
-	protected int health;
+	protected  int health;
 }

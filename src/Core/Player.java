@@ -1,4 +1,5 @@
-package Game;
+package Core;
+
 
 public class Player extends Entity
 {

@@ -1,4 +1,4 @@
-package Game;
+package Core;
 
 public class Big extends Monster
 {
@@ -7,3 +7,4 @@ public class Big extends Monster
 		health=3;
 	}
 }
+ 
