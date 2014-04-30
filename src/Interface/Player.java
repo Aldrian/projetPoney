@@ -22,7 +22,7 @@ public class Player
     	mouvement = new Move(new Point(0,60),new Point(0,60));
           
         // Init l'affiche du joeur
-       animation = new Animator(new Point(0,60));
+       animation = new AnimatorPlayer(new Point(0,60));
         animation.create();
      }
      

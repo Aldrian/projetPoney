@@ -3,34 +3,34 @@ package Interface;
 import org.mini2Dx.core.geom.Point;
 
 
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-public class Animator implements ApplicationListener 
+public abstract class Animator implements ApplicationListener 
 {
-	private static int typeJoueur = 1; // Joueur 1 ou Joeur 2
+    protected static final int    FRAME_COLS = 4;
+    protected static final int    FRAME_LINES = 3;
 
-    private static final int    FRAME_COLS = 4;
-    private static final int    FRAME_LINES = 3;
+    protected Animation walkAnimation[]; // Animation
+    protected Texture walkSheet; // Chargement de la feuille de sprite
+    protected Array<TextureRegion> walkFrames; // Stockage des sprites
+    protected SpriteBatch spriteBatch; // Sprite buffer
+    protected TextureRegion currentFrame; // sprite courante
+    
+    protected Point renderPosition; // Position de l'animation
 
-    private Animation walkAnimation[]; // Animation
-    private Texture walkSheet; // Chargement de la feuille de sprite
-    private Array<TextureRegion> walkFrames; // Stockage des sprites
-    private SpriteBatch spriteBatch; // Sprite buffer
-    private TextureRegion currentFrame; // sprite courante
+    protected float stateTime;  // temps
     
-    private Point position; // Position de l'animation
-
-    private float stateTime;  // temps
+    protected Move mouvement; // Mouvement demandé au joueur (pas de lerp)
     
-    private Move mouvement; // Mouvement demandé au joueur (pas de lerp)
-    
-    private int typeAnimation; // Donne le type d'animation demandé
+    protected int typeAnimation; // Donne le type d'animation demandé
     
     /**
      * Constructeur par défaut, prenant en paramètre le point où l'animation apparaîtra à sa création
@@ -38,50 +38,11 @@ public class Animator implements ApplicationListener
      */
     public Animator(Point origin)
     {
-    	this.position = origin;
+    	this.renderPosition = origin;
     	mouvement = new Move(origin,origin);
     }
 
-    /**
-     * initialisation de l'animation
-     */
-	@Override
-    public void create() 
-	{
-		if(typeJoueur == 1)
-		{
-			walkSheet = new Texture(Gdx.files.internal("res\\img\\J1\\1.png"));
-		}
-		else
-		{
-			walkSheet = new Texture(Gdx.files.internal("res\\img\\J2.png"));
-		}
-        
-		typeJoueur ++;
-		
-		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_LINES);
-    	
-        walkFrames = new Array<TextureRegion>();
-        walkAnimation = new Animation[3];
-        
-        for (int j = 0; j < FRAME_COLS; j++) {
-            walkFrames.add(tmp[0][j]);
-        }
-        walkAnimation[0] = new Animation(0.20f, walkFrames);
-        walkFrames.clear();
-        
-        for (int j = 0; j < FRAME_COLS; j++) {
-            walkFrames.add(tmp[1][j]);
-        }
-        walkAnimation[1] = new Animation(0.20f, walkFrames);
-        walkFrames.clear();
-        
-        walkFrames.add(tmp[2][0]);
-        walkAnimation[2] = new Animation(0f, walkFrames);
-        
-        spriteBatch = new SpriteBatch();
-        stateTime = 0f;
-    }
+    
 	
 	/**
 	 * Mise à jour des coordonnées courantes de l'animation
@@ -90,8 +51,8 @@ public class Animator implements ApplicationListener
 	 */
 	public void update(float x, float y, Move mouvement)
 	{
-		position.x = x;
-		position.y = y;
+		renderPosition.x = x;
+		renderPosition.y = y;
 		this.mouvement = mouvement;
 		
 		if(mouvement.isLeft())
@@ -102,9 +63,13 @@ public class Animator implements ApplicationListener
 		{
 			typeAnimation = 0;
 		}
-		else 
+		else if (typeAnimation == 0 && mouvement.isStatic())
 		{
 			typeAnimation = 2;
+		}
+		else if (typeAnimation == 1 && mouvement.isStatic())
+		{
+			typeAnimation = 3;
 		}
 	}
 
@@ -118,7 +83,7 @@ public class Animator implements ApplicationListener
         stateTime += Gdx.graphics.getDeltaTime();
         currentFrame = walkAnimation[typeAnimation].getKeyFrame(stateTime, true);
         spriteBatch.begin();
-        spriteBatch.draw(currentFrame, position.x , position.y);
+        spriteBatch.draw(currentFrame, renderPosition.x , renderPosition.y);
         spriteBatch.end();
     }
 
