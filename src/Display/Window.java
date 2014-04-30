@@ -32,10 +32,13 @@ public class Window {
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.PINK);		
 		
+		// Affichage du fond
+		g.setColor(Color.valueOf("C1DDDE"));	
+		g.fillRect(0, 0, 800, 700); 
 			
 		// Affichage du temps
+		g.setColor(Color.valueOf("20385E"));		
 			buf = timer.sec() + "s";
 			if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
 				w = bmp.getBounds("Temps écoulé :").width;
@@ -44,7 +47,7 @@ public class Window {
 				w = bmp.getBounds(buf).width;
 			g.drawString(buf, (800-w)/2, 10+h+4);
 		
-		
+		// Affichage de la carte
 		map.render(g);
 		
 	}

@@ -2,7 +2,6 @@ package Interface;
 
 import org.mini2Dx.core.geom.Point;
 
-
 public class Move
 {
 

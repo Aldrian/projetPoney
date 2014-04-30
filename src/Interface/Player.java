@@ -18,9 +18,11 @@ public class Player
     public Player() 
     {
     	mouvement = new Move(new Point(400,200),new Point(400,200));
+
+    	mouvement = new Move(new Point(0,60),new Point(0,60));
           
         // Init l'affiche du joeur
-        animation = new Animator(new Point(400,200));
+       animation = new Animator(new Point(0,60));
         animation.create();
      }
      
@@ -30,7 +32,7 @@ public class Player
       */
      public void update(Point direction) 
      {
-         mouvement.incrementDirection(direction.x, direction.y);
+        mouvement.incrementDirection(direction.x, direction.y);
      }
      
      /**
@@ -54,6 +56,6 @@ public class Player
       */
      public void render(Graphics g) 
      {
-          animation.render();
+        animation.render();
      }
 }
