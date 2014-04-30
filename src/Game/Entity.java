@@ -9,7 +9,9 @@ public abstract class Entity
 	private static int nbC=0;//Nombre de Character instancié --> ID 
 	
 	// Postitionnement
-	protected Hitbox hb; // Espace occupé par l'entité
+	
+	protected int width;
+	protected int height;
 	protected Point previousPosition; // Position précédente
     protected Point currentPosition; // Position actuelle
 	
@@ -17,6 +19,7 @@ public abstract class Entity
 	{
 		ID=nbC++;
 	}
+	
 	
 	/** Teste si deux entitées rentre en collision et appelle update() le cas échéant
 	 * 
@@ -27,27 +30,42 @@ public abstract class Entity
 		if(this.getEdgeX()>=e.getCPx()||this.getEdgeY()>=e.getCPy()||e.getEdgeX()>=this.getCPx()||e.getEdgeY()>=this.getCPy())
 			this.update(e);		
 	}
+	/** Fonction appelée en cas de collision avec une autre entitée
+	 * 
+	 * @param e
+	 */
+	public abstract void update(Entity e);
 	
-	public abstract void update(Entity e); //fonction appelée en cas de collision avec une autre entitée
-	
+	/**  
+	 * @return x l'abscisse de la position actuelle
+	 */
 	public int getCPx()
 	{
 		return (int)currentPosition.x;
 	}
 	
+	/**  
+	 * @return y l'ordonnée de la position actuelle
+	 */
 	public int getCPy()
 	{
 		return (int)currentPosition.y;
 	}
 	
+	/**  
+	 * @return x l'abscisse du bord droit de la hitbox
+	 */
 	public int getEdgeX()
 	{
-		return (int)currentPosition.x+hb.getW();
+		return (int)currentPosition.x+width;
 	}
 	
+	/** 
+	 * @return y l'ordonnée du bord haut de la hitbox
+	 */
 	public int getEdgeY()
 	{
-		return (int)currentPosition.y+hb.getH();
+		return (int)currentPosition.y+height;
 	}
 }
  
