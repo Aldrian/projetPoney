@@ -9,6 +9,7 @@ import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -17,7 +18,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class LoadingScreen implements GameScreen {
     public static int ID = 1;
 
-    private float loadingTime = 1f;
+    boolean appuiTouche;
     
     Sprite fond;
 
@@ -28,19 +29,17 @@ public class LoadingScreen implements GameScreen {
     
     public void initialise(GameContainer gc) {
     	
-    	fond = new Sprite(new Texture(Gdx.files.internal("res/img/title.png")));
-    	fond.setPosition(75, 100);
+    	fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/loading.png")));
+    	fond.setPosition(0, 0);
 	    fond.flip(false, true);
+	    appuiTouche = false;
     }
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
-        if(loadingTime > 0f) {
-            loadingTime -= delta;
-            if(loadingTime < 0f) {
-                //Fade to InGameScreen after 4 seconds
-                screenManager.enterGameScreen(InGameScreen.ID, new FadeOutTransition(),
-            new FadeInTransition());
-            }
+    	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
+    	if(appuiTouche) {
+            //Fade to InGameScreen
+            screenManager.enterGameScreen(InGameScreen.ID, new FadeOutTransition(), new FadeInTransition());
         }
     }
 
