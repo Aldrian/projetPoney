@@ -32,16 +32,16 @@ public class Game extends ScreenBasedGame {
     
     public static void main(String [] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-        cfg.title = "Projet Poney";
+        cfg.title = "Mayhem in the skies !";
         cfg.useGL20 = true;
         cfg.width = 800;
         cfg.height = 650;
         cfg.useCPUSynch = false;
         cfg.vSyncEnabled = true;
         cfg.resizable = false;
-        cfg.addIcon("res/img/icon-256.png", FileType.Internal);
-        cfg.addIcon("res/img/icon-64.png", FileType.Internal);
-        cfg.addIcon("res/img/icon-32.png", FileType.Internal);
+        cfg.addIcon("res/img/Icon/icon-256.png", FileType.Internal);
+        cfg.addIcon("res/img/Icon/icon-64.png", FileType.Internal);
+        cfg.addIcon("res/img/Icon/icon-32.png", FileType.Internal);
         new LwjglApplication(new Mini2DxGame(new Game()), cfg);
     }
     
