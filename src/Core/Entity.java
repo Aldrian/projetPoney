@@ -21,7 +21,7 @@ public abstract class Entity
 	}
 	
 	
-	/** Teste si deux entitées rentre en collision et appelle update() le cas échéant
+	/** Teste si deux entités rentrent en collision et appelle update() le cas échéant
 	 * 
 	 * @param e
 	 * @return 
@@ -33,15 +33,21 @@ public abstract class Entity
 		return null;		
 	}
 	
-	/** Fonction appelée en cas de collision avec une autre entitée
+	/** Fonction appelée en cas de collision avec une autre entité
 	 * 
 	 * @param e
+	 * @throws Throwable 
 	 */
-	public abstract void update(Event e);
+	public abstract void update(Event e) throws Throwable;
 	
 	/**  
 	 * @return x l'abscisse de la position actuelle
 	 */
+	
+	public abstract Entity  move(Point p);
+	
+	public abstract boolean moveAllowed(Point p);
+	
 	public int getCPx()
 	{
 		return (int)currentPosition.x;

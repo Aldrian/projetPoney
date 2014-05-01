@@ -1,13 +1,12 @@
 package Core;
 
-import java.util.Set;
 
 public class Main {
 
 	
 	/* JE LAISSE LE COMMENTAIRE EXPLICATIF MAIS C'EST DEJA FAIT
 	 * Fonction update pour entity : si jamais l'objet est détruit avant que l'autre est pu update lui aussi : PROBLEM !
-	 * Bien que je ne sois pas sur que cela puisse arrivé
+	 * Bien que je ne sois pas sur que cela puisse arriver
 	 * 
 	 * Solution proposée : 
 	 * 

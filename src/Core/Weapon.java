@@ -2,13 +2,11 @@ package Core;
 
 public abstract class Weapon
 {
-	private int nbShots;
-	private int power;
+	protected int nbShots;
 	
-	public Weapon(int shots,int pow)
+	public Weapon(int shots)
 	{
 		nbShots=shots;
-		power=pow;
 	}
 	
 	public Shot shoot()
@@ -16,7 +14,7 @@ public abstract class Weapon
 		if(nbShots>0)
 		{
 			nbShots--;
-			return new Shot(power);
+			return new Shot(nbShots);
 		}
 		return null; //throws something serait mieux 
 	}

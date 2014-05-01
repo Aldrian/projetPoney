@@ -5,6 +5,6 @@ public class Laser extends Weapon
 {
 	public Laser()
 	{
-		super(9000,3);
+		super(9000);
 	}
 }

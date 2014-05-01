@@ -1,6 +1,5 @@
 package Core;
 
-import java.util.*;
 
 public class Collision
 {
@@ -19,15 +18,30 @@ public class Collision
 		{
 			if (e2 instanceof Monster)
 			{
-				e1.update(Event.Death);
+				try {
+					e1.update(Event.Death);
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			else if (e2 instanceof Bomb)
 			{
 				if (((Bomb)e2).isWeapon())
 				{
-					e1.update(Event.WeaponUp);
+					try {
+						e1.update(Event.WeaponUp);
+					} catch (Throwable e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				e2.update(Event.Death);
+				try {
+					e2.update(Event.Death);
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			else if (e2 instanceof Player)//A traiter ici ?
 			{
@@ -43,19 +57,36 @@ public class Collision
 				e1=tmp;
 			}
 			
-			if(((Shot) e2).getPower()==3)
-				e1.update(Event.HealthMinus3);
-			else
+			try {
 				e1.update(Event.HealthMinus);
-			e2.update(Event.Death);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				e2.update(Event.Death);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if (e1 instanceof Bomb && e2 instanceof Player)
 		{
 			if (((Bomb)e1).isWeapon())
 			{
-				e2.update(Event.WeaponUp);
+				try {
+					e2.update(Event.WeaponUp);
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			e2.update(Event.Death);
+			try {
+				e2.update(Event.Death);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

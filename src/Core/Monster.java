@@ -9,13 +9,15 @@ public abstract class Monster extends Entity
 	{
 		if (e==Event.HealthMinus)
 			health--;
-		else if(e==Event.HealthMinus3)
-		{
-			health-=3;
-		}
+		
 		if(health<=0)
 		{
-			finalize();
+			try {
+				finalize();
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

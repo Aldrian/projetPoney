@@ -5,6 +5,6 @@ public class Gun extends Weapon
 {
 	public Gun()
 	{
-		super(2,1);
+		super(2);
 	}
 }
