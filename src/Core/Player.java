@@ -7,4 +7,12 @@ public class Player extends Entity
 	private Weapon wp;
 	
 	
+	
+	@Override
+	public void update(Entity e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
