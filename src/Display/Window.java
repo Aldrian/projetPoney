@@ -4,11 +4,17 @@ import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class Window {
 	
 	ElapsedTime timer;
 	Map map;
+	
+	//Utility
+	BitmapFont bmp = new BitmapFont();
+	String buf;
+	float h,w;
 	
 	public Window()
 	{ 
@@ -18,12 +24,31 @@ public class Window {
 
 	public void initialise(GameContainer gc) {
 		map.initialise(gc);	
-		timer.start();
+		
+	}
+	
+	public void update()
+	{
 	}
 	
 	public void render(Graphics g) {
+		
+		// Affichage du fond
+		g.setColor(Color.valueOf("C1DDDE"));	
+		g.fillRect(0, 0, 800, 700); 
+			
+		// Affichage du temps
+		g.setColor(Color.valueOf("20385E"));		
+			buf = timer.sec() + "s";
+			if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
+				w = bmp.getBounds("Temps écoulé :").width;
+			g.drawString("Temps écoulé : ", (800-w)/2, 10);
+				h = bmp.getBounds("Temps écoulé : ").height;
+				w = bmp.getBounds(buf).width;
+			g.drawString(buf, (800-w)/2, 10+h+4);
+		
+		// Affichage de la carte
 		map.render(g);
-		g.setColor(Color.PINK);		
-		g.drawString(timer.GetElapsedTime(), 0, 0);
+		
 	}
 }

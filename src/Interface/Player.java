@@ -11,19 +11,19 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Player 
 {
-    private Point previousPosition; // Position précédente
-    private Point currentPosition; // Position actuelle
-     
-    private Animator animation; // Animation associée
+	private Animator animation; // Animation associée
 
+    private Move mouvement; // Mouvement courant du joueur
+    
     public Player() 
     {
-          previousPosition = new Point(400,200);
-          currentPosition = new Point(400,200);
+    	mouvement = new Move(new Point(400,200),new Point(400,200));
+
+    	mouvement = new Move(new Point(0,60),new Point(0,60));
           
-          // Init l'affiche du joeur
-          animation = new Animator(new Point(400,200));
-          animation.create();
+        // Init l'affiche du joeur
+       animation = new AnimatorPlayer(new Point(0,60));
+        animation.create();
      }
      
      /**
@@ -32,8 +32,7 @@ public class Player
       */
      public void update(Point direction) 
      {
-         previousPosition = new Point(currentPosition);
-         currentPosition.set(currentPosition.x + direction.x, currentPosition.y + direction.y);
+        mouvement.incrementDirection(direction.x, direction.y);
      }
      
      /**
@@ -47,8 +46,8 @@ public class Player
           //to interpolate between the previous and current positions
           //This will return the render coordinates
           
-    	 Vector2 renderPosition = previousPosition.lerp(currentPosition, alpha);
-    	 animation.update(renderPosition.x, renderPosition.y);
+    	 Vector2 renderPosition = mouvement.getOrigin().lerp(mouvement.getDirection(), alpha);
+    	 animation.update(renderPosition.x, renderPosition.y, mouvement);
      }
 
      /**
@@ -57,6 +56,6 @@ public class Player
       */
      public void render(Graphics g) 
      {
-          animation.render();
+        animation.render();
      }
 }
