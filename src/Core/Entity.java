@@ -24,17 +24,20 @@ public abstract class Entity
 	/** Teste si deux entitées rentre en collision et appelle update() le cas échéant
 	 * 
 	 * @param e
+	 * @return 
 	 */
-	public void collide (Entity e)
+	public Collision collide (Entity e)
 	{
 		if(this.getEdgeX()>=e.getCPx()||this.getEdgeY()>=e.getCPy()||e.getEdgeX()>=this.getCPx()||e.getEdgeY()>=this.getCPy())
-			this.update(e);		
+			return new Collision(this,e);
+		return null;		
 	}
+	
 	/** Fonction appelée en cas de collision avec une autre entitée
 	 * 
 	 * @param e
 	 */
-	public abstract void update(Entity e);
+	public abstract void update(Event e);
 	
 	/**  
 	 * @return x l'abscisse de la position actuelle

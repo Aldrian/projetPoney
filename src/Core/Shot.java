@@ -15,8 +15,9 @@ public class Shot extends Entity
 	}
 
 	@Override
-	public void update(Entity e) {
-		
-		
+	public void update(Event e)
+	{
+		if (e==Event.Death)
+			finalize();
 	}
 }
