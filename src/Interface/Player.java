@@ -17,9 +17,9 @@ public class Player
 
 	public Player() 
 	{
-		mouvement = new Move(new PointRender(400,200),new PointRender(400,200));
+		mouvement = new Move(new PointInt(400,200),new PointInt(400,200));
 
-		mouvement = new Move(new PointRender(0,60),new PointRender(0,60));
+		mouvement = new Move(new PointInt(0,60),new PointInt(0,60));
 
 		// Init l'affiche du joeur
 		animation = new AnimatorPlayer(new Point(0,60));
@@ -30,7 +30,7 @@ public class Player
 	 * Maj de la position du joueur
 	 * @param direction
 	 */
-	public void update(PointRender direction) 
+	public void update(PointInt direction) 
 	{
 		mouvement.incrementDirection(direction.getX(), direction.getY());
 	}

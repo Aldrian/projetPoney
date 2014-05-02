@@ -12,17 +12,17 @@ import java.lang.Math;
 public class Move
 {
 
-	private PointRender origin;
-	private PointRender direction;
+	private PointInt origin;
+	private PointInt direction;
 	
 	public Move()
 	{
-		origin = new PointRender();
-		direction = new PointRender();
+		origin = new PointInt();
+		direction = new PointInt();
 		
 	}
 	
-	public Move(PointRender origin, PointRender direction) {
+	public Move(PointInt origin, PointInt direction) {
 		super();
 		this.origin = origin;
 		this.direction = direction;
@@ -61,24 +61,24 @@ public class Move
 	 * @param y
 	 */
 	public void incrementDirection(int x, int y){
-		origin = new PointRender(direction);
-		direction = new PointRender(direction.getX() + x,direction.getY() + y);
+		origin = new PointInt(direction);
+		direction = new PointInt(direction.getX() + x,direction.getY() + y);
 
 	}
 	
-	public PointRender getOrigin()
+	public PointInt getOrigin()
 	{
 		return origin;
 	}
-	public void setOrigin(PointRender origin)
+	public void setOrigin(PointInt origin)
 	{
 		this.origin = origin;
 	}
-	public PointRender getDirection()
+	public PointInt getDirection()
 	{
 		return direction;
 	}
-	public void setDirection(PointRender direction)
+	public void setDirection(PointInt direction)
 	{
 		this.direction = direction;
 	}

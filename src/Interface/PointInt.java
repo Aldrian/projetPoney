@@ -8,7 +8,7 @@ import org.mini2Dx.core.geom.Point;
  * @author Gaëtan
  *
  */
-public class PointRender {
+public class PointInt {
 	
 	private int x;
 	private int y;
@@ -16,25 +16,25 @@ public class PointRender {
 	/**
 	 * Origine : (0,0)
 	 */
-	public PointRender()
+	public PointInt()
 	{
 		x = 0;
 		y = 0;
 	}
 	
-	public PointRender(Point p)
+	public PointInt(Point p)
 	{
 		x = (int) p.x;
 		y = (int) p.y;
 	}
 	
-	public PointRender(int a, int b)
+	public PointInt(int a, int b)
 	{
 		x = a;
 		y = b;
 	}
 	
-	public PointRender(PointRender p)
+	public PointInt(PointInt p)
 	{
 		x = p.getX();
 		y = p.getY();
