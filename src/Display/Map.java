@@ -1,6 +1,7 @@
 package Display;
 
 import org.mini2Dx.core.game.GameContainer;
+import org.mini2Dx.core.geom.Point;
 import org.mini2Dx.core.graphics.Graphics;
 
 import com.badlogic.gdx.Gdx;
@@ -32,6 +33,25 @@ public class Map {
 		mapElements = new BackgroundElement[10][10];
 	}
 	
+	/*
+	 * @return ElementType si trouvé, null si erreur
+	 */
+	public ElementType ElementAt(int x, int y)
+	{		
+		for(int i = 0; i<10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				if(
+						(mapElements[i][j].getHautGauche().getY() >= y)
+					 && (mapElements[i][j].getBasGauche().getY() <= y)
+					 && (mapElements[i][j].getHautGauche().getX() >= x)
+					 && (mapElements[i][j].getHautDroite().getX() <= x)
+				) return mapElements[i][j].getType();
+			}	
+		}
+		return null	;
+	}
 	public void initialise(GameContainer gc)
 	{
 		
@@ -79,7 +99,7 @@ public class Map {
 				x = i*80;
 				switch(mapElements[j][i].getType())
 				{
-				case '0' :
+				case Platform :
 					if(noPlatformYet)
 					{
 						platformLeft.setPosition(x-20, y);
@@ -90,7 +110,7 @@ public class Map {
 					platform.setPosition(x,y);
 					g.drawSprite(platform);
 			      	break;
-				case '1' : 
+				case Spawner : 
 					if (isPlatformRight) {
 						platformRight.setPosition(x,y);
 						g.drawSprite(platformRight);						
@@ -99,7 +119,7 @@ public class Map {
 					
 					noPlatformYet = true;
 			        break;
-				case '2' : 
+				case Pit : 
 					if (isPlatformRight) {
 						platformRight.setPosition(x,y);
 						g.drawSprite(platformRight);						
@@ -109,7 +129,7 @@ public class Map {
 					noPlatformYet = true;
 			        break;				
 				
-				default :
+				case None :
 					if (isPlatformRight) {
 						platformRight.setPosition(x,y);
 						g.drawSprite(platformRight);						
@@ -117,12 +137,13 @@ public class Map {
 					isPlatformRight = false;
 					noPlatformYet = true;
 					break;
-				}	
+				}
 				
 				
 			}			
 		}	
 		
-       
+		
+		g.drawSprite(platformRight);
    }
 }
