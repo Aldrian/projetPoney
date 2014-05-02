@@ -8,18 +8,30 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 
 public class LoadingScreen implements GameScreen {
     public static int ID = 1;
 
     private float loadingTime = 1f;
+    
+    Sprite fond;
 
     
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
     
-    public void initialise(GameContainer gc) {}
+    public void initialise(GameContainer gc) {
+    	
+    	fond = new Sprite(new Texture(Gdx.files.internal("res/img/title.png")));
+    	fond.setPosition(75, 100);
+	    fond.flip(false, true);
+    }
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
         if(loadingTime > 0f) {
@@ -36,7 +48,11 @@ public class LoadingScreen implements GameScreen {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	g.drawString("Loading...", 360, 300);
+    	g.setColor(Color.valueOf("C1DDDE"));	
+		g.fillRect(0, 0, 800, 700); 
+		g.drawSprite(fond);
+		
+		
     }
 
     

@@ -1,32 +1,57 @@
 package Display;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Timer;
-
 public class ElapsedTime {
 	
-	private Timer time;
+	int secCount = 0;
+	int minCount = 0;
 	
+	private Timer t;
+			
 	public ElapsedTime()
 	{
-		time = new Timer();
+		t = new Timer();
+		t.start();
 	}
 	
-	public String GetElapsedTime()
-	{
+	class Timer extends Thread{
+		boolean enMarche;
+		public Timer(){
+			enMarche=true;
+		}
+		public void run(){
+			enMarche=true;
+			while(enMarche){
+				secCount ++;
+				if (secCount == 60)
+				{
+					secCount = 0;
+					minCount++;
+				}
+				try{
+					sleep(1000);
+				}
+				catch(InterruptedException esleep){}
+			}		
+		}
+		public void arret(){
+			enMarche=false;
+		}
 		
-		return time.toString();
+		
+		
 	}
+	public int sec() {
+		return secCount;
+	}
+	public int min() {
+		return minCount;
+	}
+
 	
-	public void stop(){
-		time.stop();
-	}
-	
-	public void start(){
-		time.start();
-	}
 
 
 
 
 }
+
+
