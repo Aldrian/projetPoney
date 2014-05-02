@@ -12,17 +12,17 @@ import java.lang.Math;
 public class Move
 {
 
-	private Point origin;
-	private Point direction;
+	private PointRender origin;
+	private PointRender direction;
 	
 	public Move()
 	{
-		origin = new Point();
-		direction = new Point();
+		origin = new PointRender();
+		direction = new PointRender();
 		
 	}
 	
-	public Move(Point origin, Point direction) {
+	public Move(PointRender origin, PointRender direction) {
 		super();
 		this.origin = origin;
 		this.direction = direction;
@@ -34,7 +34,7 @@ public class Move
 	 */
 	public boolean isRight()
 	{
-		return ((direction.x > origin.x) ? true : false);
+		return ((direction.getX() > origin.getX()) ? true : false);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class Move
 	 */
 	public boolean isLeft()
 	{
-		return ((direction.x < origin.x) ? true : false);
+		return ((direction.getX() < origin.getX()) ? true : false);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class Move
 	 */
 	public boolean isStatic()
 	{
-		return ((direction.x == origin.x && direction.y == origin.y) ? true : false);
+		return ((direction.getX() == origin.getX() && direction.getY() == origin.getY()) ? true : false);
 	}
 	
 	/**
@@ -60,44 +60,27 @@ public class Move
 	 * @param x
 	 * @param y
 	 */
-	public void incrementDirection(float x, float y){
-		origin = new Point(direction);
-		direction = new Point(direction.x + x,direction.y + y);
+	public void incrementDirection(int x, int y){
+		origin = new PointRender(direction);
+		direction = new PointRender(direction.getX() + x,direction.getY() + y);
 
 	}
 	
-	public Point getOrigin()
+	public PointRender getOrigin()
 	{
 		return origin;
 	}
-	public void setOrigin(Point origin)
+	public void setOrigin(PointRender origin)
 	{
 		this.origin = origin;
 	}
-	public Point getDirection()
+	public PointRender getDirection()
 	{
 		return direction;
 	}
-	public void setDirection(Point direction)
+	public void setDirection(PointRender direction)
 	{
 		this.direction = direction;
-	}
-	
-	/**
-	 * Aroundi les coordonnées du point à 2 décimales
-	 * @param a
-	 * @return Point
-	 */
-	public static void round(Point a)
-	{
-		float x = a.getX();
-		float y = a.getY();
-		
-		x = x - x %10;
-		
-		y = y - y %10;
-		
-		a.set(x, y);
 	}
 	
 	@Override

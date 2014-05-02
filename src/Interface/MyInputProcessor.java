@@ -14,7 +14,7 @@ public class MyInputProcessor implements InputProcessor
 {
 	
 	private Player P; // Joueur associé
-	private Point direction; // Direction donné au Joueur
+	private PointRender direction; // Direction donné au Joueur
 	
 	
 	/**
@@ -24,7 +24,7 @@ public class MyInputProcessor implements InputProcessor
 	public MyInputProcessor(Player p)
 	{
 		this.P = p;
-		direction = new Point();
+		direction = new PointRender();
 	}
 	
 	public void keyboardProcessing(){
@@ -39,12 +39,12 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite demandé");
-			direction.set(2f,0f);
+			direction.set(2,0);
 			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche demandé");
-			direction.set(-2f,0f);
+			direction.set(-2,0);
 			
 		break;
 		}
@@ -57,11 +57,11 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite arrêté");
-			direction.set(0f,0f);
+			direction.set(0,0);
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche arrêté");
-			direction.set(0f,0f);
+			direction.set(0,0);
 		break;
 		}
 		return true;

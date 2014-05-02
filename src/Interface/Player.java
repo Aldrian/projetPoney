@@ -17,9 +17,9 @@ public class Player
 
 	public Player() 
 	{
-		mouvement = new Move(new Point(400,200),new Point(400,200));
+		mouvement = new Move(new PointRender(400,200),new PointRender(400,200));
 
-		mouvement = new Move(new Point(0,60),new Point(0,60));
+		mouvement = new Move(new PointRender(0,60),new PointRender(0,60));
 
 		// Init l'affiche du joeur
 		animation = new AnimatorPlayer(new Point(0,60));
@@ -30,9 +30,9 @@ public class Player
 	 * Maj de la position du joueur
 	 * @param direction
 	 */
-	public void update(Point direction) 
+	public void update(PointRender direction) 
 	{
-		mouvement.incrementDirection(direction.x, direction.y);
+		mouvement.incrementDirection(direction.getX(), direction.getY());
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class Player
 		//to interpolate between the previous and current positions
 		//This will return the render coordinates
 
-		Vector2 renderPosition = mouvement.getOrigin().lerp(mouvement.getDirection(), alpha);
+		Vector2 renderPosition = mouvement.getOrigin().pointValue().lerp(mouvement.getDirection().pointValue(), alpha);
 		animation.update(renderPosition.x, renderPosition.y, mouvement);
 	}
 

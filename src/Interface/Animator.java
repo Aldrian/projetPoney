@@ -39,7 +39,7 @@ public abstract class Animator implements ApplicationListener
 	public Animator(Point origin)
 	{
 		this.renderPosition = origin;
-		mouvement = new Move(origin,origin);
+		mouvement = new Move(new PointRender(origin),new PointRender(origin));
 	}
 
 
