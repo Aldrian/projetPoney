@@ -14,7 +14,7 @@ public class MyInputProcessor implements InputProcessor
 {
 	
 	private Player P; // Joueur associé
-	private PointRender direction; // Direction donné au Joueur
+	private PointInt direction; // Direction donné au Joueur
 	
 	
 	/**
@@ -24,7 +24,7 @@ public class MyInputProcessor implements InputProcessor
 	public MyInputProcessor(Player p)
 	{
 		this.P = p;
-		direction = new PointRender();
+		direction = new PointInt();
 	}
 	
 	public void keyboardProcessing(){
