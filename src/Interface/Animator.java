@@ -4,6 +4,8 @@ import org.mini2Dx.core.geom.Point;
 
 
 
+import Display.Map;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -73,6 +75,7 @@ public abstract class Animator implements ApplicationListener
 		}
 
 		System.out.println(mouvement.toString());
+		
 	}
 
 	/**
