@@ -11,7 +11,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Map {
 	
-	Sprite fond;
+	Sprite fond, platform, pit;
+	Sprite platformRight, platformLeft;
 	BackgroundElement mapElements[][];
 	
 	/* Error handling
@@ -24,7 +25,10 @@ public class Map {
 	
 	public Map()
 	{
-		fond = new Sprite(new Texture(Gdx.files.internal("res/img/bg.png")));		
+		fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/bg.png")));		
+		platform = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platform.png")));	
+		platformRight = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformRight.png")));	
+		platformLeft = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformLeft.png")));	
 		mapElements = new BackgroundElement[10][10];
 	}
 	
@@ -59,6 +63,8 @@ public class Map {
     
 	public void render(Graphics g) {
 		        
+		boolean isPlatformRight = false;
+		boolean noPlatformYet = true;
         g.drawSprite(fond);
         
 		int x = 0, y =0;
@@ -66,6 +72,7 @@ public class Map {
 		
 		for (j = 0; j < 10; j++)
 		{
+			isPlatformRight = false;
 			y=(j*60) + 50;						
 			for (i = 0; i < 10; i++)
 			{				
@@ -73,18 +80,44 @@ public class Map {
 				switch(mapElements[j][i].getType())
 				{
 				case '0' :
-					g.setColor(Color.MAGENTA);	
-					g.fillRect(x, y, 80, 60); 
+					if(noPlatformYet)
+					{
+						platformLeft.setPosition(x-20, y);
+						g.drawSprite(platformLeft);
+					}
+					noPlatformYet = false;
+					isPlatformRight = true;
+					platform.setPosition(x,y);
+					g.drawSprite(platform);
 			      	break;
 				case '1' : 
-					g.setColor(Color.RED);	 
-					g.fillRect(x, y, 80, 60); 
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					
+					noPlatformYet = true;
 			        break;
 				case '2' : 
-					g.setColor(Color.ORANGE);	
-					g.fillRect(x, y, 80, 60); 
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					
+					noPlatformYet = true;
 			        break;				
-				}
+				
+				default :
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					noPlatformYet = true;
+					break;
+				}	
 				
 				
 			}			
