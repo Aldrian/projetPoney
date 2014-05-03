@@ -15,8 +15,8 @@ import com.badlogic.gdx.utils.Array;
 
 public abstract class Animator implements ApplicationListener 
 {
-	protected static final int    FRAME_COLS = 4;
-	protected static final int    FRAME_LINES = 3;
+	protected int    FRAME_COLS = 4;
+	protected int    FRAME_LINES = 3;
 
 	protected Animation walkAnimation[]; // Animation
 	protected Texture walkSheet; // Chargement de la feuille de sprite

@@ -17,7 +17,7 @@ public class Player extends Character
 
 		mouvement = new Move(new PointInt(0,60),new PointInt(0,60));
 
-		// Init l'affiche du joeur
+		// Init l'affichage du joeur
 		animation = new AnimatorPlayer(new Point(0,60));
 		animation.create();
 	}
