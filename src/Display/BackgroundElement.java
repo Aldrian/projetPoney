@@ -8,9 +8,10 @@ public class BackgroundElement {
 	private Point hautDroite = new Point();
 	private Point basGauche = new Point();
 	private Point basDroite = new Point();
+	private ElementType type;
 	
-	private int type=0;
 	
+
 	
 	public BackgroundElement(int x, int y, int l, int h)
 	{
@@ -22,10 +23,10 @@ public class BackgroundElement {
 		basGauche.y = y + h;
 		basDroite.x = x + l + h;
 		basDroite.y = y + l + h;
-		type = 0;
+		type = ElementType.None;
 	}
 	
-	public BackgroundElement(int x, int y, int l, int h, int t)
+	public BackgroundElement(int x, int y, int l, int h, char t)
 	{
 		hautGauche.x = x;
 		hautGauche.y = y;
@@ -35,21 +36,26 @@ public class BackgroundElement {
 		basGauche.y = y + h;
 		basDroite.x = x + l + h;
 		basDroite.y = y + l + h;
-		type = t;
+		System.out.println(t);
+		switch(t)
+		{
+			case '0' : type = ElementType.None; break;
+			case '1' :  type = ElementType.Platform; break;
+			case '2' :  type = ElementType.Spawner; break;
+			case '3' :  type = ElementType.Pit; break;			
+		}
 	}
 	
-	public BackgroundElement()
-	{
-		
-		
-	}
+	public BackgroundElement(){}
+	
+	
 
-	public void setType(int type)	
+	public void setType(ElementType type)	
 	{
 		this.type = type;
 	}
 	
-	public int getType()
+	public ElementType getType()
 	{
 		return type;
 	}
