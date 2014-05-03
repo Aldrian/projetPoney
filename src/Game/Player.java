@@ -1,6 +1,8 @@
-package Interface;
+package Game;
 
 import org.mini2Dx.core.geom.Point;
+
+import Interface.AnimatorPlayer;
 
 /**
  * Représentation d'un joueur

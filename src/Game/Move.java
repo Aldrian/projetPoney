@@ -1,4 +1,5 @@
-package Interface;
+package Game;
+
 
 /**
  * Représente un mouvement quelconque
