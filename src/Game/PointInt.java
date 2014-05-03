@@ -1,4 +1,4 @@
-package Interface;
+package Game;
 
 import org.mini2Dx.core.geom.Point;
 

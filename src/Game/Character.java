@@ -1,6 +1,8 @@
-package Interface;
+package Game;
 
 import org.mini2Dx.core.graphics.Graphics;
+
+import Interface.Animator;
 
 import com.badlogic.gdx.math.Vector2;
 

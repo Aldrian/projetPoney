@@ -1,6 +1,10 @@
 package Interface;
 
 import org.mini2Dx.core.geom.Point;
+
+import Game.Move;
+import Game.PointInt;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
