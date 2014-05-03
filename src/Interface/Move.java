@@ -1,7 +1,5 @@
 package Interface;
 
-import org.mini2Dx.core.geom.Point;
-import java.lang.Math;
 /**
  * Représente un mouvement quelconque
  * Attention : Toutes les entrées de coordonnées doivent être contrôlées afin que ses coordonnées gardent une précision inférieure à 2 décimale
@@ -53,6 +51,24 @@ public class Move
 	public boolean isStatic()
 	{
 		return ((direction.getX() == origin.getX() && direction.getY() == origin.getY()) ? true : false);
+	}
+	
+	/**
+	 * Retourne vrai si le mouvement est un saut (i.d. dirigé vers le haut)
+	 * @return
+	 */
+	public boolean isJump()
+	{
+		return ((direction.getY() > origin.getY()) ? true : false);
+	}
+	
+	/**
+	 * Retourne vrai si le mouvement est une chute (i.d. dirigé vers le bas)
+	 * @return
+	 */
+	public boolean isFall()
+	{
+		return ((direction.getY() < origin.getY()) ? true : false);
 	}
 	
 	/**
