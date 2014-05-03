@@ -21,8 +21,9 @@ public class InGameScreen implements GameScreen {
 
 	Window w;
     Player P1;
+    Player P2;
     MyInputProcessor in;
-    
+
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
@@ -36,7 +37,8 @@ public class InGameScreen implements GameScreen {
     	
     	//Initialisation du poney et du déplacement
     	P1 = new Player();
-    	in = new MyInputProcessor(P1);
+    	P2 = new Player();
+    	in = new MyInputProcessor(P1,P2);
     	Gdx.input.setInputProcessor(in);
     	
     	
@@ -56,6 +58,7 @@ public class InGameScreen implements GameScreen {
 
     public void interpolate(GameContainer gc, float alpha) {	
     	P1.interpolate(alpha);
+    	P2.interpolate(alpha);
     }
 
     public void render(GameContainer gc, Graphics g) {
@@ -63,6 +66,7 @@ public class InGameScreen implements GameScreen {
     	
         w.render(g);
         P1.render(g);
+        P2.render(g);
         
    }
     

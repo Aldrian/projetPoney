@@ -30,7 +30,7 @@ public class AnimatorPlayer extends Animator {
 		}
 		else
 		{
-			walkSheet = new Texture(Gdx.files.internal("res\\img\\J2.png"));
+			walkSheet = new Texture(Gdx.files.internal("res\\img\\J2\\1.png"));
 		}
 
 		typeJoueur ++;
