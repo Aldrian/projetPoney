@@ -84,6 +84,8 @@ public abstract class Animator implements ApplicationListener
 		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		stateTime += Gdx.graphics.getDeltaTime();
 		currentFrame = walkAnimation[typeAnimation].getKeyFrame(stateTime, true);
+		currentFrame.setRegion(currentFrame, 0, 0, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_LINES);
+
 		spriteBatch.begin();
 		spriteBatch.draw(currentFrame, renderPosition.x , renderPosition.y);
 		spriteBatch.end();
