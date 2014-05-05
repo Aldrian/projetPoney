@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector2;
 
 public class Window {
 	
@@ -25,6 +26,7 @@ public class Window {
 	BitmapFont soopafresh;
 	
 	//Header
+	TextWrapper text;
 	SpriteBatch batch;
 	ElapsedTime timer;
 	Sprite header;
@@ -41,6 +43,7 @@ public class Window {
 		header = new Sprite(new Texture(Gdx.files.internal("res/img/Background/header.png")));	
 		header.setPosition(0, 0);
 		header.flip(false, true);
+		text = new TextWrapper("#YOLO", new Vector2(0,0));
 		//Générer la police soopafresh
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/soopafre.ttf"));
 		soopafresh = generator.generateFont(28, FreeTypeFontGenerator.DEFAULT_CHARS, true);
