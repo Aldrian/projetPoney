@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class Window {
@@ -24,6 +25,7 @@ public class Window {
 	BitmapFont soopafresh;
 	
 	//Header
+	SpriteBatch batch;
 	ElapsedTime timer;
 	Sprite header;
 	
@@ -35,6 +37,7 @@ public class Window {
 
 	public void initialise(GameContainer gc) {
 		//Créer le header
+		batch = new SpriteBatch();
 		header = new Sprite(new Texture(Gdx.files.internal("res/img/Background/header.png")));	
 		header.setPosition(0, 0);
 		header.flip(false, true);
