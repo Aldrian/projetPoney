@@ -8,7 +8,10 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+
 public class EndGameScreen implements GameScreen {
+	BitmapFont bmp = new BitmapFont();
     public static int ID = 3;
 
     private float loadingTime = 1f;
@@ -27,7 +30,10 @@ public class EndGameScreen implements GameScreen {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	g.drawString("Game over !", 360, 300);
+    	
+    	float w = bmp.getBounds("Game over !").width;
+    	float h = bmp.getBounds("Game over !").height;
+    	g.drawString("Game over !", (800-w)/2, (700-h)/2);
     	
     }
 
