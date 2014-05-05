@@ -13,10 +13,10 @@ public class SmallEnnemy extends Character {
 
 	public SmallEnnemy()
 	{
-		mouvement = new Move(new PointInt(0,200),new PointInt(0,200));
+		mouvement = new Move(new PointInt(200,400),new PointInt(200,400));
 		
 		// Init l'affichage de l'ennemi
-		animation = new AnimatorSmallEnnemy(new Point(0,200));
+		animation = new AnimatorSmallEnnemy(new Point(200,400));
 		animation.create();
 				
 	}
