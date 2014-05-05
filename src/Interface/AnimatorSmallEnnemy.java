@@ -25,7 +25,7 @@ public class AnimatorSmallEnnemy extends Animator {
 		FRAME_COLS = 3;
 		FRAME_LINES = 2;
 		
-		walkSheet = new Texture(Gdx.files.internal("res\\img\\Ennemy\\1.png"));
+		walkSheet = new Texture(Gdx.files.internal("res\\img\\Ennemy\\ennemySheet.png"));
 
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_LINES);
 		
