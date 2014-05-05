@@ -30,15 +30,18 @@ public class Window {
 	SpriteBatch batch;
 	ElapsedTime timer;
 	Sprite header;
+	Texture gif;
 	
 	public Window()
 	{ 
 		map = new Map();
 		timer = new ElapsedTime();
+		
 	}
 
 	public void initialise(GameContainer gc) {
 		//Créer le header
+		
 		batch = new SpriteBatch();
 		header = new Sprite(new Texture(Gdx.files.internal("res/img/Background/header.png")));	
 		header.setPosition(0, 0);
@@ -49,6 +52,7 @@ public class Window {
 		soopafresh = generator.generateFont(28, FreeTypeFontGenerator.DEFAULT_CHARS, true);
 		//Initialiser la map
 		map.initialise(gc);	
+		
 		
 		
 	}

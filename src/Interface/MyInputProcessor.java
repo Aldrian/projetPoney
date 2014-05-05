@@ -2,6 +2,7 @@ package Interface;
 
 import Game.Player;
 import Game.PointInt;
+import Game.SmallEnnemy;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -13,7 +14,6 @@ import com.badlogic.gdx.InputProcessor;
  */
 public class MyInputProcessor implements InputProcessor 
 {
-	
 	private Player P1; // Joueur associé
 	private Player P2; // Joueur associé
 	private PointInt directionP1; // directionP1 donné au Joueur

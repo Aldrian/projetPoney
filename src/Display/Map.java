@@ -102,7 +102,7 @@ public class Map {
 				case Platform :
 					if(noPlatformYet)
 					{
-						platformLeft.setPosition(x-20, y);
+						platformLeft.setPosition(x-34, y);
 						g.drawSprite(platformLeft);
 					}
 					noPlatformYet = false;
