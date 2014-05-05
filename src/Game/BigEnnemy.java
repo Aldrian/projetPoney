@@ -4,6 +4,11 @@ import org.mini2Dx.core.geom.Point;
 
 import Interface.AnimatorBigEnnemy;
 
+/**
+ * Boss
+ * @author Gaëtan
+ *
+ */
 public class BigEnnemy extends Character {
 
 	public BigEnnemy()
