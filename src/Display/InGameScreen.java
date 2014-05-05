@@ -1,5 +1,7 @@
 package Display;
 
+import java.util.ArrayList;
+
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.screen.GameScreen;
@@ -9,6 +11,7 @@ import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
 import Game.Player;
+import Game.SmallEnnemy;
 import Interface.MyInputProcessor;
 
 import com.badlogic.gdx.Gdx;
@@ -40,8 +43,6 @@ public class InGameScreen implements GameScreen {
     	P2 = new Player();
     	in = new MyInputProcessor(P1,P2);
     	Gdx.input.setInputProcessor(in);
-    	
-    	
     	
     }
 
