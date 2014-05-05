@@ -4,6 +4,11 @@ import org.mini2Dx.core.geom.Point;
 
 import Interface.AnimatorSmallEnnemy;
 
+/**
+ * Petite mouche
+ * @author Gaëtan
+ *
+ */
 public class SmallEnnemy extends Character {
 
 	public SmallEnnemy()

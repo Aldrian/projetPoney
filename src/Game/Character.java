@@ -6,6 +6,11 @@ import Interface.Animator;
 
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Super classe de personnage & ennemies
+ * @author Gaëtan
+ *
+ */
 public abstract class Character {
 
 	protected Animator animation; // Animation associée

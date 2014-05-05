@@ -9,6 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Animation d'un Boss
+ * @author Gaëtan
+ *
+ */
 public class AnimatorBigEnnemy extends Animator {
 
 	public AnimatorBigEnnemy(Point origin) {
