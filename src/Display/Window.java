@@ -43,7 +43,7 @@ public class Window {
 		header = new Sprite(new Texture(Gdx.files.internal("res/img/Background/header.png")));	
 		header.setPosition(0, 0);
 		header.flip(false, true);
-		text = new TextWrapper("#YOLO", new Vector2(0,0));
+		text = new TextWrapper("init", new Vector2(170,0));
 		//Générer la police soopafresh
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/soopafre.ttf"));
 		soopafresh = generator.generateFont(28, FreeTypeFontGenerator.DEFAULT_CHARS, true);
@@ -58,23 +58,22 @@ public class Window {
 	}
 	
 	public void render(Graphics g) {
+		
+		batch.begin();
+		
 		//Charger la police
 		g.setFont(soopafresh);
-		//Affichage du bandeau
-		g.drawSprite(header);
-			
+		//Affichage du bandeau		
+		g.drawSprite(header);		
 		// Affichage du temps
-		g.setColor(Color.valueOf("486C88"));		
-			buf = timer.sec() + "s";
-			if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
-				w = bmp.getBounds("Temps écoulé :").width + bmp.getBounds(buf).width;
-			g.drawString("Temps écoulé : "+buf, 40, 10);
-				//h = bmp.getBounds("Temps écoulé : ").height;
-				//w = bmp.getBounds(buf).width;
-			//g.drawString(buf, (800-w)/2, 10+h+4);
-		
+		soopafresh.setColor(Color.valueOf("5491B4"));		
+		buf = timer.sec() + "s";
+		if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
+		text.setText("Temps écoulé : "+buf);
+		text.draw(batch, soopafresh);				
 		// Affichage de la carte
 		map.render(g);
 		
+		batch.end();
 	}
 }
