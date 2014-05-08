@@ -71,8 +71,8 @@ public abstract class Animator implements ApplicationListener
 		{
 			typeAnimation = 3;
 		}
-
-		System.out.println(mouvement.toString());
+		
+		//System.out.println(mouvement.toString());
 		
 	}
 
