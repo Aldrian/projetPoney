@@ -21,6 +21,36 @@ public abstract class Entity
 	}
 	
 	
+	
+	
+	public int getWidth() {
+		return width;
+	}
+
+
+
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+
+
+
+	public int getHeight() {
+		return height;
+	}
+
+
+
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+
+
+
 	/** Teste si deux entités rentrent en collision et appelle update() le cas échéant
 	 * 
 	 * @param e
