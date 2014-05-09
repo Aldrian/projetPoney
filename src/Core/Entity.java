@@ -72,5 +72,28 @@ public abstract class Entity
 	{
 		return (int)currentPosition.y+height;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return ID;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entity other = (Entity) obj;
+		if (ID != other.ID)
+			return false;
+		return true;
+	}
+	
+	
 }
  

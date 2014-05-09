@@ -1,6 +1,5 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;
 
 public class Platform extends NotMovingEntity {
 	

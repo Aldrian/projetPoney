@@ -1,6 +1,5 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;
 
 public class Bomb extends NotMovingEntity
 {
