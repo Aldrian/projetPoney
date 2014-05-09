@@ -1,6 +1,6 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;	
+import Game.PointInt;	
 
 
 public abstract class Entity
@@ -13,7 +13,7 @@ public abstract class Entity
 	protected int width;
 	protected int height;
 	
-    protected Point currentPosition; // Position actuelle
+    protected PointInt currentPosition; // Position actuelle
 	
 	public Entity()
 	{
@@ -46,7 +46,7 @@ public abstract class Entity
 		
 	public int getCPx()
 	{
-		return (int)currentPosition.x;
+		return currentPosition.getX();
 	}
 	
 	/**  
@@ -54,7 +54,7 @@ public abstract class Entity
 	 */
 	public int getCPy()
 	{
-		return (int)currentPosition.y;
+		return (int)currentPosition.getY();
 	}
 	
 	/**  
@@ -62,7 +62,7 @@ public abstract class Entity
 	 */
 	public int getEdgeX()
 	{
-		return (int)currentPosition.x+width;
+		return (int)currentPosition.getX()+width;
 	}
 	
 	/** 
@@ -70,7 +70,7 @@ public abstract class Entity
 	 */
 	public int getEdgeY()
 	{
-		return (int)currentPosition.y+height;
+		return (int)currentPosition.getY()+height;
 	}
 
 

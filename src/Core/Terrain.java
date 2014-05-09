@@ -2,6 +2,17 @@ package Core;
 
 import java.io.*;
 
+
+/*
+ * Format fichier :
+ * 0 Platform
+ * 1 Spawn Monster
+ * 2 Pit
+ * 3 Spawn Bomb
+ * 4 Spawn Player
+ * 5 Vide
+ * 6 Spawn Box
+ */
 public class Terrain
 {
 	private int [][] pixels;
