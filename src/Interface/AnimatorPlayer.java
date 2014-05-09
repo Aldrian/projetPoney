@@ -2,16 +2,33 @@ package Interface;
 
 import org.mini2Dx.core.geom.Point;
 
+import Display.TextWrapper;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Classe dérivée animation d'un joueur
+ * @author Gaëtan
+ *
+ */
 public class AnimatorPlayer extends Animator {
 
 	private static int typeJoueur = 1; // Joueur 1 ou Joeur 2
+	
+	private int joueur=0;
+	
+	BitmapFont oldGame;
+	TextWrapper text;
+	SpriteBatch textContainer;
 
 	public AnimatorPlayer(Point origin) {
 		super(origin);
@@ -30,10 +47,12 @@ public class AnimatorPlayer extends Animator {
 		if(typeJoueur == 1)
 		{
 			walkSheet = new Texture(Gdx.files.internal("res\\img\\J1\\1.png"));
+			joueur =1;
 		}
 		else
 		{
 			walkSheet = new Texture(Gdx.files.internal("res\\img\\J2\\1.png"));
+			joueur=2;
 		}
 
 		typeJoueur ++;
@@ -64,6 +83,32 @@ public class AnimatorPlayer extends Animator {
 
 		spriteBatch = new SpriteBatch();
 		stateTime = 0f;
+		
+		// Création du texte
+		textContainer = new SpriteBatch();
+		text = new TextWrapper("init", renderPosition.set(renderPosition.x + 25, renderPosition.y + 54));
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/oldGame.ttf"));
+		oldGame = generator.generateFont(20, FreeTypeFontGenerator.DEFAULT_CHARS, true);
+		oldGame.setColor(Color.valueOf("FEFEFE"));
+		text.setText("PLAYER " + joueur);
 	}
 
+	@Override
+	public void render()
+	{
+		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+		stateTime += Gdx.graphics.getDeltaTime();
+		currentFrame = walkAnimation[typeAnimation].getKeyFrame(stateTime, true);
+		currentFrame.setRegion(currentFrame, 0, 0, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_LINES);
+
+		spriteBatch.begin();
+		spriteBatch.draw(currentFrame, renderPosition.x , renderPosition.y);
+		spriteBatch.end();
+		
+
+		text.setPosition(renderPosition.set(renderPosition.x + 25, renderPosition.y + 54));
+		textContainer.begin();
+		text.draw(textContainer, oldGame);
+		textContainer.end();
+	}
 }

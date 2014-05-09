@@ -13,6 +13,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * SuperClasse Animation
+ * @author Gaëtan
+ *
+ */
 public abstract class Animator implements ApplicationListener 
 {
 	protected int    FRAME_COLS = 4;
