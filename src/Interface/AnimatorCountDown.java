@@ -81,7 +81,7 @@ public class AnimatorCountDown extends Animator {
 			walkFrames.add(tmp[j][0]);
 		}
 		
-		walkAnimation[0] = new Animation(2/49f, walkFrames);
+		walkAnimation[0] = new Animation((1.5f)/49f, walkFrames);
 		
 		spriteBatch = new SpriteBatch();
 		stateTime = 0f;
@@ -107,10 +107,10 @@ public class AnimatorCountDown extends Animator {
 	@Override
 	public void render()
 	{
-		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);end
 		stateTime += Gdx.graphics.getDeltaTime();
 		
-		if(stateTime < 2f)
+		if(stateTime < (1.5f))
 		{
 			currentFrame = walkAnimation[0].getKeyFrame(stateTime, false);
 			currentFrame.setRegion(currentFrame, 0, 0,walkSheet.getWidth(), walkSheet.getHeight()/FRAME_LINES);
