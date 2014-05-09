@@ -3,12 +3,18 @@ package Display;
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Graphics;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector2;
 
 public class Window {
 	
-	ElapsedTime timer;
+	
 	Map map;
 	
 	//Utility
@@ -16,14 +22,38 @@ public class Window {
 	String buf;
 	float h,w;
 	
+	//Font
+	BitmapFont soopafresh;
+	
+	//Header
+	TextWrapper text;
+	SpriteBatch batch;
+	ElapsedTime timer;
+	Sprite header;
+	Texture gif;
+	
 	public Window()
 	{ 
 		map = new Map();
 		timer = new ElapsedTime();
+		
 	}
 
 	public void initialise(GameContainer gc) {
+		//Créer le header
+		
+		batch = new SpriteBatch();
+		header = new Sprite(new Texture(Gdx.files.internal("res/img/Background/header.png")));	
+		header.setPosition(0, 0);
+		header.flip(false, true);
+		text = new TextWrapper("init", new Vector2(170,0));
+		//Générer la police soopafresh
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/soopafre.ttf"));
+		soopafresh = generator.generateFont(28, FreeTypeFontGenerator.DEFAULT_CHARS, true);
+		//Initialiser la map
 		map.initialise(gc);	
+		
+		
 		
 	}
 	
@@ -33,22 +63,21 @@ public class Window {
 	
 	public void render(Graphics g) {
 		
-		// Affichage du fond
-		g.setColor(Color.valueOf("C1DDDE"));	
-		g.fillRect(0, 0, 800, 700); 
-			
-		// Affichage du temps
-		g.setColor(Color.valueOf("20385E"));		
-			buf = timer.sec() + "s";
-			if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
-				w = bmp.getBounds("Temps écoulé :").width;
-			g.drawString("Temps écoulé : ", (800-w)/2, 10);
-				h = bmp.getBounds("Temps écoulé : ").height;
-				w = bmp.getBounds(buf).width;
-			g.drawString(buf, (800-w)/2, 10+h+4);
+		batch.begin();
 		
+		//Charger la police
+		g.setFont(soopafresh);
+		//Affichage du bandeau		
+		g.drawSprite(header);		
+		// Affichage du temps
+		soopafresh.setColor(Color.valueOf("5491B4"));		
+		buf = timer.sec() + "s";
+		if (timer.min()!= 0)  buf = timer.min() + "m" + timer.sec() + "s";
+		text.setText("Temps écoulé : "+buf);
+		text.draw(batch, soopafresh);				
 		// Affichage de la carte
 		map.render(g);
 		
+		batch.end();
 	}
 }

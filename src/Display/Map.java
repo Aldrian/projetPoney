@@ -1,6 +1,7 @@
 package Display;
 
 import org.mini2Dx.core.game.GameContainer;
+import org.mini2Dx.core.geom.Point;
 import org.mini2Dx.core.graphics.Graphics;
 
 import com.badlogic.gdx.Gdx;
@@ -11,7 +12,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Map {
 	
-	Sprite fond;
+	Sprite fond, platform, pit;
+	Sprite platformRight, platformLeft;
 	BackgroundElement mapElements[][];
 	
 	/* Error handling
@@ -24,10 +26,32 @@ public class Map {
 	
 	public Map()
 	{
-		fond = new Sprite(new Texture(Gdx.files.internal("res/img/bg.png")));		
+		fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/bg.png")));		
+		platform = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platform.png")));	
+		platformRight = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformRight.png")));	
+		platformLeft = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformLeft.png")));	
 		mapElements = new BackgroundElement[10][10];
 	}
 	
+	/*
+	 * @return ElementType si trouvé, null si erreur
+	 */
+	public ElementType ElementAt(int x, int y)
+	{		
+		for(int i = 0; i<10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				if(
+						(mapElements[i][j].getHautGauche().getY() >= y)
+					 && (mapElements[i][j].getBasGauche().getY() <= y)
+					 && (mapElements[i][j].getHautGauche().getX() >= x)
+					 && (mapElements[i][j].getHautDroite().getX() <= x)
+				) return mapElements[i][j].getType();
+			}	
+		}
+		return null	;
+	}
 	public void initialise(GameContainer gc)
 	{
 		
@@ -59,6 +83,8 @@ public class Map {
     
 	public void render(Graphics g) {
 		        
+		boolean isPlatformRight = false;
+		boolean noPlatformYet = true;
         g.drawSprite(fond);
         
 		int x = 0, y =0;
@@ -66,30 +92,58 @@ public class Map {
 		
 		for (j = 0; j < 10; j++)
 		{
+			isPlatformRight = false;
 			y=(j*60) + 50;						
 			for (i = 0; i < 10; i++)
 			{				
 				x = i*80;
 				switch(mapElements[j][i].getType())
 				{
-				case '0' :
-					g.setColor(Color.MAGENTA);	
-					g.fillRect(x, y, 80, 60); 
+				case Platform :
+					if(noPlatformYet)
+					{
+						platformLeft.setPosition(x-34, y);
+						g.drawSprite(platformLeft);
+					}
+					noPlatformYet = false;
+					isPlatformRight = true;
+					platform.setPosition(x,y);
+					g.drawSprite(platform);
 			      	break;
-				case '1' : 
-					g.setColor(Color.RED);	 
-					g.fillRect(x, y, 80, 60); 
+				case Spawner : 
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					
+					noPlatformYet = true;
 			        break;
-				case '2' : 
-					g.setColor(Color.ORANGE);	
-					g.fillRect(x, y, 80, 60); 
+				case Pit : 
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					
+					noPlatformYet = true;
 			        break;				
+				
+				case None :
+					if (isPlatformRight) {
+						platformRight.setPosition(x,y);
+						g.drawSprite(platformRight);						
+					}
+					isPlatformRight = false;
+					noPlatformYet = true;
+					break;
 				}
 				
 				
 			}			
 		}	
 		
-       
+		
+		g.drawSprite(platformRight);
    }
 }

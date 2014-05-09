@@ -2,7 +2,7 @@ package Core;
 
 import org.mini2Dx.core.geom.Point;
 
-public class Bomb extends Entity
+public class Bomb extends NotMovingEntity
 {
 	private boolean weapon;
 	
@@ -28,16 +28,6 @@ public class Bomb extends Entity
 
 	}
 
-	@Override
-	public Entity move(Point p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean moveAllowed(Point p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

@@ -8,16 +8,43 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
-public class EndGameScreen implements GameScreen {
-    public static int ID = 3;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector2;
 
-    private float loadingTime = 1f;
+public class EndGameScreen implements GameScreen {
+	
+	//Font
+	BitmapFont soopafresh;
+	SpriteBatch batch;
+	TextWrapper text;
+	Sprite fond;
+
+	
+    public static int ID = 3;
     
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
     
-    public void initialise(GameContainer gc) {}
+    public void initialise(GameContainer gc) {
+    	batch = new SpriteBatch();
+    	
+	    fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/end.png")));
+		fond.setPosition(0, 0);
+	    fond.flip(false, true);
+	    
+	  //Générer la police soopafresh
+	    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/soopafre.ttf"));
+  		soopafresh = generator.generateFont(28, FreeTypeFontGenerator.DEFAULT_CHARS, true);
+	    
+	    text = new TextWrapper("init", new Vector2(170,0));
+    }
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
         
@@ -27,8 +54,16 @@ public class EndGameScreen implements GameScreen {
     }
 
     public void render(GameContainer gc, Graphics g) {
-    	g.drawString("Game over !", 360, 300);
+    	soopafresh.setColor(Color.valueOf("5491B4"));
+    	g.drawSprite(fond);
+    	    	
     	
+    	
+    	/*soopafresh.setColor(Color.valueOf("5491B4"));	
+		text.setText("Press space to replay!");
+		text.draw(batch, soopafresh);	*/
+				
+		
     }
 
     

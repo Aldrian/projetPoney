@@ -1,6 +1,10 @@
 package Display;
 
+
+import java.util.ArrayList;
+
 import org.mini2Dx.core.game.GameContainer;
+import org.mini2Dx.core.geom.Point;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.screen.GameScreen;
 import org.mini2Dx.core.screen.ScreenManager;
@@ -8,8 +12,10 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
+import Game.Player;
+import Game.SmallEnnemy;
+import Interface.AnimatorCountDown;
 import Interface.MyInputProcessor;
-import Interface.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -21,8 +27,11 @@ public class InGameScreen implements GameScreen {
 
 	Window w;
     Player P1;
+    Player P2;
     MyInputProcessor in;
-    
+    SmallEnnemy mouche;
+    AnimatorCountDown countDown;
+
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
@@ -36,10 +45,13 @@ public class InGameScreen implements GameScreen {
     	
     	//Initialisation du poney et du déplacement
     	P1 = new Player();
-    	in = new MyInputProcessor(P1);
+    	P2 = new Player();
+    	mouche = new SmallEnnemy();
+    	in = new MyInputProcessor(P1,P2);
     	Gdx.input.setInputProcessor(in);
     	
-    	
+    	countDown = new AnimatorCountDown(new Point(0,0));
+    	countDown.create();
     }
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
@@ -51,18 +63,21 @@ public class InGameScreen implements GameScreen {
         }
     	w.update();
     	in.keyboardProcessing();
+    	countDown.update(0, 0, null);
     }
 
     public void interpolate(GameContainer gc, float alpha) {	
     	P1.interpolate(alpha);
+    	P2.interpolate(alpha);
+    	mouche.interpolate(alpha);
     }
 
     public void render(GameContainer gc, Graphics g) {
-    		
-    	
-        w.render(g);
-        P1.render(g);
-        
+
+    	w.render(g);
+    	P1.render(g);
+    	P2.render(g);
+    	countDown.render();
    }
     
     /**************************************************************/

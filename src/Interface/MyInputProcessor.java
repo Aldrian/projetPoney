@@ -1,7 +1,9 @@
 package Interface;
 
+import Game.Player;
+import Game.PointInt;
+import Game.SmallEnnemy;
 
-import org.mini2Dx.core.geom.Point;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
@@ -12,23 +14,26 @@ import com.badlogic.gdx.InputProcessor;
  */
 public class MyInputProcessor implements InputProcessor 
 {
-	
-	private Player P; // Joueur associé
-	private Point direction; // Direction donné au Joueur
-	
-	
+	private Player P1; // Joueur associé
+	private Player P2; // Joueur associé
+	private PointInt directionP1; // directionP1 donné au Joueur
+	private PointInt directionP2; // directionP1 donné au Joueur
+
 	/**
 	 * Constructeur principal prenant en paramètre le joueur associé
 	 * @param p
 	 */
-	public MyInputProcessor(Player p)
+	public MyInputProcessor(Player p1, Player p2)
 	{
-		this.P = p;
-		direction = new Point();
+		this.P1 = p1;
+		this.P2 = p2;
+		directionP1 = new PointInt();
+		directionP2 = new PointInt();
 	}
 	
 	public void keyboardProcessing(){
-		P.update(direction);
+		P1.update(directionP1);
+		P2.update(directionP2);
 	}
 	
 	@Override
@@ -39,12 +44,22 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite demandé");
-			direction.set(2f,0f);
+			directionP1.set(2,0);
 			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche demandé");
-			direction.set(-2f,0f);
+			directionP1.set(-2,0);
+			
+		break;
+		case Keys.D :
+			System.out.println("Déplacement à droite demandé");
+			directionP2.set(2,0);
+			
+		break;
+		case Keys.Q : 
+			System.out.println("Déplacement à gauche demandé");
+			directionP2.set(-2,0);
 			
 		break;
 		}
@@ -57,11 +72,19 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite arrêté");
-			direction.set(0f,0f);
+			directionP1.set(0,0);
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche arrêté");
-			direction.set(0f,0f);
+			directionP1.set(0,0);
+		break;
+		case Keys.D :
+			System.out.println("Déplacement à droite arrêté");
+			directionP2.set(0,0);
+		break;
+		case Keys.Q : 
+			System.out.println("Déplacement à gauche arrêté");
+			directionP2.set(0,0);
 		break;
 		}
 		return true;

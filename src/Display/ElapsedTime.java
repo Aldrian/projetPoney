@@ -10,13 +10,18 @@ public class ElapsedTime {
 	public ElapsedTime()
 	{
 		t = new Timer();
-		t.start();
+		
+	}
+	
+	public void start()
+	{
+		t.run();
 	}
 	
 	class Timer extends Thread{
 		boolean enMarche;
 		public Timer(){
-			enMarche=true;
+			enMarche=false;
 		}
 		public void run(){
 			enMarche=true;
