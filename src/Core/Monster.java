@@ -1,6 +1,6 @@
 package Core;
 
-public abstract class Monster extends Entity
+public abstract class Monster extends MovingEntity
 {
 	protected  int health;
 	

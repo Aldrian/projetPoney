@@ -6,18 +6,18 @@ import org.mini2Dx.core.geom.Point;
 public abstract class Entity
 {
 	protected int ID;
-	private static int nbC=0;//Nombre de Character instancié --> ID 
+	private static int nbE=0;//Nombre d'Entity instanciées --> ID 
 	
 	// Postitionnement
 	
 	protected int width;
 	protected int height;
-	protected Point previousPosition; // Position précédente
+	
     protected Point currentPosition; // Position actuelle
 	
 	public Entity()
 	{
-		ID=nbC++;
+		ID=nbE++;
 	}
 	
 	
@@ -43,11 +43,7 @@ public abstract class Entity
 	/**  
 	 * @return x l'abscisse de la position actuelle
 	 */
-	
-	public abstract Entity  move(Point p);
-	
-	public abstract boolean moveAllowed(Point p);
-	
+		
 	public int getCPx()
 	{
 		return (int)currentPosition.x;

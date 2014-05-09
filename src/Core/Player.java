@@ -3,7 +3,7 @@ package Core;
 import org.mini2Dx.core.geom.Point;
 
 
-public class Player extends Entity
+public class Player extends MovingEntity
 {
 	private boolean state;
 	private Weapon wp;
