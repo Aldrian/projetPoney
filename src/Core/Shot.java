@@ -2,7 +2,7 @@ package Core;
 
 import org.mini2Dx.core.geom.Point;
 
-public class Shot extends Entity
+public class Shot extends MovingEntity
 {
 	@SuppressWarnings("unused")
 	private int shotType;

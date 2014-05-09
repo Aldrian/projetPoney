@@ -27,18 +27,25 @@ public class Collision
 			}
 			else if (e2 instanceof Bomb)
 			{
-				if (((Bomb)e2).isWeapon())
-				{
-					try {
-						e1.update(Event.WeaponUp);
-					} catch (Throwable e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
 				try {
 					e2.update(Event.Death);
 				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			else if (e2 instanceof Box)
+			{
+				try{
+					e1.update(Event.WeaponUp);
+				}catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try{
+					e2.update(Event.Death);
+				}catch (Throwable e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -72,21 +79,12 @@ public class Collision
 		}
 		else if (e1 instanceof Bomb && e2 instanceof Player)
 		{
-			if (((Bomb)e1).isWeapon())
-			{
 				try {
-					e2.update(Event.WeaponUp);
+					e1.update(Event.Death);
 				} catch (Throwable e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
-			try {
-				e2.update(Event.Death);
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }
