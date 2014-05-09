@@ -24,7 +24,7 @@ public abstract class Entity
 	/** Teste si deux entités rentrent en collision et appelle update() le cas échéant
 	 * 
 	 * @param e
-	 * @return 
+	 * @return Collision
 	 */
 	public Collision collide (Entity e)
 	{
