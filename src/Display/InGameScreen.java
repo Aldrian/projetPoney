@@ -12,8 +12,8 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
-import Game.Player;
-import Game.SmallEnnemy;
+import Core.Player;
+import Core.Little;
 import Interface.AnimatorCountDown;
 import Interface.MyInputProcessor;
 
@@ -29,7 +29,7 @@ public class InGameScreen implements GameScreen {
     Player P1;
     Player P2;
     MyInputProcessor in;
-    SmallEnnemy mouche;
+    Little mouche;
     AnimatorCountDown countDown;
 
     /**************************************************************/
@@ -46,7 +46,7 @@ public class InGameScreen implements GameScreen {
     	//Initialisation du poney et du déplacement
     	P1 = new Player();
     	P2 = new Player();
-    	mouche = new SmallEnnemy();
+    	mouche = new Little();
     	in = new MyInputProcessor(P1,P2);
     	Gdx.input.setInputProcessor(in);
     	

@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class MovingEntity extends Entity {
 	
+	
+	
 	protected PointInt previousPosition; // Position précédente
 	
 	public void move(PointInt p) {

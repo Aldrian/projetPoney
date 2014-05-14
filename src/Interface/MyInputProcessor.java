@@ -1,8 +1,7 @@
 package Interface;
 
-import Game.Player;
+import Core.Player;
 import Game.PointInt;
-import Game.SmallEnnemy;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;

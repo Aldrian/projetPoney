@@ -1,6 +1,10 @@
 package Core;
 
+import org.mini2Dx.core.geom.Point;
+
+import Game.Move;
 import Game.PointInt;
+import Interface.AnimatorPlayer;
 
 
 public class Player extends MovingEntity
@@ -8,6 +12,19 @@ public class Player extends MovingEntity
 	private boolean state;
 	private Weapon wp;
 	
+	/**
+	 * Constructeur venant de Game.Player
+	 */
+	public Player() 
+	{
+		mouvement = new Move(new PointInt(400,200),new PointInt(400,200));
+
+		mouvement = new Move(new PointInt(0,60),new PointInt(0,60));
+
+		// Init l'affichage du joueur
+		animation = new AnimatorPlayer(new Point(0,60));
+		animation.create();
+	}
 	
 	@Override
 	public void update(Event e)
