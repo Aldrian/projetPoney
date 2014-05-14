@@ -6,12 +6,12 @@ import java.util.HashSet;
 
 /*
  * Format fichier :
- * 0 Platform
- * 1 Spawn Monster
+ * 0 Vide
+ * 1 Platform
  * 2 Pit
- * 3 Spawn Bomb
+ * 3 Spawn Monster
  * 4 Spawn Player
- * 5 Vide
+ * 5 Spawn Bomb
  * 6 Spawn Box
  */
 public class Terrain
@@ -89,12 +89,12 @@ public class Terrain
 				
 				for(i=0;i<10;i++) {
 					
-					if(block[i][j]==0) {
+					if(block[i][j]==1) {
 						
 						plateforme = new Platform();
 						plateforme.setHeight(60);
 						
-						while (i<10 && block[i][j]==0) {
+						while (i<10 && block[i][j]==1) {
 							plateforme.setWidth(plateforme.getWidth()+80);
 							i++;
 						}

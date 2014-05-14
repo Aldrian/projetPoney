@@ -19,21 +19,31 @@ public class Main {
 	 * ainsi la fonction update dans entity prendrait ce type Event en param
 	 * 
 	 * 
-	 * FUTUR MORCEAU DE CODE purement théorique pour le Main :
+	 * FUTUR MORCEAU DE CODE purement théorique pour le "Main" :
 	 * 
-	 * Set<Entities> entities
+	 * Mode bourrin :
+	 * List<Entity> entities
+	 * List<MovingEntity> Mentities;
+	 * List<NotMovingEntity> NMentities;
 	 * for each tick d'horloge
 	 * {
 	 *		Set<Collision> colls;
-	 *
-	 *		for (Entity e1:entities)
+	 *		
+	 *      ME vs ME
+	 *		for (int i=0;i<Mentities.size();i++)
 	 *		{
-	 *			for(Entity e2:entities)
+	 *			for(int j=i+1;j<Mentities.size();j++)
 	 *			{
-	 *				if(!(e1.equals(e2))&&e1.collide(e2))	 
-	 *					colls.add(new Collision(e1, e2));
-	 *	 		}
+	 *				if(Mentities.get(i).collide(Mentities.get(j)))	 
+	 *					colls.add(new Collision(Mentities.get(i),Mentities.get(j)));
+	 *	 		} 
 	 *		}
+	 *
+	 *		REPEAT ME vs NME
+	 *		for ...
+	 *
+	 *		
+	 *
 	 *		(... ?) //pops and everything
 	 *		for (Collision c:colls)
 	 *		{
@@ -41,6 +51,23 @@ public class Main {
 	 *		}
 	 *		//check si game over ?
 	 *	}
+	 *
+	 *	Mode moins bourrin :
+	 *	Lists : ME,NME,Player,Monster,Shot,Pit,Wall,Platform // List E ?
+	 *
+	 *	for ME
+	 *		if Player
+	 *			NME
+	 *			Monster
+	 *			Player
+	 *		else if Monster
+	 *			Shot
+	 *			Pit
+	 *			Wall
+	 *			Platform
+	 *		else if Shot
+	 *			Wall
+	 *			Platform
 	 */
 	
 	
