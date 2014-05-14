@@ -1,6 +1,6 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;
+import Game.PointInt;
 
 public class Little extends Monster
 {
@@ -11,15 +11,9 @@ public class Little extends Monster
 	}
 
 	@Override
-	public Entity move(Point p) {
+	public void move(PointInt p) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
-	@Override
-	public boolean moveAllowed(Point p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+		
 }

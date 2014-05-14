@@ -1,26 +1,56 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;	
+import Game.PointInt;	
 
 
 public abstract class Entity
 {
 	protected int ID;
-	private static int nbC=0;//Nombre de Character instancié --> ID 
+	private static int nbE=0;//Nombre d'Entity instanciées --> ID 
 	
 	// Postitionnement
 	
 	protected int width;
 	protected int height;
-	protected Point previousPosition; // Position précédente
-    protected Point currentPosition; // Position actuelle
+	
+    protected PointInt currentPosition; // Position actuelle
 	
 	public Entity()
 	{
-		ID=nbC++;
+		ID=nbE++;
 	}
 	
 	
+	
+	
+	public int getWidth() {
+		return width;
+	}
+
+
+
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+
+
+
+	public int getHeight() {
+		return height;
+	}
+
+
+
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+
+
+
 	/** Teste si deux entités rentrent en collision et appelle update() le cas échéant
 	 * 
 	 * @param e
@@ -43,14 +73,10 @@ public abstract class Entity
 	/**  
 	 * @return x l'abscisse de la position actuelle
 	 */
-	
-	public abstract Entity  move(Point p);
-	
-	public abstract boolean moveAllowed(Point p);
-	
+		
 	public int getCPx()
 	{
-		return (int)currentPosition.x;
+		return currentPosition.getX();
 	}
 	
 	/**  
@@ -58,7 +84,7 @@ public abstract class Entity
 	 */
 	public int getCPy()
 	{
-		return (int)currentPosition.y;
+		return (int)currentPosition.getY();
 	}
 	
 	/**  
@@ -66,7 +92,7 @@ public abstract class Entity
 	 */
 	public int getEdgeX()
 	{
-		return (int)currentPosition.x+width;
+		return (int)currentPosition.getX()+width;
 	}
 	
 	/** 
@@ -74,7 +100,30 @@ public abstract class Entity
 	 */
 	public int getEdgeY()
 	{
-		return (int)currentPosition.y+height;
+		return (int)currentPosition.getY()+height;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return ID;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entity other = (Entity) obj;
+		if (ID != other.ID)
+			return false;
+		return true;
+	}
+	
+	
 }
  
