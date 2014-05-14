@@ -21,6 +21,12 @@ public abstract class Entity
 		this.currentPosition=p;
 	}
 	
+	public Entity(PointInt p,int w, int h)
+	{
+		this(p);
+		width=w;
+		height=h;
+	}
 	
 	
 	

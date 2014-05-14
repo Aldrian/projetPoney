@@ -7,9 +7,9 @@ public abstract class Monster extends MovingEntity
 {
 	protected  int health;
 	
-	public Monster(PointInt p, Animator a)
+	public Monster(PointInt p,int w,int h, Animator a)
 	{
-		super(p,a);
+		super(p,w,h,a);
 	}
 
 	@Override

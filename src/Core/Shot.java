@@ -19,10 +19,12 @@ public class Shot extends MovingEntity
 		if (laser)
 		{
 			super.setAnimation(new AnimatorLaserShot(p.pointValue()));
+			//set width and height 
 		}
 		else
 		{
 			super.setAnimation(new AnimatorGunShot(p.pointValue()));
+			//set width and height
 		}
 	}
 

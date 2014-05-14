@@ -17,7 +17,7 @@ public class Player extends MovingEntity
 	 */
 	public Player(PointInt p) 
 	{
-		super(p,new AnimatorPlayer(p.pointValue()));
+		super(p,60,80,new AnimatorPlayer(p.pointValue())); //Valeurs brutes hitbox à préciser
 	}
 	
 	@Override

@@ -11,7 +11,7 @@ public class Big extends Monster
 {
 	public Big(PointInt p)
 	{
-		super(p,new AnimatorBigEnnemy(p.pointValue()));
+		super(p,60,80,new AnimatorBigEnnemy(p.pointValue())); //Valeurs brute de la hitbox à modifier en fonction taille des sprites
 		health = 3;				
 	}
 

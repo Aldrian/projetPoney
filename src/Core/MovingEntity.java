@@ -13,6 +13,8 @@ public abstract class MovingEntity extends Entity {
 	protected Animator animation; // Animation associée
 	protected Move mouvement; // Mouvement courant du personnage
 	
+	
+	// Constructeur ne définissant pas l'animation ni la taille de l'entité de suite
 	public MovingEntity(PointInt p,PointInt direction)
 	{
 		super(p);
@@ -21,9 +23,10 @@ public abstract class MovingEntity extends Entity {
 		this.animation=null;
 	}
 	
-	public MovingEntity(PointInt p, Animator a)
+	// Constructeur d'une entité statique à sa création
+	public MovingEntity(PointInt p,int w,int h, Animator a)
 	{
-		super(p);
+		super(p,w,h);
 		this.previousPosition=p;
 		this.mouvement=new Move(p,p);
 		this.animation=a;
