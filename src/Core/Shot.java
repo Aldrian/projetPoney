@@ -6,23 +6,22 @@ import Interface.Animator;
 public class Shot extends MovingEntity
 {
 	
-	private int shotType;
+	
 	private boolean laser;
 	
 	
 
-	public Shot(PointInt p, int shotType) {
-		super(p);
-		this.shotType = shotType;
+	public Shot(PointInt p, PointInt direction,boolean laser) {
+		super(p, direction);
 		
-		if (shotType > 2)
+		this.laser=laser;
+		
+		if (laser)
 		{
-			laser = true;
 			super.setAnimation(new AnimatorLaserShot(p.pointValue()));
 		}
 		else
 		{
-			laser = false;
 			super.setAnimation(new AnimatorGunShot(p.pointValue()));
 		}
 	}

@@ -13,11 +13,11 @@ public abstract class MovingEntity extends Entity {
 	protected Animator animation; // Animation associée
 	protected Move mouvement; // Mouvement courant du personnage
 	
-	public MovingEntity(PointInt p)
+	public MovingEntity(PointInt p,PointInt direction)
 	{
 		super(p);
 		this.previousPosition=p;
-		this.mouvement=new Move(p,p);
+		this.mouvement=new Move(p,direction);
 		this.animation=null;
 	}
 	

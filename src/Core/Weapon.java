@@ -1,5 +1,7 @@
 package Core;
 
+import Game.PointInt;
+
 public abstract class Weapon
 {
 	protected int nbShots;
@@ -9,15 +11,8 @@ public abstract class Weapon
 		nbShots=shots;
 	}
 	
-	public Shot shoot()
-	{
-		if(nbShots>0)
-		{
-			nbShots--;
-			return new Shot(nbShots);
-		}
-		return null; //throws something serait mieux 
-	}
+	public abstract Shot shoot(PointInt p,PointInt direction);
+	
 	
 	public void pluShot() //ou appeler la fonction ? on doit l'appeler à la disparition d'un tir
 	{
