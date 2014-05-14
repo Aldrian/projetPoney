@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -86,11 +87,12 @@ public class AnimatorPlayer extends Animator {
 		
 		// Création du texte
 		textContainer = new SpriteBatch();
-		text = new TextWrapper("init", renderPosition.set(renderPosition.x + 25, renderPosition.y + 54));
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/oldGame.ttf"));
-		oldGame = generator.generateFont(20, FreeTypeFontGenerator.DEFAULT_CHARS, true);
+		text = new TextWrapper("init", renderPosition.set(renderPosition.x + 10, renderPosition.y + 50));
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/Minecraftia.ttf"));
+		oldGame = generator.generateFont(14, FreeTypeFontGenerator.DEFAULT_CHARS, true);
 		oldGame.setColor(Color.valueOf("FEFEFE"));
-		text.setText("PLAYER " + joueur);
+		oldGame.setScale(1, -1);
+		text.setText("P" + joueur);
 	}
 
 	@Override
@@ -105,8 +107,7 @@ public class AnimatorPlayer extends Animator {
 		spriteBatch.draw(currentFrame, renderPosition.x , renderPosition.y);
 		spriteBatch.end();
 		
-
-		text.setPosition(renderPosition.set(renderPosition.x + 25, renderPosition.y + 54));
+		text.setPosition(renderPosition.set(renderPosition.x + 20, renderPosition.y + 70));
 		textContainer.begin();
 		text.draw(textContainer, oldGame);
 		textContainer.end();
