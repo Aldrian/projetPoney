@@ -5,19 +5,14 @@ import org.mini2Dx.core.geom.Point;
 import Game.Move;
 import Game.PointInt;
 import Interface.AnimatorBigEnnemy;
+import Interface.AnimatorSmallEnnemy;
 
 public class Big extends Monster
 {
-	public Big()
+	public Big(PointInt p)
 	{
-		health = 3;
-		
-		mouvement = new Move(new PointInt(0,200),new PointInt(0,200));
-		
-		// Init l'affichage de l'ennemi
-		animation = new AnimatorBigEnnemy(new Point(0,200));
-		animation.create();
-				
+		super(p,new AnimatorBigEnnemy(p.pointValue()));
+		health = 3;				
 	}
 
 	@Override

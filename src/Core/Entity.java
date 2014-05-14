@@ -15,9 +15,10 @@ public abstract class Entity
 	
     protected PointInt currentPosition; // Position actuelle
 	
-	public Entity()
+	public Entity(PointInt p)
 	{
 		ID=nbE++;
+		this.currentPosition=p;
 	}
 	
 	

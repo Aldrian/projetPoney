@@ -53,7 +53,7 @@ public class Main {
 	 *	}
 	 *
 	 *	Mode moins bourrin :
-	 *	Lists : ME,NME,Player,Monster,Shot,Pit,Wall,Platform // List E ?
+	 *	Sets : ME,NME,Player,Monster,Shot,Pit,Wall,Platform // Set E ?
 	 *
 	 *	for ME
 	 *		if Player

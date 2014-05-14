@@ -1,22 +1,30 @@
 package Core;
 
 import Game.PointInt;
+import Interface.Animator;
 
 public class Shot extends MovingEntity
 {
-	@SuppressWarnings("unused")
+	
 	private int shotType;
-	@SuppressWarnings("unused")
 	private boolean laser;
 	
 	
 
-	public Shot(int shotType) {
-		super();
+	public Shot(PointInt p, int shotType) {
+		super(p);
 		this.shotType = shotType;
 		
-		if (shotType > 2) laser = true;
-		else laser = false;
+		if (shotType > 2)
+		{
+			laser = true;
+			super.setAnimation(new AnimatorLaserShot(p.pointValue()));
+		}
+		else
+		{
+			laser = false;
+			super.setAnimation(new AnimatorGunShot(p.pointValue()));
+		}
 	}
 
 

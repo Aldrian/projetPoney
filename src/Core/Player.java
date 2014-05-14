@@ -15,15 +15,9 @@ public class Player extends MovingEntity
 	/**
 	 * Constructeur venant de Game.Player
 	 */
-	public Player() 
+	public Player(PointInt p) 
 	{
-		mouvement = new Move(new PointInt(400,200),new PointInt(400,200));
-
-		mouvement = new Move(new PointInt(0,60),new PointInt(0,60));
-
-		// Init l'affichage du joueur
-		animation = new AnimatorPlayer(new Point(0,60));
-		animation.create();
+		super(p,new AnimatorPlayer(p.pointValue()));
 	}
 	
 	@Override

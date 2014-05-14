@@ -7,21 +7,42 @@ import Interface.Animator;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class MovingEntity extends Entity {
-	
-	
-	
+		
 	protected PointInt previousPosition; // Position précédente
 	
+	protected Animator animation; // Animation associée
+	protected Move mouvement; // Mouvement courant du personnage
+	
+	public MovingEntity(PointInt p)
+	{
+		super(p);
+		this.previousPosition=p;
+		this.mouvement=new Move(p,p);
+		this.animation=null;
+	}
+	
+	public MovingEntity(PointInt p, Animator a)
+	{
+		super(p);
+		this.previousPosition=p;
+		this.mouvement=new Move(p,p);
+		this.animation=a;
+		animation.create();
+	}
 	public void move(PointInt p) {
 		// TODO Auto-generated method stub
 		
 	}
 	
+	
 	/*
 	 * Partie graphique
-	 */
-	protected Animator animation; // Animation associée
-	protected Move mouvement; // Mouvement courant du personnage
+	 */	
+
+
+	public void setAnimation(Animator animation) {
+		this.animation = animation;
+	}
 
 	public void  update(PointInt direction)
 	{
