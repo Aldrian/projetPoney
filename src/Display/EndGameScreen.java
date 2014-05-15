@@ -9,6 +9,7 @@ import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,6 +26,7 @@ public class EndGameScreen implements GameScreen {
 	TextWrapper text;
 	Sprite fond;
 
+	boolean appuiTouche;
 	
     public static int ID = 3;
     
@@ -33,6 +35,7 @@ public class EndGameScreen implements GameScreen {
     /**************************************************************/
     
     public void initialise(GameContainer gc) {
+    	appuiTouche = false;
     	batch = new SpriteBatch();
     	
 	    fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/end.png")));
@@ -47,7 +50,12 @@ public class EndGameScreen implements GameScreen {
     }
 
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
-        
+    	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
+    	if(appuiTouche) {
+    		screenManager.getGameScreen(InGameScreen.ID).initialise(gc);
+            //Fade to LoadingScreen
+            screenManager.enterGameScreen(LoadingScreen.ID, new FadeOutTransition(), new FadeInTransition());
+        }
     }
 
     public void interpolate(GameContainer gc, float alpha) {
