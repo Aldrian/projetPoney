@@ -3,6 +3,8 @@ package Core;
 import java.io.*;
 import java.util.HashSet;
 
+import Game.PointInt;
+
 
 /*
  * Format fichier :
@@ -91,7 +93,7 @@ public class Terrain
 					
 					if(block[i][j]==1) {
 						
-						plateforme = new Platform();
+						plateforme = new Platform(new PointInt(i,j));
 						plateforme.setHeight(60);
 						
 						while (i<10 && block[i][j]==1) {
@@ -103,7 +105,7 @@ public class Terrain
 					
 					else if(block[i][j]==2) {
 						
-						lePit = new Pit();
+						lePit = new Pit(new PointInt(i,j));
 						lePit.setHeight(60);
 						
 						while (i<10 && block[i][j]==2) {
@@ -118,14 +120,5 @@ public class Terrain
 			}
 			return list;	
 		}
-		
-	
-	//Main de test
-	public static void main(String [] args)
-	{
-		Terrain t=new Terrain("res/map/terrain.txt");
-		
-		
-	}
 }
 

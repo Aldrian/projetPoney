@@ -2,6 +2,8 @@ package Core;
 
 import Game.PointInt;
 import Interface.Animator;
+import Interface.AnimatorGunShot;
+import Interface.AnimatorLaserShot;
 
 public class Shot extends MovingEntity
 {

@@ -1,11 +1,13 @@
 package Core;
 
+import Game.PointInt;
+
 
 public class Bomb extends NotMovingEntity
 {
-	public Bomb()
+	public Bomb(PointInt p)
 	{
-		
+		super(p);
 	}
 		
 	@Override
