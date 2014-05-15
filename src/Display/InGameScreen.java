@@ -32,6 +32,7 @@ public class InGameScreen implements GameScreen {
     MyInputProcessor in;
     Little mouche;
     AnimatorCountDown countDown;
+    ElapsedTime t;
 
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
@@ -39,8 +40,10 @@ public class InGameScreen implements GameScreen {
     
 
     public void initialise(GameContainer gc) {
+    	// Initialisation du timer
+    	t = new ElapsedTime();
     	// Initialisation de la map
-    	w = new Window();
+    	w = new Window(t);
     	w.initialise(null);
     	jeuFini = false;
     	
@@ -60,6 +63,7 @@ public class InGameScreen implements GameScreen {
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
     	if(jeuFini) {
             //Fade to EndGameScreen
+    		t.getT().arret();
             screenManager.enterGameScreen(EndGameScreen.ID, new FadeOutTransition(), new FadeInTransition());
         }
     	w.update();
@@ -91,7 +95,7 @@ public class InGameScreen implements GameScreen {
     }
 
     public void postTransitionIn(Transition transitionIn) {
-        // Called after transitioning in
+        t.getT().start();
     }
 
     public void preTransitionOut(Transition transitionOut) {

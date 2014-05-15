@@ -32,10 +32,10 @@ public class Window {
 	Sprite header;
 	Texture gif;
 	
-	public Window()
+	public Window(ElapsedTime t)
 	{ 
 		map = new Map();
-		timer = new ElapsedTime();
+		timer = t;
 		
 	}
 

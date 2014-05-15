@@ -18,6 +18,7 @@ public class ElapsedTime {
 		t.run();
 	}
 	
+	
 	class Timer extends Thread{
 		boolean enMarche;
 		public Timer(){
@@ -25,6 +26,10 @@ public class ElapsedTime {
 		}
 		public void run(){
 			enMarche=true;
+			try{
+				sleep(1000);
+			}
+			catch(InterruptedException esleep){}
 			while(enMarche){
 				secCount ++;
 				if (secCount == 60)
@@ -50,6 +55,10 @@ public class ElapsedTime {
 	}
 	public int min() {
 		return minCount;
+	}
+
+	public Timer getT() {
+		return t;
 	}
 
 	
