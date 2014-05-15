@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * SuperClasse Animation
+ * Initialise uniquement l'origine de l'animation
+ * Défini les fonctions de rendu et de mise à jour pour les toutes les classes dérivant d'animator
  * @author Gaëtan
  *
  */
@@ -51,6 +53,8 @@ public abstract class Animator implements ApplicationListener
 
 	/**
 	 * Mise à jour des coordonnées courantes de l'animation
+	 * Prend en paramètres les float de la position de rendu et le mouvement de l'entité
+	 * En déduit la direction que 'animation doit prendre
 	 * @param x
 	 * @param y
 	 */
@@ -77,12 +81,11 @@ public abstract class Animator implements ApplicationListener
 			typeAnimation = 3;
 		}
 		
-		//System.out.println(mouvement.toString());
-		
 	}
 
 	/**
-	 * Rendu graphique de l'animation
+	 * Méthode de rendu graphique
+	 * Lance le spriteBatch avec l'animation adéquate
 	 */
 	@Override
 	public void render()

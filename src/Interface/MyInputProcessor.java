@@ -7,7 +7,9 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
 /**
- * Gestion du clavier associé à un joueur
+ * Classe de gestion des entrées claviers
+ * Est associé à deux joueurs
+ * Chacune des directions correspondent à un des joueurs
  * @author Gaëtan
  *
  */
@@ -19,7 +21,7 @@ public class MyInputProcessor implements InputProcessor
 	private PointInt directionP2; // directionP1 donné au Joueur
 
 	/**
-	 * Constructeur principal prenant en paramètre le joueur associé
+	 * Constructeur par paramètres
 	 * @param p
 	 */
 	public MyInputProcessor(Player p1, Player p2)
@@ -30,11 +32,19 @@ public class MyInputProcessor implements InputProcessor
 		directionP2 = new PointInt();
 	}
 	
+	/**
+	 * Méthode appelée dans la boucle principale du jeu.
+	 * De cette façon les joueurs sont mis à jour constamment par la direction qui lui est associée dans cette classe
+	 */
 	public void keyboardProcessing(){
 		P1.update(directionP1);
 		P2.update(directionP2);
 	}
 	
+	/**
+	 * Méthode des entrées appuis clavier.
+	 * A chaque appuie sur une touche, cette méthode est appelée avec comme argument l'entier correspondant à la touche appuyée
+	 */
 	@Override
 	public boolean keyDown(int key) 
 	{
@@ -65,6 +75,10 @@ public class MyInputProcessor implements InputProcessor
 		return true;
 	}
 	
+	/**
+	 * Méthode des entrées retours clavier.
+	 * A chaque relachement d'une touche, cette méthode est appelée avec comme argument l'entier correspondant à la touche relâchée
+	 */
 	@Override
 	public boolean keyUp(int key) {
 		switch(key)

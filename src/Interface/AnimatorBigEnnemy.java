@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Animation d'un Boss
+ * Initialise complètement l'animation à partir d'une spriteSheet d'un format connu
+ * 
  * @author Gaëtan
  *
  */

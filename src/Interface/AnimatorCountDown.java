@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Animation du compte à rebours initial
+ * Initialise complètement l'animation à partir d'une spriteSheet d'un format connu
  * @author Gaëtan
  *
  */
@@ -103,7 +104,8 @@ public class AnimatorCountDown extends Animator {
 	}
 	
 	/**
-	 * Rendu graphique de l'animation
+	 * Surcharge le rendu graphique de l'animation
+	 * N'aura plus aucun effet 1seconde après le premier render
 	 */
 	@Override
 	public void render()

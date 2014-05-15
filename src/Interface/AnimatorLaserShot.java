@@ -9,6 +9,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Animation d'un tir de laser
+ * Initialise complètement l'animation à partir d'une spriteSheet d'un format connu
+ * 
+ * @author Gaëtan
+ *
+ */
 public class AnimatorLaserShot extends Animator {
 
 	public AnimatorLaserShot(Point origin) {
@@ -16,6 +23,9 @@ public class AnimatorLaserShot extends Animator {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Initialisation de l'animation
+	 */
 	@Override
 	public void create() {
 		FRAME_COLS = 3;

@@ -2,9 +2,10 @@ package Game;
 
 
 /**
- * Représente un mouvement quelconque
- * Attention : Toutes les entrées de coordonnées doivent être contrôlées afin que ses coordonnées gardent une précision inférieure à 2 décimale
- * Passer outre entraîne des bugs d'affichage
+ * Représente un mouvement quelconque.
+ * Comporte un point d'origine et un point d'arrivée.
+ * Des méthodes permettent de connaître la nature du mouvement, ou savoir si celui-ci est statique.
+ * Conversion en Point version LibGDX.
  * @author Gaëtan
  *
  */
@@ -14,6 +15,9 @@ public class Move
 	private PointInt origin;
 	private PointInt direction;
 	
+	/**
+	 * Constructeur par défaut
+	 */
 	public Move()
 	{
 		origin = new PointInt();
@@ -21,6 +25,11 @@ public class Move
 		
 	}
 	
+	/**
+	 * Constructeur par paramètres
+	 * @param origin
+	 * @param direction
+	 */
 	public Move(PointInt origin, PointInt direction) {
 		super();
 		this.origin = origin;
@@ -83,23 +92,45 @@ public class Move
 
 	}
 	
+	/**
+	 * Donne l'origine
+	 * @return
+	 */
 	public PointInt getOrigin()
 	{
 		return origin;
 	}
+	
+	/**
+	 * Modifie l'origine
+	 * @param origin
+	 */
 	public void setOrigin(PointInt origin)
 	{
 		this.origin = origin;
 	}
+	
+	/**
+	 * Donne la direction
+	 * @return
+	 */
 	public PointInt getDirection()
 	{
 		return direction;
 	}
+	
+	/**
+	 * Modifie la direction
+	 * @param direction
+	 */
 	public void setDirection(PointInt direction)
 	{
 		this.direction = direction;
 	}
 	
+	/**
+	 * ToString() auto-généré
+	 */
 	@Override
 	public String toString() {
 		return "Move [origin=" + origin.toString() + ", direction=" + direction.toString() + "]";
