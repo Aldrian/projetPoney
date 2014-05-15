@@ -15,12 +15,22 @@ public abstract class Entity
 	
     protected PointInt currentPosition; // Position actuelle
 	
+    /**
+     * Constructeur d'Entity ne prenant que la position en compte
+     * @param p spawn point
+     */
 	public Entity(PointInt p)
 	{
 		ID=nbE++;
 		this.currentPosition=p;
 	}
 	
+	/**
+	 * Constructeur prenant en compte spawn point et hitbox
+	 * @param p spawn point
+	 * @param w width
+	 * @param h height
+	 */
 	public Entity(PointInt p,int w, int h)
 	{
 		this(p);
@@ -29,7 +39,7 @@ public abstract class Entity
 	}
 	
 	
-	
+	//Getters et Setters
 	public int getWidth() {
 		return width;
 	}
@@ -76,6 +86,7 @@ public abstract class Entity
 	 * @throws Throwable 
 	 */
 	public abstract void update(Event e) throws Throwable;
+	
 	
 	/**  
 	 * @return x l'abscisse de la position actuelle

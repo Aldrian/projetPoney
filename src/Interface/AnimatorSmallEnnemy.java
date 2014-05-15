@@ -9,6 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Classe dérivée d'animation d'un petit ennemi
+ * @author Gaëtan
+ *
+ */
 public class AnimatorSmallEnnemy extends Animator {
 
 	public AnimatorSmallEnnemy(Point origin) {

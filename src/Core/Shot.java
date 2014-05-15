@@ -1,7 +1,6 @@
 package Core;
 
 import Game.PointInt;
-import Interface.Animator;
 import Interface.AnimatorGunShot;
 import Interface.AnimatorLaserShot;
 
@@ -12,11 +11,16 @@ public class Shot extends MovingEntity
 	private boolean laser;
 	
 	
-
+	/**
+	 * Constructeur
+	 * @param p
+	 * @param direction
+	 * @param laser
+	 */
 	public Shot(PointInt p, PointInt direction,boolean laser) {
 		super(p, direction);
 		
-		this.laser=laser;
+		this.setLaser(laser);
 		
 		if (laser)
 		{
@@ -49,6 +53,24 @@ public class Shot extends MovingEntity
 	@Override
 	public void move(PointInt p) {
 		// TODO Auto-generated method stub
+	}
+
+
+
+	/**
+	 * @return the laser
+	 */
+	public boolean isLaser() {
+		return laser;
+	}
+
+
+
+	/**
+	 * @param laser the laser to set
+	 */
+	public void setLaser(boolean laser) {
+		this.laser = laser;
 	}
 
 

@@ -9,6 +9,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Animation d'un tir de pistolet
+ * Initialise complètement l'animation à partir d'une spriteSheet d'un format connu
+ * 
+ * @author Gaëtan
+ *
+ */
 public class AnimatorGunShot extends Animator {
 
 	public AnimatorGunShot(Point origin) {
@@ -16,6 +23,9 @@ public class AnimatorGunShot extends Animator {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Initialisation de l'animation
+	 */
 	@Override
 	public void create() {
 		FRAME_COLS = 3;

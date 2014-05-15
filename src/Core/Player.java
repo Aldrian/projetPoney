@@ -1,8 +1,5 @@
 package Core;
 
-import org.mini2Dx.core.geom.Point;
-
-import Game.Move;
 import Game.PointInt;
 import Interface.AnimatorPlayer;
 
@@ -13,12 +10,14 @@ public class Player extends MovingEntity
 	private Weapon wp;
 	
 	/**
-	 * Constructeur venant de Game.Player
+	 * Constructeur des joueurs
+	 * @param p point de spawn
 	 */
 	public Player(PointInt p) 
 	{
 		super(p,60,80,new AnimatorPlayer(p.pointValue())); //Valeurs brutes hitbox à préciser
 	}
+	
 	
 	@Override
 	public void update(Event e)
@@ -44,7 +43,9 @@ public class Player extends MovingEntity
 		// Pas d'autres cas
 	}
 
-
+	/*
+	 * Getters et setters
+	 */
 	public boolean isState() {
 		return state;
 	}
@@ -71,7 +72,11 @@ public class Player extends MovingEntity
 	}
 
 
-	
+	/**
+	 * Méthode précisant si le mouvement est valable
+	 * @param p direction demandée
+	 * @return boolean
+	 */
 	public boolean moveAllowed(PointInt p) {
 		// TODO Auto-generated method stub
 		return false;

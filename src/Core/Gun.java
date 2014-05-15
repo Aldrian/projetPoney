@@ -5,11 +5,15 @@ import Game.PointInt;
 
 public class Gun extends Weapon
 {
+	/**
+	 * Constructeur du Gun
+	 */
 	public Gun()
 	{
 		super(2);
 	}
 	
+	@Override
 	public Shot shoot(PointInt p,PointInt direction)
 	{
 		if(nbShots>0)

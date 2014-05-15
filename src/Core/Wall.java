@@ -4,6 +4,10 @@ import Game.PointInt;
 
 public class Wall extends NotMovingEntity {
 
+	/**
+	 * Constructeur de wall
+	 * @param p
+	 */
 	public Wall(PointInt p) {
 		super(p);
 		// TODO Auto-generated constructor stub

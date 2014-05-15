@@ -7,6 +7,13 @@ public abstract class Monster extends MovingEntity
 {
 	protected  int health;
 	
+	/**
+	 * Constructeur de Monster
+	 * @param p spawn point
+	 * @param w width
+	 * @param h height
+	 * @param a animation
+	 */
 	public Monster(PointInt p,int w,int h, Animator a)
 	{
 		super(p,w,h,a);

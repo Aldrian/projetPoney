@@ -17,7 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Classe dérivée animation d'un joueur
+ * Classe dérivée d'animation d'un joueur
  * @author Gaëtan
  *
  */
@@ -38,6 +38,7 @@ public class AnimatorPlayer extends Animator {
 
 	/**
 	 * initialisation de l'animation
+	 * Initialise différemment si la méthode est appelée pour la première fois ou non
 	 */
 	@Override
 	public void create() 
@@ -95,6 +96,9 @@ public class AnimatorPlayer extends Animator {
 		text.setText("P" + joueur);
 	}
 
+	/**
+	 * Surcharge le rendu graphique pour ajouter le texte flottant
+	 */
 	@Override
 	public void render()
 	{

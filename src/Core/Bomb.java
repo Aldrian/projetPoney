@@ -5,6 +5,10 @@ import Game.PointInt;
 
 public class Bomb extends NotMovingEntity
 {
+	/**
+	 * Constructeur de bomb
+	 * @param p spawn point de la bombe
+	 */
 	public Bomb(PointInt p)
 	{
 		super(p);

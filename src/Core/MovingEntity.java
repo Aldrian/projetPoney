@@ -6,15 +6,30 @@ import org.mini2Dx.core.graphics.Graphics;
 import Interface.Animator;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Entités associées à une animation. Cette classe factorise Monster et Player afin de rendre plus simple l'utilisation des animations
+ * 
+ * @author Gaëtan
+ *
+ */
 public abstract class MovingEntity extends Entity {
 		
-	protected PointInt previousPosition; // Position précédente
+	protected PointInt previousPosition;
+	/**
+	 * Animation associée
+	 */
+	protected Animator animation; 
+	/**
+	 * Mouvement courant associé
+	 */
+	protected Move mouvement;
 	
-	protected Animator animation; // Animation associée
-	protected Move mouvement; // Mouvement courant du personnage
-	
-	
-	// Constructeur ne définissant pas l'animation ni la taille de l'entité de suite
+	/**
+	 * Constructeur ne permettant pas d'initialiser une animation
+	 * Associe juste un mouveent et une position précédente
+	 * @param p
+	 * @param direction
+	 */
 	public MovingEntity(PointInt p,PointInt direction)
 	{
 		super(p);
@@ -23,7 +38,14 @@ public abstract class MovingEntity extends Entity {
 		this.animation=null;
 	}
 	
-	// Constructeur d'une entité statique à sa création
+	/**
+	 * Constructeur initialisant l'animation
+	 * Associe un mouvement et une position précédente
+	 * @param p
+	 * @param w
+	 * @param h
+	 * @param a
+	 */
 	public MovingEntity(PointInt p,int w,int h, Animator a)
 	{
 		super(p,w,h);
@@ -32,6 +54,11 @@ public abstract class MovingEntity extends Entity {
 		this.animation=a;
 		animation.create();
 	}
+	
+	/**
+	 * Fonction appliquant le mouvement
+	 * @param p direction du mouvement
+	 */
 	public void move(PointInt p) {
 		// TODO Auto-generated method stub
 		
@@ -40,13 +67,17 @@ public abstract class MovingEntity extends Entity {
 	
 	/*
 	 * Partie graphique
-	 */	
-
-
+	 */
 	public void setAnimation(Animator animation) {
 		this.animation = animation;
 	}
 
+	/**
+	 * Met à jour la direction la direction prise par l'entité
+	 * Utilise un PointInt
+	 * La direction égale à la dernière position donnera un mouvement nul
+	 * @param direction
+	 */
 	public void  update(PointInt direction)
 	{
 		mouvement.incrementDirection(direction.getX(), direction.getY());

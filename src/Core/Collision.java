@@ -6,12 +6,21 @@ public class Collision
 	Entity e1;
 	Entity e2;
 	
+	/**
+	 * Création d'une Collision
+	 * @param e1
+	 * @param e2
+	 */
 	public Collision(Entity e1,Entity e2)
 	{
 		this.e1=e1;
 		this.e2=e2;
 	}
 	
+	/**
+	 * Fonction déterminant l'issue d'une collision 
+	 * Appelle les fonctions update des entités en fonction
+	 */
 	public void update()
 	{
 		if (e1 instanceof Player)
@@ -50,7 +59,7 @@ public class Collision
 					e.printStackTrace();
 				}
 			}
-			else if (e2 instanceof Player)//A traiter ici ?
+			else if (e2 instanceof Player)//A traiter ici ? Arreter le mouvement des deux joueurs dans la direction
 			{
 				
 			}

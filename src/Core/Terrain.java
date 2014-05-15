@@ -19,10 +19,15 @@ import Game.PointInt;
 public class Terrain
 {
 	private int [][] pixels;
+	private int [][] blocks;
 	
+	/**
+	 * Constructeur de terrain
+	 * @param file
+	 */
 	public Terrain(String file)
 	{
-		int [][] blocks=new int[10][10];
+		blocks=new int[10][10];
 		
 		try
 		{
@@ -63,7 +68,7 @@ public class Terrain
 			}			
 		}
 		
-		//Affichage console des blocks
+		/*//Affichage console des blocks
 		for (int i=0;i<800;i+=80)
 		{
 			for (int j=0;j<600;j+=60)
@@ -72,53 +77,58 @@ public class Terrain
 			}
 			System.out.println();
 		}
-		
+		*/
 	}
 	
 	
 	//permet de récupérer une liste contenant un nombre minimal de plateforme
-		public HashSet<NotMovingEntity> plateforme(int [][] block){
+	/**
+	 * Retourne la liste des plateformes en fonction du fichier de terrain
+	 * @param block
+	 * @return
+	 */
+	public HashSet<NotMovingEntity> plateforme(){
 			
-			HashSet<NotMovingEntity> list = new HashSet<NotMovingEntity>();
+		HashSet<NotMovingEntity> list = new HashSet<NotMovingEntity>();
 			
-			int i=0;
-			int j=0;
+		int i=0;
+		int j=0;
 			
-			Platform plateforme = null;
-			Pit lePit = null;
+		Platform plateforme = null;
+		Pit lePit = null;
 			
-			while(j!=10) {
-				
-				for(i=0;i<10;i++) {
+		while(j!=10) {
+		
+			for(i=0;i<10;i++) {
 					
-					if(block[i][j]==1) {
-						
-						plateforme = new Platform(new PointInt(i,j));
-						plateforme.setHeight(60);
-						
-						while (i<10 && block[i][j]==1) {
-							plateforme.setWidth(plateforme.getWidth()+80);
-							i++;
-						}
-						list.add(plateforme);
+				if(blocks[i][j]==1) {
+					
+					plateforme = new Platform(new PointInt(i,j));
+					plateforme.setHeight(60);
+					
+					while (i<10 && blocks[i][j]==1) {
+						plateforme.setWidth(plateforme.getWidth()+80);
+						i++;
 					}
-					
-					else if(block[i][j]==2) {
-						
-						lePit = new Pit(new PointInt(i,j));
-						lePit.setHeight(60);
-						
-						while (i<10 && block[i][j]==2) {
-							lePit.setWidth(lePit.getWidth()+80);
-							i++;
-						}
-						list.add(lePit);
-					}
-					
+					list.add(plateforme);
 				}
-				j++;
+					
+				else if(blocks[i][j]==2) {
+					
+					lePit = new Pit(new PointInt(i,j));
+					lePit.setHeight(60);
+						
+					while (i<10 && blocks[i][j]==2) {
+						lePit.setWidth(lePit.getWidth()+80);
+						i++;
+					}
+					list.add(lePit);
+				}
+					
 			}
-			return list;	
+			j++;
 		}
+		return list;	
+	}
 }
 
