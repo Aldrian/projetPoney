@@ -135,5 +135,4 @@ public class Move
 	public String toString() {
 		return "Move [origin=" + origin.toString() + ", direction=" + direction.toString() + "]";
 	}
-	
 }

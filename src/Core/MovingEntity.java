@@ -18,6 +18,7 @@ public abstract class MovingEntity extends Entity {
 	/**
 	 * Animation associée
 	 */
+
 	protected Animator animation; 
 	/**
 	 * Mouvement courant associé
@@ -109,3 +110,4 @@ public abstract class MovingEntity extends Entity {
 	}
  
 }
+

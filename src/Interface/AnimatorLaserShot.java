@@ -28,21 +28,21 @@ public class AnimatorLaserShot extends Animator {
 	 */
 	@Override
 	public void create() {
-		FRAME_COLS = 3;
-		FRAME_LINES = 2;
+		FRAME_COLS = 1;
+		FRAME_LINES = 7;
 		
-		walkSheet = new Texture(Gdx.files.internal("res\\img\\Ennemy\\ennemySheet.png"));
+		walkSheet = new Texture(Gdx.files.internal("res\\img\\Tirs\\Laser.png"));
 
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_LINES);
 		
 		walkFrames = new Array<TextureRegion>();
 		walkAnimation = new Animation[1];
 		
-		for (int j = 0; j < FRAME_COLS; j++) {
-			walkFrames.add(tmp[0][j]);
+		for (int j = 0; j < FRAME_LINES; j++) {
+			walkFrames.add(tmp[j][0]);
 		}
 		
-		walkAnimation[0] = new Animation(0.33f, walkFrames);
+		walkAnimation[0] = new Animation(1/7f, walkFrames);
 		spriteBatch = new SpriteBatch();
 		stateTime = 0f;
 	}
