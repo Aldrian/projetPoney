@@ -18,6 +18,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Etat de fin de jeu proposant un affichage des scores, et une possibilité de 
+ * recommencer une partie en appuyant sur une touche.
+ * @author Julien
+ *
+ */
 public class EndGameScreen implements GameScreen {
 	
 	//Font
@@ -34,6 +40,9 @@ public class EndGameScreen implements GameScreen {
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
     
+    /**
+     * Méthode d'initialisation appelée au début du jeu, initialisant les objets.
+     */
     public void initialise(GameContainer gc) {
     	appuiTouche = false;
     	batch = new SpriteBatch();
@@ -49,10 +58,16 @@ public class EndGameScreen implements GameScreen {
 	    text = new TextWrapper("init", new Vector2(170,0));
     }
 
+    /**
+     * Attends un appui sur une touche pour redémarrer le jeu
+     * Rappelle la fonction d'initialiation des autres écran pour revenir à l'écran 
+     * de départ.
+     */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
     	if(appuiTouche) {
     		screenManager.getGameScreen(InGameScreen.ID).initialise(gc);
+    		screenManager.getGameScreen(LoadingScreen.ID).initialise(gc);
             //Fade to LoadingScreen
             screenManager.enterGameScreen(LoadingScreen.ID, new FadeOutTransition(), new FadeInTransition());
         }
@@ -61,6 +76,9 @@ public class EndGameScreen implements GameScreen {
     public void interpolate(GameContainer gc, float alpha) {
     }
 
+    /**
+     * Dessine le fond et affiche les scores
+     */
     public void render(GameContainer gc, Graphics g) {
     	soopafresh.setColor(Color.valueOf("5491B4"));
     	g.drawSprite(fond);

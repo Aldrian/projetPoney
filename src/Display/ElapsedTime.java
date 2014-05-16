@@ -1,5 +1,10 @@
 package Display;
 
+/**
+ * Classe gérant le temps écoulé à l'aide d'un timet basé sur un thread.
+ * @author Julien
+ *
+ */
 public class ElapsedTime {
 	
 	int secCount = 0;
@@ -7,23 +12,42 @@ public class ElapsedTime {
 	
 	private Timer t;
 			
+	/**
+	 * Constructeur par défaut instanciant le thread
+	 */
 	public ElapsedTime()
 	{
 		t = new Timer();
 		
 	}
 	
+	/**
+	 * Démarre le thread de comptage
+	 */
 	public void start()
 	{
 		t.run();
 	}
 	
 	
+	/**
+	 * Thread de comptage incrémentant les secondes.
+	 * Basé sur un sleep(1000)
+	 * @author Julien
+	 *
+	 */
 	class Timer extends Thread{
 		boolean enMarche;
+		
+		/**
+		 * Constructeur par défaut initialisant le booléen contrôlant le compteur
+		 */
 		public Timer(){
 			enMarche=false;
 		}
+		/**
+		 * Compte tant que emMarche = true
+		 */
 		public void run(){
 			enMarche=true;
 			try{
@@ -43,6 +67,10 @@ public class ElapsedTime {
 				catch(InterruptedException esleep){}
 			}		
 		}
+		
+		/**
+		 * Passe le booléen à false, ce qui arrête le compteur
+		 */
 		public void arret(){
 			enMarche=false;
 		}
@@ -50,6 +78,10 @@ public class ElapsedTime {
 		
 		
 	}
+	
+	/******************************************************************/
+	/***********************GETTERS************************************/
+	/******************************************************************/
 	public int sec() {
 		return secCount;
 	}

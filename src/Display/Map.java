@@ -10,6 +10,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+/** 
+ * Structure de gestion de la carte, comprenant une matrice contenant les différents éléments
+ * de la carte.
+ * @author Julien
+ *
+ */
 public class Map {
 	
 	Sprite fond, platform, pit;
@@ -24,6 +30,10 @@ public class Map {
 	 */
 	
 	
+	/**
+	 * Initialise la matrice d'éléments ainsi que les sprites des éléments
+	 * qui seront affichés.
+	 */
 	public Map()
 	{
 		fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/bg.png")));		
@@ -33,8 +43,9 @@ public class Map {
 		mapElements = new BackgroundElement[10][10];
 	}
 	
-	/*
+	/**(A RECODER)
 	 * @return ElementType si trouvé, null si erreur
+	 * 
 	 */
 	public ElementType ElementAt(int x, int y)
 	{		
@@ -52,10 +63,13 @@ public class Map {
 		}
 		return null	;
 	}
+	
+	/**
+	 * Lecture du fichier map et création de l'objet map correspondant
+	 * @param gc
+	 */
 	public void initialise(GameContainer gc)
 	{
-		
-		// Lecture du fichier map et création de l'objet map correspondant
 		
 		FileHandle f = Gdx.files.internal("res/map/map.txt");
 		String text = f.readString();
@@ -80,7 +94,11 @@ public class Map {
 	}
 	
     
-    
+    /**
+     * Dessin des éléments de la carte en lisant la matrice et en affichant
+     * les sprites correspondant
+     * @param g Un objet Graphics
+     */
 	public void render(Graphics g) {
 		        
 		boolean isPlatformRight = false;

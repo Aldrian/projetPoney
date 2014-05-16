@@ -1,6 +1,5 @@
 package Display;
 
-
 import java.util.ArrayList;
 
 import org.mini2Dx.core.game.GameContainer;
@@ -22,6 +21,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+/**
+ * Etat principal du jeu, définit l'état dans lequel la partie se joue.
+ * @author Julien
+ *
+ */
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
     private boolean jeuFini;
@@ -39,6 +43,10 @@ public class InGameScreen implements GameScreen {
     /**************************************************************/
     
 
+    /**
+     * Appelé au lancement du jeu (et non lors de la transition d'état)
+     * Initialise les structures et les objets
+     */
     public void initialise(GameContainer gc) {
     	// Initialisation du timer
     	t = new ElapsedTime();
@@ -58,6 +66,11 @@ public class InGameScreen implements GameScreen {
     	countDown.create();
     }
 
+    /**
+     * Attends l'appui sur espace pour mettre fin à la partie (temporaire)
+     * appelle la fonction update de la fenêtre
+     * Récupère la touche saisie par l'utilisateur
+     */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
@@ -68,15 +81,22 @@ public class InGameScreen implements GameScreen {
         }
     	w.update();
     	in.keyboardProcessing();
-    	countDown.update(0, 0, null);
     }
 
+    
+    
+    /**
+     * Effectue une interpolation linéaire des objets en mouvement
+     */
     public void interpolate(GameContainer gc, float alpha) {	
     	P1.interpolate(alpha);
     	P2.interpolate(alpha);
     	mouche.interpolate(alpha);
     }
 
+    /**
+     * Dessine la fenêtre et les objets en mouvement
+     */
     public void render(GameContainer gc, Graphics g) {
 
     	w.render(g);
@@ -94,6 +114,9 @@ public class InGameScreen implements GameScreen {
         // Called before transitioning in
     }
 
+    /**
+     * A l'arrivée sur l'état, démarre le compteur de jeu
+     */
     public void postTransitionIn(Transition transitionIn) {
         t.getT().start();
     }
@@ -114,6 +137,10 @@ public class InGameScreen implements GameScreen {
 		return jeuFini;
 	}
 
+    /**
+     * Appelé à la fin du jeu, met à jour le booléen afin que la partie se termine.
+     * @param jeuFini
+     */
 	public void setJeuFini(boolean jeuFini) {
 		this.jeuFini = jeuFini;
 	}

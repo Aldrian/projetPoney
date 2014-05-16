@@ -14,7 +14,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-
+/**
+ * Ecran de chargement du jeu. Affichera un éventuel rappel des consignes de jeu.
+ * Attends un appui sur une touche afin de lancer le jeu.
+ * @author Julien
+ *
+ */
 public class LoadingScreen implements GameScreen {
     public static int ID = 1;
 
@@ -27,6 +32,9 @@ public class LoadingScreen implements GameScreen {
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
     
+    /**
+     * Initialisation des structures et des objets.
+     */
     public void initialise(GameContainer gc) {
     	
     	fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/loading.png")));
@@ -35,6 +43,9 @@ public class LoadingScreen implements GameScreen {
 	    appuiTouche = false;
     }
 
+    /** 
+     * Attends un appui sur une touche avant de passer à l'état InGamescreen
+     */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
     	if(appuiTouche) {
@@ -46,6 +57,9 @@ public class LoadingScreen implements GameScreen {
     public void interpolate(GameContainer gc, float alpha) {
     }
 
+    /**
+     * Dessine les éléments de l'écran
+     */
     public void render(GameContainer gc, Graphics g) {
     	g.setColor(Color.valueOf("C1DDDE"));	
 		g.fillRect(0, 0, 800, 700); 

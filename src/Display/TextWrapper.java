@@ -3,18 +3,32 @@ package Display;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-
+/**
+ * Classe de gestion d'affichage de texte centré
+ * @author Julien
+ *
+ */
 public class TextWrapper{
   private String text;
   private Vector2 position;
   private int width;
   private int height;
 
+  /**
+   * Constructeur créant l'objet en fonction d'un texte et de sa position
+   * @param text Une chaine à afficher
+   * @param position La position du texte
+   */
   public TextWrapper(String text,Vector2 position){
       this.text = text;
       this.position = position;
   }
 
+  /**
+   * Affiche le texte
+   * @param sp Une spritebatch
+   * @param fnt Une police
+   */
   public void draw(SpriteBatch sp,BitmapFont fnt){
       width=(int)fnt.getBounds(text).width; //Get the width of the text we draw using the current font
       height=(int)fnt.getBounds(text).height; //Get the height of the text we draw using the current font

@@ -12,6 +12,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Classe fenêtre contenant un header et une carte
+ * @author Julien
+ *
+ */
 public class Window {
 	
 	
@@ -32,6 +37,11 @@ public class Window {
 	Sprite header;
 	Texture gif;
 	
+	
+	/**
+	 * Constructeur prenant en paramètre un compteur
+	 * @param t Un compteur (passé dans InGameScreen)
+	 */
 	public Window(ElapsedTime t)
 	{ 
 		map = new Map();
@@ -39,6 +49,10 @@ public class Window {
 		
 	}
 
+	/**
+	 * Fonction d'initialisation initialisant les objets et les structures
+	 * @param gc Un objet de type GameContainer
+	 */
 	public void initialise(GameContainer gc) {
 		//Créer le header
 		
@@ -61,6 +75,10 @@ public class Window {
 	{
 	}
 	
+	/**
+	 * Dessine le header et la carte
+	 * @param g Un objet de type Graphics
+	 */
 	public void render(Graphics g) {
 		
 		batch.begin();
