@@ -1,7 +1,9 @@
 package Core;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import Game.PointInt;
 
@@ -57,7 +59,7 @@ public class Terrain
 		for(int i = 0; i<10; i++)
 		{
 			for (int x=i*80;x<(i+1)*80;x++)
-			{
+			{  
 				for (int j = 0; j < 10; j++)
 				{
 					for (int y=j*60;y<(j+1)*60;y++)
@@ -81,10 +83,9 @@ public class Terrain
 	}
 	
 	
-	//permet de récupérer une liste contenant un nombre minimal de plateforme
+	
 	/**
-	 * Retourne la liste des plateformes en fonction du fichier de terrain
-	 * @param block
+	 * Retourne la liste des plateformes(+ Pit + Walls) en fonction du fichier de terrain 
 	 * @return
 	 */
 	public HashSet<NotMovingEntity> plateforme(){
@@ -103,7 +104,7 @@ public class Terrain
 					
 				if(blocks[i][j]==1) {
 					
-					plateforme = new Platform(new PointInt(i,j));
+					plateforme = new Platform(new PointInt(i*80,j*60)); 
 					plateforme.setHeight(60);
 					
 					while (i<10 && blocks[i][j]==1) {
@@ -115,7 +116,7 @@ public class Terrain
 					
 				else if(blocks[i][j]==2) {
 					
-					lePit = new Pit(new PointInt(i,j));
+					lePit = new Pit(new PointInt(i*80,j*60));
 					lePit.setHeight(60);
 						
 					while (i<10 && blocks[i][j]==2) {
@@ -128,7 +129,42 @@ public class Terrain
 			}
 			j++;
 		}
+		
+		list.add(new Wall(new PointInt(0,0),-1,600));
+		list.add(new Wall(new PointInt(800,0),1,600));
+		
 		return list;	
+	}
+	
+	public List<PointInt> bombs()
+	{
+		List<PointInt> bombspawn=new ArrayList<PointInt>();
+		
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				if(blocks[i][j]==5)
+				{
+					bombspawn.add(new PointInt(i*80,j*60));
+				}
+			}					
+		}		
+		return bombspawn;
+	}
+	
+	public PointInt box()
+	{
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				if(blocks[i][j]==6)
+				{
+					return new PointInt(i*80,j*60);
+				}
+			}					
+		}
 	}
 }
 

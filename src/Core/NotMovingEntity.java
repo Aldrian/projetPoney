@@ -12,4 +12,9 @@ public abstract class NotMovingEntity extends Entity {
 	{
 		super(p);
 	}
+
+	public NotMovingEntity(PointInt p, int w, int h) {
+		super(p, w, h);
+		// TODO Auto-generated constructor stub
+	}
 }
