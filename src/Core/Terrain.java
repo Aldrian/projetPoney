@@ -13,8 +13,8 @@ import Game.PointInt;
  * 0 Vide
  * 1 Platform //OK
  * 2 Pit //OK
- * 3 Spawn Monster
- * 4 Spawn Player
+ * 3 Spawn Monster //OK
+ * 4 Spawn Player //OK
  * 5 Spawn Bomb //OK
  * 6 Spawn Box //OK
  */

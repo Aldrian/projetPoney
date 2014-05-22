@@ -7,27 +7,28 @@ import Interface.Animator;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Entités associées à une animation. Cette classe factorise Monster et Player afin de rendre plus simple l'utilisation des animations
+ * Entitï¿½s associï¿½es ï¿½ une animation. Cette classe factorise Monster et Player afin de rendre plus simple l'utilisation des animations
  * 
- * @author Gaëtan
+ * @author Gaï¿½tan
  *
  */
 public abstract class MovingEntity extends Entity {
 		
 	protected PointInt previousPosition;
 	/**
-	 * Animation associée
+	 * Animation associï¿½e
 	 */
 
 	protected Animator animation; 
 	/**
-	 * Mouvement courant associé
+	 * Mouvement courant associï¿½
 	 */
 	protected Move mouvement;
 	
 	/**
 	 * Constructeur ne permettant pas d'initialiser une animation
-	 * Associe juste un mouveent et une position précédente
+	 * Associe juste un mouvement et une position prï¿½cï¿½dente
+	 * Hitbox dÃ©terminÃ©e plus haut
 	 * @param p
 	 * @param direction
 	 */
@@ -41,17 +42,17 @@ public abstract class MovingEntity extends Entity {
 	
 	/**
 	 * Constructeur initialisant l'animation
-	 * Associe un mouvement et une position précédente
+	 * Associe Ã  un mouvement et une position prï¿½cï¿½dente
 	 * @param p
 	 * @param w
 	 * @param h
 	 * @param a
 	 */
-	public MovingEntity(PointInt p,int w,int h, Animator a)
+	public MovingEntity(PointInt p,PointInt direction,int w,int h, Animator a)
 	{
 		super(p,w,h);
 		this.previousPosition=p;
-		this.mouvement=new Move(p,p);
+		this.mouvement=new Move(p,direction);
 		this.animation=a;
 		animation.create();
 	}
@@ -74,9 +75,9 @@ public abstract class MovingEntity extends Entity {
 	}
 
 	/**
-	 * Met à jour la direction la direction prise par l'entité
+	 * Met ï¿½ jour la direction la direction prise par l'entitï¿½
 	 * Utilise un PointInt
-	 * La direction égale à la dernière position donnera un mouvement nul
+	 * La direction ï¿½gale ï¿½ la derniï¿½re position donnera un mouvement nul
 	 * @param direction
 	 */
 	public void  update(PointInt direction)
@@ -86,8 +87,8 @@ public abstract class MovingEntity extends Entity {
 	
 	
 	/**
-	 * Interpolation linéraire de la direction du personnage : permet ainsi de calculer ses coordonnées de rendu
-	 * synchronisées avec l'horloge du jeu
+	 * Interpolation linï¿½raire de la direction du personnage : permet ainsi de calculer ses coordonnï¿½es de rendu
+	 * synchronisï¿½es avec l'horloge du jeu
 	 * @param alpha
 	 */
 	public void interpolate(float alpha) 
@@ -101,7 +102,7 @@ public abstract class MovingEntity extends Entity {
 	}
 	
 	/**
-	 * Rendu graphique. Prend en paramètre le graphic.
+	 * Rendu graphique. Prend en paramï¿½tre le graphic.
 	 * @param g
 	 */
 	public void render(Graphics g) 

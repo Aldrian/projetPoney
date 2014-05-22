@@ -16,7 +16,7 @@ public abstract class Monster extends MovingEntity
 	 */
 	public Monster(PointInt p,int w,int h, Animator a)
 	{
-		super(p,w,h,a);
+		super(p,new PointInt(0,-9),w,h,a);
 	}
 
 	@Override
@@ -34,5 +34,11 @@ public abstract class Monster extends MovingEntity
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void move(PointInt p) {
+		// TODO Auto-generated method stub
+		super.move(p);
 	}
 }

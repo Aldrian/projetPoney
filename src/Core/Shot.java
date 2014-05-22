@@ -20,17 +20,19 @@ public class Shot extends MovingEntity
 	public Shot(PointInt p, PointInt direction,boolean laser) {
 		super(p, direction);
 		
-		this.setLaser(laser);
+		this.laser=laser;
 		
 		if (laser)
 		{
 			super.setAnimation(new AnimatorLaserShot(p.pointValue()));
-			//set width and height 
+			this.setWidth(50);
+			this.setHeight(1);//set width and height 
 		}
 		else
 		{
 			super.setAnimation(new AnimatorGunShot(p.pointValue()));
-			//set width and height
+			this.setWidth(1);
+			this.setHeight(1);//set width and height
 		}
 	}
 

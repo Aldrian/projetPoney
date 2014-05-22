@@ -6,7 +6,7 @@ import Game.PointInt;
 public abstract class Entity
 {
 	protected int ID;
-	private static int nbE=0;//Nombre d'Entity instanciées --> ID 
+	private static int nbE=0;//Nombre d'Entity instanciï¿½es --> ID 
 	
 	// Postitionnement
 	
@@ -68,8 +68,8 @@ public abstract class Entity
 
 
 
-	/** Teste si deux entités rentrent en collision et appelle update() le cas échéant
-	 * 
+	/** Teste si deux entitï¿½s rentrent en collision
+	 * SupÃ©rieur ou Ã©gal /!\
 	 * @param e
 	 * @return Collision
 	 */
@@ -80,7 +80,7 @@ public abstract class Entity
 		return null;		
 	}
 	
-	/** Fonction appelée en cas de collision avec une autre entité
+	/** Fonction appelï¿½e en cas de collision avec une autre entitï¿½
 	 * 
 	 * @param e
 	 * @throws Throwable 
@@ -98,7 +98,7 @@ public abstract class Entity
 	}
 	
 	/**  
-	 * @return y l'ordonnée de la position actuelle
+	 * @return y l'ordonnï¿½e de la position actuelle
 	 */
 	public int getCPy()
 	{
@@ -114,7 +114,7 @@ public abstract class Entity
 	}
 	
 	/** 
-	 * @return y l'ordonnée du bord haut de la hitbox
+	 * @return y l'ordonnï¿½e du bord haut de la hitbox
 	 */
 	public int getEdgeY()
 	{

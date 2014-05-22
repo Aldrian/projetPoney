@@ -15,7 +15,7 @@ public class Player extends MovingEntity
 	 */
 	public Player(PointInt p) 
 	{
-		super(p,60,80,new AnimatorPlayer(p.pointValue())); //Valeurs brutes hitbox à préciser
+		super(p,p,54,54,new AnimatorPlayer(p.pointValue()));
 	}
 	
 	
@@ -33,7 +33,7 @@ public class Player extends MovingEntity
 		}
 		else if (e==Event.PvP)
 		{
-			//Replacement ? gérer avant ?
+			//Replacement ? gï¿½rer avant ?
 		}
 		else if(e==Event.WeaponUp)
 		{
@@ -73,8 +73,8 @@ public class Player extends MovingEntity
 
 
 	/**
-	 * Méthode précisant si le mouvement est valable
-	 * @param p direction demandée
+	 * Mï¿½thode prï¿½cisant si le mouvement est valable
+	 * @param p direction demandï¿½e
 	 * @return boolean
 	 */
 	public boolean moveAllowed(PointInt p) {
