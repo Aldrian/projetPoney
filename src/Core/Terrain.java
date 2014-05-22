@@ -11,12 +11,12 @@ import Game.PointInt;
 /*
  * Format fichier :
  * 0 Vide
- * 1 Platform
- * 2 Pit
+ * 1 Platform //OK
+ * 2 Pit //OK
  * 3 Spawn Monster
  * 4 Spawn Player
- * 5 Spawn Bomb
- * 6 Spawn Box
+ * 5 Spawn Bomb //OK
+ * 6 Spawn Box //OK
  */
 public class Terrain
 {
@@ -136,6 +136,10 @@ public class Terrain
 		return list;	
 	}
 	
+	/**
+	 * Retourne la liste des points où spawn les bombes
+	 * @return List<PointInt>
+	 */
 	public List<PointInt> bombs()
 	{
 		List<PointInt> bombspawn=new ArrayList<PointInt>();
@@ -153,6 +157,10 @@ public class Terrain
 		return bombspawn;
 	}
 	
+	/**
+	 * Retourne le point de spawn de la box
+	 * @return PointInt
+	 */
 	public PointInt box()
 	{
 		for(int i=0;i<10;i++)
@@ -165,6 +173,44 @@ public class Terrain
 				}
 			}					
 		}
+		return null;
 	}
+	
+	/**
+	 * Retourne le point des joueurs
+	 * @return PointInt
+	 */
+	public PointInt players()
+	{
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				if(blocks[i][j]==4)
+				{
+					return new PointInt(i*80,j*60);
+				}
+			}					
+		}
+		return null;
+	}
+	
+	public List<PointInt> monsters()
+	{
+		List<PointInt> monsterspawn=new ArrayList<PointInt>();
+		
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				if(blocks[i][j]==3)
+				{
+					monsterspawn.add(new PointInt(i*80,j*60));
+				}
+			}					
+		}		
+		return monsterspawn;
+	}
+	
 }
 
