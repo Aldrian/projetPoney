@@ -6,7 +6,16 @@ import Interface.Animator;
 public abstract class Monster extends MovingEntity
 {
 	protected  int health;
+	protected boolean air;
 	
+	public boolean isAir() {
+		return air;
+	}
+
+	public void setAir(boolean air) {
+		this.air = air;
+	}
+
 	/**
 	 * Constructeur de Monster
 	 * @param p spawn point

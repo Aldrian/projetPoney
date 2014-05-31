@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 public abstract class MovingEntity extends Entity {
 		
 	protected PointInt previousPosition;
+	
 	/**
 	 * Animation associ�e
 	 */
@@ -27,7 +28,7 @@ public abstract class MovingEntity extends Entity {
 	 * Mouvement courant associ�
 	 */
 	protected Move mouvement;
-	
+		
 	/**
 	 * Constructeur ne permettant pas d'initialiser une animation
 	 * Associe juste un mouvement et une position pr�c�dente

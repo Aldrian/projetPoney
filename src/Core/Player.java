@@ -10,6 +10,7 @@ public class Player extends MovingEntity implements Cloneable
 	private Weapon wp;
 	private boolean tir=true;
 	private boolean move=true;
+	private boolean air;
 	
 	/**
 	 * Constructeur des joueurs
@@ -161,7 +162,7 @@ public class Player extends MovingEntity implements Cloneable
 					e1.printStackTrace();
 				}
 		}
-		else if (e==Event.PvP)
+		else if (e==Event.Stop)
 		{
 			//Replacement ? g�rer avant ?
 		}
@@ -210,6 +211,20 @@ public class Player extends MovingEntity implements Cloneable
 	public boolean moveAllowed(PointInt p) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * @return the air
+	 */
+	public boolean isAir() {
+		return air;
+	}
+
+	/**
+	 * @param air the air to set
+	 */
+	public void setAir(boolean air) {
+		this.air = air;
 	}
 	
 }
