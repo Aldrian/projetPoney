@@ -26,6 +26,20 @@ public abstract class MovingEntity extends Entity {
 		mouvement.incrementDirection(direction.getX(), direction.getY());
 	}
 	
+	//dans Player.java
+	protected boolean tir = true;
+	protected boolean move = true;
+
+
+	protected boolean collideMovingEntity() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+		
+		
+		
+		
 	
 	/**
 	 * Interpolation linéraire de la direction du personnage : permet ainsi de calculer ses coordonnées de rendu

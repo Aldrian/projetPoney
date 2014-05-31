@@ -73,6 +73,7 @@ public class MyInputProcessor implements InputProcessor
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite arrêté");
 			directionP1.set(0,0);
+
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche arrêté");
