@@ -21,37 +21,6 @@ public class Main {
 	 * 
 	 * FUTUR MORCEAU DE CODE purement théorique pour le "Main" :
 	 * 
-	 * Mode bourrin :
-	 * List<Entity> entities
-	 * List<MovingEntity> Mentities;
-	 * List<NotMovingEntity> NMentities;
-	 * for each tick d'horloge
-	 * {
-	 *		Set<Collision> colls;
-	 *		
-	 *      ME vs ME
-	 *		for (int i=0;i<Mentities.size();i++)
-	 *		{
-	 *			for(int j=i+1;j<Mentities.size();j++)
-	 *			{
-	 *				if(Mentities.get(i).collide(Mentities.get(j)))	 
-	 *					colls.add(new Collision(Mentities.get(i),Mentities.get(j)));
-	 *	 		} 
-	 *		}
-	 *
-	 *		REPEAT ME vs NME
-	 *		for ...
-	 *
-	 *		
-	 *
-	 *		(... ?) //pops and everything
-	 *		for (Collision c:colls)
-	 *		{
-	 *			c.update();
-	 *		}
-	 *		//check si game over ?
-	 *	}
-	 *
 	 *	Mode moins bourrin :
 	 *	Sets : ME,NME,Player,Monster,Shot,Pit,Wall,Platform // Set E ?
 	 *
@@ -68,6 +37,8 @@ public class Main {
 	 *		else if Shot
 	 *			Wall
 	 *			Platform
+	 *
+	 *	Appeller sur player et monsters voir si certain doivent tomber.
 	 */
 	
 	
