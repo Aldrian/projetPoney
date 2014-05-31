@@ -66,7 +66,7 @@ public class EndGameScreen implements GameScreen {
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
     	if(appuiTouche) {
-    		screenManager.getGameScreen(LoadingGameScreen.ID).initialise(gc);
+    		screenManager.getGameScreen(LoadingScreen.ID).initialise(gc);
     		screenManager.getGameScreen(InGameScreen.ID).initialise(gc);
     		screenManager.getGameScreen(LoadingScreen.ID).initialise(gc);
             //Fade to LoadingScreen
