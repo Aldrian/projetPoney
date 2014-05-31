@@ -40,31 +40,33 @@ public class Player extends MovingEntity implements Cloneable
 	
 	public boolean canJump() {
 		
-		/*PointInt posInit = this.currentPosition;
+		PointInt posInit = this.currentPosition;
 		Player p = (Player) this.clone();
+		
+		
 		if (this.droite==true) {
-			while (p.currentPosition.getX() != posInit.getX() + 50) {
-				
+			
+			for (int i = 0; i<25;i++) {
 				if (p.collideMovingEntity()) {
 					return false;
 				}
-				
+					
 				p.currentPosition.setX(p.currentPosition.getX()+2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
-				
 			}
 		}
-		
+			
 		else {
-			while (p.currentPosition.getX()!=posInit.getX() - 50) {
-				
+			
+			for (int i = 0; i<25;i++) {
 				if (p.collideMovingEntity()) {
 					return false;
 				}
+					
 				p.currentPosition.setX(p.currentPosition.getX()-2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
 			}
-		}*/
+		}
 	return true;
 	}
 	
@@ -73,15 +75,13 @@ public class Player extends MovingEntity implements Cloneable
 		// jump width = 100p;
 		
 		PointInt posInit = this.currentPosition;
+		this.saut=true;
 		System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
-		System.out.println("Début saut si possible");
+		
 		if (this.canJump()) {
-			this.saut=true;
-			System.out.println("Saut possible");
-			System.out.println("saut en cours");
+			
 			if (this.droite) {
 				System.out.println("Saut à droite en cours");
- 				System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 				this.move=false;
 				this.tir=false;
 				
@@ -90,11 +90,10 @@ public class Player extends MovingEntity implements Cloneable
 						if (this.currentPosition.getY() == posInit.getY() + 180) {
 							this.tir=true;
 						}
-						System.out.println("debut update");
+						
 						mouvement.set(2,8);
 						this.update(mouvement);
 						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
-						System.out.println("fin update");
 					}
 					
 					else {
@@ -103,6 +102,7 @@ public class Player extends MovingEntity implements Cloneable
 						}
 						mouvement.set(2,-8);
 						this.update(mouvement);
+						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 					}
 				}	
 			}
@@ -118,11 +118,9 @@ public class Player extends MovingEntity implements Cloneable
 						if (this.currentPosition.getY() == posInit.getY() + 180) {
 							this.tir=true;
 						}
-						System.out.println("debut update");
 						mouvement.set(-2,8);
 						this.update(mouvement);
 						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
-						System.out.println("fin update");
 					}
 					
 					else {
@@ -131,6 +129,7 @@ public class Player extends MovingEntity implements Cloneable
 						}
 						mouvement.set(-2,-8);
 						this.update(mouvement);
+						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 					}
 				}	
 			}
