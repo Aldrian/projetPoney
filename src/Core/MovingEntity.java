@@ -66,6 +66,10 @@ public abstract class MovingEntity extends Entity {
 		
 	}
 	
+	protected boolean collideMovingEntity() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	/*
 	 * Partie graphique
