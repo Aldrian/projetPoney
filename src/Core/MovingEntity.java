@@ -104,6 +104,11 @@ public abstract class MovingEntity extends Entity {
 	public void  update(PointInt direction)
 	{
 		mouvement.incrementDirection(direction.getX(), direction.getY());
+		
+		currentPosition.setX(currentPosition.getX()+direction.getX());
+		currentPosition.setY(currentPosition.getY()+direction.getY());
+		
+
 	}
 	
 	

@@ -54,7 +54,6 @@ public class MyInputProcessor implements InputProcessor
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite demandé");
 			directionP1.set(2,0);
-			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche demandé");
@@ -64,7 +63,7 @@ public class MyInputProcessor implements InputProcessor
 		
 		case Keys.UP :
 			System.out.println("Saut demandé");
-			P1.jump();
+			if(P1.saut==false) P1.jump(directionP1);
 			
 		break;
 		case Keys.D :
@@ -79,7 +78,7 @@ public class MyInputProcessor implements InputProcessor
 		break;
 		case Keys.Z :
 			System.out.println("Saut demandé");
-			P2.jump();
+			if(P1.saut==false) P2.jump(directionP2);
 			
 		break;
 		}
@@ -107,7 +106,8 @@ public class MyInputProcessor implements InputProcessor
 		break;
 		case Keys.UP :
 			System.out.println("Saut terminé");
-			directionP1.set(0,0);
+			if(P1.saut==true) directionP1.set(0,0);
+			P1.saut=false;
 		break;
 		case Keys.D :
 			System.out.println("Déplacement à droite arrêté");
@@ -120,8 +120,10 @@ public class MyInputProcessor implements InputProcessor
 			P2.droite=false;
 		break;
 		case Keys.Z :
-			System.out.println("Saut terminé");
-			directionP2.set(0,0);
+			System.out.println("Saut demandé");
+			if(P1.saut==true) directionP2.set(0,0);
+			P2.saut=false;
+			
 		break;
 		}
 		return true;

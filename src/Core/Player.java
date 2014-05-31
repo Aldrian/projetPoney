@@ -11,6 +11,7 @@ public class Player extends MovingEntity implements Cloneable
 	private boolean tir=true;
 	private boolean move=true;
 	public boolean droite= true;
+	public boolean saut=false;
 	private boolean air;
 	
 	/**
@@ -67,64 +68,76 @@ public class Player extends MovingEntity implements Cloneable
 	return true;
 	}
 	
-	public void jump() {
+	public void jump(PointInt mouvement) {
 		// jump height = 200p;
 		// jump width = 100p;
 		
 		PointInt posInit = this.currentPosition;
+		System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 		System.out.println("Début saut si possible");
 		if (this.canJump()) {
+			this.saut=true;
 			System.out.println("Saut possible");
 			System.out.println("saut en cours");
 			if (this.droite) {
+				System.out.println("Saut à droite en cours");
+ 				System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 				this.move=false;
 				this.tir=false;
 				
-				while (this.currentPosition.getX() != posInit.getX() + 50) {
-					
-					if (this.currentPosition.getY() == posInit.getY() + 180) {
-						this.tir=true;
+				for (int i = 0; i<50;i++) {
+					if(i<25) {
+						if (this.currentPosition.getY() == posInit.getY() + 180) {
+							this.tir=true;
+						}
+						System.out.println("debut update");
+						mouvement.set(2,8);
+						this.update(mouvement);
+						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
+						System.out.println("fin update");
 					}
 					
-					this.update(new PointInt(this.currentPosition.getX()+2,this.currentPosition.getY()+4));
-				}
-				
-				while (this.currentPosition.getX() ==posInit.getX()+100) {
-					
-					if (this.currentPosition.getY() == posInit.getY() + 180) {
-						this.tir=false;
+					else {
+						if (this.currentPosition.getY() == posInit.getY() + 180) {
+							this.tir=false;
+						}
+						mouvement.set(2,-8);
+						this.update(mouvement);
 					}
-					this.update(new PointInt(this.currentPosition.getX()+2,this.currentPosition.getY()-4));
 				}	
 			}
 			
 			else {
-			
+				System.out.println("Saut à gauche en cours");
+				System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
 				this.move=false;
 				this.tir=false;
 				
-				while (this.currentPosition.getX()!=posInit.getX() - 50) {
-					
-					if (this.currentPosition.getY() == posInit.getY() + 180) {
-						this.tir=true;
+				for (int i = 0; i<50;i++) {
+					if(i<25) {
+						if (this.currentPosition.getY() == posInit.getY() + 180) {
+							this.tir=true;
+						}
+						System.out.println("debut update");
+						mouvement.set(-2,8);
+						this.update(mouvement);
+						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
+						System.out.println("fin update");
 					}
 					
-					this.update(new PointInt(this.currentPosition.getX()-2,this.currentPosition.getY()+4));
-				}
-				
-				while (this.currentPosition.getX() ==posInit.getX()-100) {
-					
-					if (this.currentPosition.getY() == posInit.getY() + 180) {
-						this.tir=false;
+					else {
+						if (this.currentPosition.getY() == posInit.getY() + 180) {
+							this.tir=false;
+						}
+						mouvement.set(-2,-8);
+						this.update(mouvement);
 					}
-					
-					this.update(new PointInt(this.currentPosition.getX()-2,this.currentPosition.getY()-4));
-				
-				}
+				}	
 			}
 		}
 		System.out.println("Saut impossible");
 		this.move=true;
+		//this.saut=false;
 	}
 
 	
