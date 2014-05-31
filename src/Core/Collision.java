@@ -80,7 +80,7 @@ public class Collision
 			if (e2 instanceof Shot)
 			{
 				e1.update(Event.HealthMinus);
-				e2.update(Event.Death);
+				e2.update(Event.HealthMinus);
 			}
 			
 			else if (e2 instanceof Pit)

@@ -41,13 +41,14 @@ public class Shot extends MovingEntity
 	@Override
 	public void update(Event e) throws Throwable
 	{
-		try {
-			if (e==Event.Death)
+		if (e==Event.Death)
 				finalize();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		else if (e==Event.HealthMinus)
+		{
+			if(!laser)
+				finalize();
 		}
+		
 	}
 
 

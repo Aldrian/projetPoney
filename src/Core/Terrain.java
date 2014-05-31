@@ -130,7 +130,7 @@ public class Terrain
 			j++;
 		}
 		
-		list.add(new Wall(new PointInt(0,0),-1,600));
+		list.add(new Wall(new PointInt(-1,0),1,600));
 		list.add(new Wall(new PointInt(800,0),1,600));
 		
 		return list;	

@@ -142,9 +142,9 @@ public class Player extends MovingEntity implements Cloneable
 					e1.printStackTrace();
 				}
 		}
-		else if (e==Event.Stop)
+		else if (e==Event.Stop||e==Event.Land)
 		{
-			//Replacement ? g�rer avant ?
+			this.update(new PointInt(0,0));
 		}
 		else if(e==Event.WeaponUp)
 		{

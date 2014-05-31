@@ -13,9 +13,16 @@ public class Box extends NotMovingEntity {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Override
-	public void update(Event e) throws Throwable {
-		// TODO Auto-generated method stub
+	public void update(Event e) {
+		if(e==Event.Death)
+			try {
+				finalize();
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 	}
 
