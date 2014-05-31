@@ -52,6 +52,12 @@ public class MyInputProcessor implements InputProcessor
 			directionP1.set(-2,0);
 			
 		break;
+	
+		case Keys.UP : 
+			System.out.println("Saut demandé");
+			directionP1.set(-2,0);
+			
+		break;
 		case Keys.D :
 			System.out.println("Déplacement à droite demandé");
 			directionP2.set(2,0);
