@@ -97,10 +97,13 @@ public class MyInputProcessor implements InputProcessor
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite arrêté");
 			directionP1.set(0,0);
+			P1.droite=true;
+			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche arrêté");
 			directionP1.set(0,0);
+			P1.droite=false;
 		break;
 		case Keys.UP :
 			System.out.println("Saut terminé");
@@ -109,10 +112,12 @@ public class MyInputProcessor implements InputProcessor
 		case Keys.D :
 			System.out.println("Déplacement à droite arrêté");
 			directionP2.set(0,0);
+			P2.droite=true;
 		break;
 		case Keys.Q : 
 			System.out.println("Déplacement à gauche arrêté");
 			directionP2.set(0,0);
+			P2.droite=false;
 		break;
 		case Keys.Z :
 			System.out.println("Saut terminé");
