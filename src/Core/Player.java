@@ -10,7 +10,7 @@ public class Player extends MovingEntity implements Cloneable
 	private Weapon wp;
 	private boolean tir=true;
 	private boolean move=true;
-	public boolean droite= true;
+	private boolean air;
 	
 	/**
 	 * Constructeur des joueurs
@@ -21,12 +21,12 @@ public class Player extends MovingEntity implements Cloneable
 		super(p,p,54,54,new AnimatorPlayer(p.pointValue()));
 	}
 	
-	public Player clone() {
-		Player o = null;
+	public Object clone() {
+		Object o = null;
 		try {
 			// On récupère l'instance à renvoyer par l'appel de la 
 			// méthode super.clone()
-			o = (Player) super.clone();
+			o = super.clone();
 		} catch(CloneNotSupportedException cnse) {
 			// Ne devrait jamais arriver car nous implémentons 
 			// l'interface Cloneable
@@ -38,10 +38,11 @@ public class Player extends MovingEntity implements Cloneable
 	
 	public boolean canJump() {
 		
-		/*PointInt posInit = this.currentPosition;
+		PointInt posInit = this.currentPosition;
 		Player p = (Player) this.clone();
-		if (this.droite==true) {
-			while (p.currentPosition.getX() != posInit.getX() + 50) {
+		
+		if (this.currentPosition.getX() > this.previousPosition.getX()) {
+			while (p.currentPosition.getX()!=posInit.getX() + 50) {
 				
 				if (p.collideMovingEntity()) {
 					return false;
@@ -49,7 +50,6 @@ public class Player extends MovingEntity implements Cloneable
 				
 				p.currentPosition.setX(p.currentPosition.getX()+2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
-				
 			}
 		}
 		
@@ -59,33 +59,40 @@ public class Player extends MovingEntity implements Cloneable
 				if (p.collideMovingEntity()) {
 					return false;
 				}
+				
 				p.currentPosition.setX(p.currentPosition.getX()-2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
 			}
-		}*/
+		}
+		
 	return true;
 	}
+	//
 	
-	public void jump() {
+	public boolean jump() {
 		// jump height = 200p;
 		// jump width = 100p;
 		
 		PointInt posInit = this.currentPosition;
-		System.out.println("Début saut si possible");
-		if (this.canJump()) {
-			System.out.println("Saut possible");
-			System.out.println("saut en cours");
-			if (this.droite) {
+		
+		if (this.currentPosition.getX() > this.previousPosition.getX()) {
+			
+			if (!canJump()) {
+				return false;
+			}
+			
+			else {
 				this.move=false;
 				this.tir=false;
 				
-				while (this.currentPosition.getX() != posInit.getX() + 50) {
+				while (this.currentPosition.getX()!=posInit.getX() + 50) {
 					
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=true;
 					}
 					
-					this.update(new PointInt(this.currentPosition.getX()+2,this.currentPosition.getY()+4));
+					this.currentPosition.setX(this.currentPosition.getX()+2);
+					this.currentPosition.setY(this.currentPosition.getY()+4);
 				}
 				
 				while (this.currentPosition.getX() ==posInit.getX()+100) {
@@ -93,12 +100,23 @@ public class Player extends MovingEntity implements Cloneable
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=false;
 					}
-					this.update(new PointInt(this.currentPosition.getX()+2,this.currentPosition.getY()-4));
-				}	
+					
+					this.currentPosition.setX(this.currentPosition.getX()+2);
+					this.currentPosition.setY(this.currentPosition.getY()-4);
+				
+				}
+				this.move=true;
+				
+			}
+		}
+		
+		else {
+			
+			if (!canJump()) {
+				return false;
 			}
 			
 			else {
-			
 				this.move=false;
 				this.tir=false;
 				
@@ -108,7 +126,8 @@ public class Player extends MovingEntity implements Cloneable
 						this.tir=true;
 					}
 					
-					this.update(new PointInt(this.currentPosition.getX()-2,this.currentPosition.getY()+4));
+					this.currentPosition.setX(this.currentPosition.getX()-2);
+					this.currentPosition.setY(this.currentPosition.getY()+4);
 				}
 				
 				while (this.currentPosition.getX() ==posInit.getX()-100) {
@@ -117,13 +136,15 @@ public class Player extends MovingEntity implements Cloneable
 						this.tir=false;
 					}
 					
-					this.update(new PointInt(this.currentPosition.getX()-2,this.currentPosition.getY()-4));
+					this.currentPosition.setX(this.currentPosition.getX()-2);
+					this.currentPosition.setY(this.currentPosition.getY()-4);
 				
 				}
+				this.move=true;
+				
 			}
 		}
-		System.out.println("Saut impossible");
-		this.move=true;
+		return true;
 	}
 
 	
@@ -141,7 +162,7 @@ public class Player extends MovingEntity implements Cloneable
 					e1.printStackTrace();
 				}
 		}
-		else if (e==Event.PvP)
+		else if (e==Event.Stop)
 		{
 			//Replacement ? gï¿½rer avant ?
 		}
@@ -190,6 +211,20 @@ public class Player extends MovingEntity implements Cloneable
 	public boolean moveAllowed(PointInt p) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * @return the air
+	 */
+	public boolean isAir() {
+		return air;
+	}
+
+	/**
+	 * @param air the air to set
+	 */
+	public void setAir(boolean air) {
+		this.air = air;
 	}
 	
 }

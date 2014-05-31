@@ -51,11 +51,21 @@ public class Collision
 			}
 			else if (e2 instanceof Platform)
 			{
-				/* Tester les != cas : 
-				 * Le joueur marche sur la plateforme
-				 * Le joueur rentre sur le coté d'une plateforme
-				 * 			Il tombe ou non ?
-				*/
+				//Collision entre le bas de e1 et le haut de e2
+				if(e1.getCPy()==e2.getEdgeY())
+				{
+					if(e1.previousPosition.getY()>e1.getCPy()) // le joueur était dans les airs avant
+					{
+						e1.update(Event.Land);
+					}
+					((Player) e1).setAir(false);
+				}
+				
+				//Gauche ou droite
+				else if (e1.getCPx()==e2.getEdgeX() || e1.getEdgeX()==e2.getCPx())
+				{
+					 e1.update(Event.Stop);
+				}
 			}
 			else if (e2 instanceof Wall)
 			{
@@ -69,7 +79,8 @@ public class Collision
 		{
 			if (e2 instanceof Shot)
 			{
-				
+				e1.update(Event.HealthMinus);
+				e2.update(Event.Death);
 			}
 			
 			else if (e2 instanceof Pit)
@@ -84,11 +95,21 @@ public class Collision
 			
 			else if (e2 instanceof Platform)
 			{
-				/* Tester les != cas
-				* vient d'atterir ?
-				* touche le coté ?
-				* commence à tomber ?
-				*/
+				//Collision entre le bas de e1 et le haut de e2
+				if(e1.getCPy()==e2.getEdgeY())
+				{
+					if(e1.previousPosition.getY()>e1.getCPy()) // le joueur était dans les airs avant
+					{
+						e1.update(Event.Land);
+					}
+					((Monster) e1).setAir(false);
+				}
+				
+				//Gauche ou droite
+				else if (e1.getCPx()==e2.getEdgeX() || e1.getEdgeX()==e2.getCPx())
+				{
+					 e1.update(Event.Stop);
+				}
 			}
 		}
 		
