@@ -137,7 +137,7 @@ public class Terrain
 	}
 	
 	/**
-	 * Retourne la liste des points où spawn les bombes
+	 * Retourne la liste des points de spawn des bombes
 	 * @return List<PointInt>
 	 */
 	public List<PointInt> bombs()
@@ -177,7 +177,7 @@ public class Terrain
 	}
 	
 	/**
-	 * Retourne le point des joueurs
+	 * Retourne le point de spawn des joueurs
 	 * @return PointInt
 	 */
 	public PointInt players()
@@ -195,6 +195,10 @@ public class Terrain
 		return null;
 	}
 	
+	/**
+	 *  Retourne le point de spawn des monstres
+	 * @return PointInt
+	 */
 	public List<PointInt> monsters()
 	{
 		List<PointInt> monsterspawn=new ArrayList<PointInt>();

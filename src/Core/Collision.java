@@ -3,7 +3,7 @@ package Core;
 
 public class Collision
 {
-	Entity e1;
+	MovingEntity e1;
 	Entity e2;
 	
 	/**
@@ -11,7 +11,7 @@ public class Collision
 	 * @param e1
 	 * @param e2
 	 */
-	public Collision(Entity e1,Entity e2)
+	public Collision(MovingEntity e1,Entity e2)
 	{
 		this.e1=e1;
 		this.e2=e2;
@@ -20,80 +20,82 @@ public class Collision
 	/**
 	 * Fonction déterminant l'issue d'une collision 
 	 * Appelle les fonctions update des entités en fonction
+	 * @throws Throwable 
 	 */
-	public void update()
+	public void update() throws Throwable
 	{
 		if (e1 instanceof Player)
 		{
 			if (e2 instanceof Monster)
+			{				
+				e1.update(Event.Death);
+			}
+			
+			else if (e2 instanceof Player)
 			{
-				try {
-					e1.update(Event.Death);
-				} catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				 e1.update(Event.Stop);
+				 e2.update(Event.Stop);
 			}
 			else if (e2 instanceof Bomb)
 			{
-				try {
-					e2.update(Event.Death);
-				} catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				e2.update(Event.Death);
 			}
-			
 			else if (e2 instanceof Box)
 			{
-				try{
-					e1.update(Event.WeaponUp);
-				}catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try{
-					e2.update(Event.Death);
-				}catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				e1.update(Event.WeaponUp);
+				e2.update(Event.Death);
 			}
-			else if (e2 instanceof Player)//A traiter ici ? Arreter le mouvement des deux joueurs dans la direction
+			else if (e2 instanceof Pit)
+			{
+				e1.update(Event.Death);
+			}
+			else if (e2 instanceof Platform)
+			{
+				/* Tester les != cas : 
+				 * Le joueur marche sur la plateforme
+				 * Le joueur rentre sur le coté d'une plateforme
+				 * 			Il tombe ou non ?
+				*/
+			}
+			else if (e2 instanceof Wall)
+			{
+				e1.update(Event.Stop);
+				
+				//Tester si le joueur tombe ou non et faire un update du mouvement en fonction
+			}
+		}
+		
+		else if (e1 instanceof Monster)
+		{
+			if (e2 instanceof Shot)
 			{
 				
 			}
-		}
-		else if ((e1 instanceof Monster && e2 instanceof Shot) || (e2 instanceof Monster && e1 instanceof Shot))
-		{
-			if (e2 instanceof Monster)
+			
+			else if (e2 instanceof Pit)
 			{
-				Entity tmp=e2;
-				e2=e1;
-				e1=tmp;
+				e1.update(Event.Repop);
 			}
 			
-			try {
-				e1.update(Event.HealthMinus);
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			else if (e2 instanceof Wall)
+			{
+				e1.update(Event.Otherside);
 			}
-			try {
-				e2.update(Event.Death);
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			
+			else if (e2 instanceof Platform)
+			{
+				/* Tester les != cas
+				* vient d'atterir ?
+				* touche le coté ?
+				* commence à tomber ?
+				*/
 			}
 		}
-		else if (e1 instanceof Bomb && e2 instanceof Player)
+		
+		else if (e1 instanceof Shot)
 		{
-				try {
-					e1.update(Event.Death);
-				} catch (Throwable e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			//On a en e2 forcément un Wall ou une plateforme (on n'effectue pas d'autres tests)
+			e1.update(Event.Death);			
 		}
 	}
 }

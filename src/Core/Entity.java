@@ -65,20 +65,6 @@ public abstract class Entity
 		this.height = height;
 	}
 
-
-
-
-	/** Teste si deux entit�s rentrent en collision
-	 * Supérieur ou égal /!\
-	 * @param e
-	 * @return Collision
-	 */
-	public Collision collide (Entity e)
-	{
-		if(this.getEdgeX()>=e.getCPx()||this.getEdgeY()>=e.getCPy()||e.getEdgeX()>=this.getCPx()||e.getEdgeY()>=this.getCPy())
-			return new Collision(this,e);
-		return null;		
-	}
 	
 	/** Fonction appel�e en cas de collision avec une autre entit�
 	 * 

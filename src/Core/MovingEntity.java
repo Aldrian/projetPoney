@@ -2,8 +2,11 @@ package Core;
 
 import Game.Move;
 import Game.PointInt;
+
 import org.mini2Dx.core.graphics.Graphics;
+
 import Interface.Animator;
+
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -56,6 +59,19 @@ public abstract class MovingEntity extends Entity {
 		this.animation=a;
 		animation.create();
 	}
+	
+	/** Teste si deux entités rentrent en collision
+	 * Supérieur ou égal /!\
+	 * @param e
+	 * @return Collision
+	 */
+	public Collision collide (Entity e)
+	{
+		if(this.getEdgeX()>=e.getCPx()||this.getEdgeY()>=e.getCPy()||e.getEdgeX()>=this.getCPx()||e.getEdgeY()>=this.getCPy())
+			return new Collision(this,e);
+		return null;		
+	}
+	
 	
 	/**
 	 * Fonction appliquant le mouvement
