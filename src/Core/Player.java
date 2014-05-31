@@ -4,7 +4,7 @@ import Game.PointInt;
 import Interface.AnimatorPlayer;
 
 
-public class Player extends MovingEntity
+public class Player extends MovingEntity implements Cloneable
 {
 	private boolean state;
 	private Weapon wp;
@@ -20,20 +20,63 @@ public class Player extends MovingEntity
 		super(p,p,54,54,new AnimatorPlayer(p.pointValue()));
 	}
 	
+	public Object clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return o;
+	}
 	
+	public boolean canJump() {
+		
+		PointInt posInit = this.currentPosition;
+		Player p = (Player) this.clone();
+		
+		if (this.currentPosition.getX() > this.previousPosition.getX()) {
+			while (p.currentPosition.getX()!=posInit.getX() + 50) {
+				
+				if (p.collideMovingEntity()) {
+					return false;
+				}
+				
+				p.currentPosition.setX(p.currentPosition.getX()+2);
+				p.currentPosition.setY(p.currentPosition.getY()+4);
+			}
+		}
+		
+		else {
+			while (p.currentPosition.getX()!=posInit.getX() - 50) {
+				
+				if (p.collideMovingEntity()) {
+					return false;
+				}
+				
+				p.currentPosition.setX(p.currentPosition.getX()-2);
+				p.currentPosition.setY(p.currentPosition.getY()+4);
+			}
+		}
+		
+	return true;
+	}
 	//
-	// t = tableau des blocks
-	public boolean jump(int[][] t) {
+	
+	public boolean jump() {
 		// jump height = 200p;
 		// jump width = 100p;
 		
 		PointInt posInit = this.currentPosition;
-		int ligne = (this.currentPosition.getX())%60;
-		int colonne = (this.currentPosition.getY())%80;
 		
 		if (this.currentPosition.getX() > this.previousPosition.getX()) {
 			
-			if ( (t[ligne][colonne+3]==1) || (t[ligne+1][colonne+3]==1) || (t[ligne-1][colonne+3]==1) || (t[ligne+2][colonne+1]==1) || (t[ligne+1][colonne+2]==1) || (t[ligne+2][colonne+3]==1) || (t[ligne+1][colonne+3]==1)) {
+			if (!canJump()) {
 				return false;
 			}
 			
@@ -43,7 +86,7 @@ public class Player extends MovingEntity
 				
 				while (this.currentPosition.getX()!=posInit.getX() + 50) {
 					
-					if (this.currentPosition.getY() == posInit.getY() - 20) {
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=true;
 					}
 					
@@ -51,21 +94,50 @@ public class Player extends MovingEntity
 					this.currentPosition.setY(this.currentPosition.getY()+4);
 				}
 				
-				while (this.currentPosition.getY() ==posInit.getY()) {
+				while (this.currentPosition.getX() ==posInit.getX()+100) {
 					
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=false;
 					}
 					
-					if (this.collideMovingEntity()) {
-						//gérer la chute ou la mort
-						return false;
+					this.currentPosition.setX(this.currentPosition.getX()+2);
+					this.currentPosition.setY(this.currentPosition.getY()-4);
+				
+				}
+				this.move=true;
+				
+			}
+		}
+		
+		else {
+			
+			if (!canJump()) {
+				return false;
+			}
+			
+			else {
+				this.move=false;
+				this.tir=false;
+				
+				while (this.currentPosition.getX()!=posInit.getX() - 50) {
+					
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=true;
 					}
-						
-					else {
-						this.currentPosition.setX(this.currentPosition.getX()+2);
-						this.currentPosition.setY(this.currentPosition.getY()-4);
+					
+					this.currentPosition.setX(this.currentPosition.getX()-2);
+					this.currentPosition.setY(this.currentPosition.getY()+4);
+				}
+				
+				while (this.currentPosition.getX() ==posInit.getX()-100) {
+					
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=false;
 					}
+					
+					this.currentPosition.setX(this.currentPosition.getX()-2);
+					this.currentPosition.setY(this.currentPosition.getY()-4);
+				
 				}
 				this.move=true;
 				
