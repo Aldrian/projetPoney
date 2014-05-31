@@ -75,50 +75,50 @@ public class Terrain
 	
 	
 	//permet de récupérer une liste contenant un nombre minimal de plateforme
-		public HashSet<NotMovingEntity> plateforme(int [][] block){
-			
-			HashSet<NotMovingEntity> list = new HashSet<NotMovingEntity>();
-			
-			int i=0;
-			int j=0;
-			
-			Platform plateforme = null;
-			Pit lePit = null;
-			
-			while(j!=10) {
-				
-				for(i=0;i<10;i++) {
-					
-					if(block[i][j]==0) {
-						
-						plateforme = new Platform();
-						plateforme.setHeight(60);
-						
-						while (i<10 && block[i][j]==0) {
-							plateforme.setWidth(plateforme.getWidth()+80);
-							i++;
-						}
-						list.add(plateforme);
-					}
-					
-					else if(block[i][j]==2) {
-						
-						lePit = new Pit();
-						lePit.setHeight(60);
-						
-						while (i<10 && block[i][j]==2) {
-							lePit.setWidth(lePit.getWidth()+80);
-							i++;
-						}
-						list.add(lePit);
-					}
-					
-				}
-				j++;
-			}
-			return list;	
-		}
+	public HashSet<NotMovingEntity> plateforme(int [][] block){
 		
+		HashSet<NotMovingEntity> list = new HashSet<NotMovingEntity>();
+		
+		int i=0;
+		int j=0;
+		
+		Platform plateforme = null;
+		Pit lePit = null;
+		
+		while(j!=10) {
+			
+			for(i=0;i<10;i++) {
+				
+				if(block[i][j]==0) {
+					
+					plateforme = new Platform();
+					plateforme.setHeight(60);
+					
+					while (i<10 && block[i][j]==0) {
+						plateforme.setWidth(plateforme.getWidth()+80);
+						i++;
+					}
+					list.add(plateforme);
+				}
+				
+				else if(block[i][j]==2) {
+					
+					lePit = new Pit();
+					lePit.setHeight(60);
+					
+					while (i<10 && block[i][j]==2) {
+						lePit.setWidth(lePit.getWidth()+80);
+						i++;
+					}
+					list.add(lePit);
+				}
+				
+			}
+			j++;
+		}
+		return list;	
+	}
+	
 	
 	//Main de test
 	public static void main(String [] args)
