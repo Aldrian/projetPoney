@@ -98,6 +98,8 @@ public class InGameScreen implements GameScreen {
      */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
+    	P1.setAir(true);
+    	P2.setAir(true);
     	for(MovingEntity m:me)
     	{
     		if (m instanceof Player)
@@ -139,15 +141,34 @@ public class InGameScreen implements GameScreen {
     	
     	for (Collision c : colls)
     	{
-    		
-    		try {
-				c.update();
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+    		if(c!=null)
+			{
+    			try {
+    				c.update();
+    			} catch (Throwable e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
 			}
     	}
-  
+    	
+    	for(Monster m:mstrs)
+    	{
+    		if (m.isAir())
+    		{
+    			m.update(new PointInt(0,-9));
+    		}
+    	}
+    	
+    	if(P1.isAir())
+    	{
+    		P1.update(new PointInt(0,-9));
+    	}
+    	if (P2.isAir())
+    	{
+    		P2.update(new PointInt(0,-9));
+    	}
+    	
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
     	if(jeuFini) {
             //Fade to EndGameScreen

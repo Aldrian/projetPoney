@@ -71,8 +71,6 @@ public class Collision
 			else if (e2 instanceof Wall)
 			{
 				e1.update(Event.Stop);
-				
-				//Tester si le joueur tombe ou non et faire un update du mouvement en fonction
 			}
 		}
 		

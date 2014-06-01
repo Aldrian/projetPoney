@@ -68,7 +68,9 @@ public abstract class MovingEntity extends Entity {
 	 */
 	public Collision collide (Entity e)
 	{
-		if(this.getEdgeX()>=e.getCPx()||this.getEdgeY()>=e.getCPy()||e.getEdgeX()>=this.getCPx()||e.getEdgeY()>=this.getCPy())
+		System.out.println("this(ID="+this.ID+") : CPX,CPy,EdgeX,EdgeY      "+this.getCPx()+","+this.getCPy()+","+this.getEdgeX()+","+this.getEdgeY());
+		System.out.println("Entity(ID="+e.ID+") : CPX,CPy,EdgeX,EdgeY      "+e.getCPx()+","+e.getCPy()+","+e.getEdgeX()+","+e.getEdgeY());
+		if(this.getEdgeX()==e.getCPx()||this.getEdgeY()==e.getCPy()||e.getEdgeX()==this.getCPx()||e.getEdgeY()==this.getCPy())
 			return new Collision(this,e);
 		return null;		
 	}
