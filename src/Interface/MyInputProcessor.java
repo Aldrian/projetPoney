@@ -1,6 +1,7 @@
 package Interface;
 
 import Core.Player;
+import Core.Terrain;
 import Game.PointInt;
 
 import com.badlogic.gdx.Input.Keys;

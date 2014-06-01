@@ -20,7 +20,7 @@ import Game.PointInt;
  */
 public class Terrain
 {
-	private int [][] blocks;
+	int [][] blocks;
 	
 	/**
 	 * Constructeur de terrain

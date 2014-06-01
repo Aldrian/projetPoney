@@ -15,58 +15,69 @@ public class Player extends MovingEntity implements Cloneable
 	private boolean air;
 	public int compteurSaut = 0;
 	public PointInt posInitSaut = new PointInt(0,0);
+	private int[][] blocks;
 	
 	/**
 	 * Constructeur des joueurs
 	 * @param p point de spawn
 	 */
-	public Player(PointInt p) 
+	public Player(PointInt p,Terrain terrain) 
 	{
 		super(p,p,54,54,new AnimatorPlayer(p.pointValue()));
+		this.blocks=terrain.blocks;
 	}
 	
 	public Player clone() {
-		Player o = null;
+		Player doublon = null;
 		try {
 			// On récupère l'instance à renvoyer par l'appel de la 
 			// méthode super.clone()
-			o = (Player) super.clone();
+			doublon = (Player) super.clone();
 		} catch(CloneNotSupportedException cnse) {
 			// Ne devrait jamais arriver car nous implémentons 
 			// l'interface Cloneable
 			cnse.printStackTrace(System.err);
 		}
 		// on renvoie le clone
-		return o;
+		return doublon;
 	}
 	
 	public boolean canJump() {
 		
-		PointInt posInit = this.currentPosition;
 		Player p = (Player) this.clone();
-		
+		int ligne = p.currentPosition.getX()/60;
+		int colonne = p.currentPosition.getX()/80;
+		System.out.println("ligne " + ligne);
+		System.out.println("colonne " + colonne);
 		
 		if (this.droite==true) {
 			
 			for (int i = 0; i<25;i++) {
-				if (p.collideMovingEntity()) {
+				if (blocks[ligne][colonne]==1) {
 					return false;
 				}
 					
 				p.currentPosition.setX(p.currentPosition.getX()+2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
+				
+				ligne = p.currentPosition.getX()/60;
+				colonne = p.currentPosition.getY()/80;
+
 			}
 		}
 			
 		else {
 			
 			for (int i = 0; i<25;i++) {
-				if (p.collideMovingEntity()) {
+				if (blocks[ligne][colonne]==1) {
 					return false;
 				}
 					
 				p.currentPosition.setX(p.currentPosition.getX()-2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
+				
+				ligne = p.currentPosition.getX()/60;
+				colonne = p.currentPosition.getY()/80;
 			}
 		}
 	return true;
@@ -80,7 +91,6 @@ public class Player extends MovingEntity implements Cloneable
 		if (compteurSaut < 50) {
 			
 			if (this.droite) {
-				System.out.println("Saut à droite en cours");
 				this.move=false;
 				this.tir=false;
 					
@@ -90,7 +100,6 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,8);
 					this.compteurSaut++;
-					System.out.println("compteurSaut = " + this.compteurSaut);
 					return(mouvement);
 				}
 				
@@ -100,7 +109,6 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,-8);
 					this.compteurSaut++;
-					System.out.println("compteurSaut = " + this.compteurSaut);
 					return(mouvement);
 				}	
 			}
@@ -116,7 +124,6 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,8);
 					this.compteurSaut++;
-					System.out.println("compteurSaut = " + this.compteurSaut);
 					return(mouvement);
 				}
 				
@@ -126,7 +133,6 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,-8);
 					this.compteurSaut++;
-					System.out.println("compteurSaut = " + this.compteurSaut);
 					return mouvement;
 				}	
 			}

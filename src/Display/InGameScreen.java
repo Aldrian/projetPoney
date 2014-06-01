@@ -80,9 +80,9 @@ public class InGameScreen implements GameScreen {
     	
     	Monster.setSpawn(terrain.monsters());
     	//Initialisation du poney et du déplacement
-    	P1 = new Player(terrain.players());
+    	P1 = new Player(terrain.players(),terrain);
     	System.out.println(P1.hashCode());
-    	P2 = new Player(terrain.players());
+    	P2 = new Player(terrain.players(),terrain);
     	System.out.println(P2.hashCode());
     	
     	me.add(P1);
