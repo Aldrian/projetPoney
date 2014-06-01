@@ -31,12 +31,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
     private boolean jeuFini;
+    private int seconde = 0;
 
 	Window w;
     Player P1;
     Player P2;
     MyInputProcessor in;
-    Little mouche;
     AnimatorCountDown countDown;
     ElapsedTime t;
     Set <MovingEntity> me;
@@ -78,7 +78,6 @@ public class InGameScreen implements GameScreen {
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players());
     	P2 = new Player(terrain.players());
-    	mouche = new Little();
     	
     	me.add(P1);
     	me.add(P2);
@@ -100,6 +99,19 @@ public class InGameScreen implements GameScreen {
     	
 
     	colls=new ArrayList<Collision>();
+    	if (this.t.sec() == 0) {
+    		this.seconde++;
+    	}
+    	else if (this.t.sec()==this.seconde) {
+    		Little petitMonstre = new Little();
+    		mstrs.add(petitMonstre);
+    		this.seconde++;
+    		
+    	}
+    	
+    	
+    	
+    	
     	P1.setAir(true);
     	P2.setAir(true);
     	for(MovingEntity m:me)
@@ -190,7 +202,6 @@ public class InGameScreen implements GameScreen {
     public void interpolate(GameContainer gc, float alpha) {	
     	P1.interpolate(alpha);
     	P2.interpolate(alpha);
-    	mouche.interpolate(alpha);
     }
 
     /**
