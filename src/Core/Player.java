@@ -115,6 +115,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,8);
 					this.compteurSaut++;
+					System.out.println("compteurSaut = " + this.compteurSaut);
 					return(mouvement);
 				}
 				
