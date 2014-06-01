@@ -9,7 +9,7 @@ public abstract class Monster extends MovingEntity
 {
 	protected  int health;
 	protected boolean air;
-	private static PointInt spawn;
+	protected static PointInt spawn;
 	private static Random r;
 	
 	

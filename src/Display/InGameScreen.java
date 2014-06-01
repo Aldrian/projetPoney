@@ -1,6 +1,9 @@
 package Display;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.geom.Point;
@@ -11,8 +14,7 @@ import org.mini2Dx.core.screen.Transition;
 import org.mini2Dx.core.screen.transition.FadeInTransition;
 import org.mini2Dx.core.screen.transition.FadeOutTransition;
 
-import Core.Player;
-import Core.Little;
+import Core.*;
 import Game.PointInt;
 import Interface.AnimatorCountDown;
 import Interface.MyInputProcessor;
@@ -37,7 +39,12 @@ public class InGameScreen implements GameScreen {
     Little mouche;
     AnimatorCountDown countDown;
     ElapsedTime t;
-
+    Set <MovingEntity> me;
+    Set <NotMovingEntity> nme;
+    Set <Monster> mstrs;
+    Set <Shot> shots;
+    Terrain terrain;
+    List <Collision> colls;
     /**************************************************************/
     /***********************BOUCLE DU JEU**************************/
     /**************************************************************/
@@ -55,15 +62,33 @@ public class InGameScreen implements GameScreen {
     	w.initialise(null);
     	jeuFini = false;
     	
+    	
+    	
+    	
+    	
+    	//Initialisation Core
+    	terrain=new Terrain("res/map/terrain.txt");
+    	me=new HashSet<MovingEntity>();
+    	nme=terrain.plateforme();
+    	mstrs=new HashSet<Monster>();
+    	shots=new HashSet<Shot>();
+    	colls=new ArrayList<Collision>();
+    	
+    	Monster.setSpawn(terrain.monsters());
     	//Initialisation du poney et du déplacement
-    	P1 = new Player(new PointInt(200,60));
-    	P2 = new Player(new PointInt(0,60));
-    	mouche = new Little(new PointInt(50,60));
+    	P1 = new Player(terrain.players());
+    	P2 = new Player(terrain.players());
+    	mouche = new Little();
+    	
+    	me.add(P1);
+    	me.add(P2);
     	in = new MyInputProcessor(P1,P2);
     	Gdx.input.setInputProcessor(in);
     	
     	countDown = new AnimatorCountDown(new Point(0,0));
     	countDown.create();
+    	
+    	
     }
 
     /**
@@ -73,6 +98,56 @@ public class InGameScreen implements GameScreen {
      */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
+    	for(MovingEntity m:me)
+    	{
+    		if (m instanceof Player)
+    		{
+    			for (Entity e : nme)
+    			{
+    				colls.add(m.collide(e));
+    				
+    			}
+    			for (Entity e :mstrs)
+    			{
+    				colls.add(m.collide(e));
+    			}
+    			if (m.equals(P1))
+    			{
+    				colls.add(m.collide(P2));
+    			}
+    		}
+    		else if (m instanceof Monster)
+    		{
+    			for (Entity e : shots)
+    			{
+    				colls.add(m.collide(e));
+    			}
+    			for (Entity e: nme)
+    			{
+    				colls.add(m.collide(e));
+    			}
+    		}
+    		
+    		else if (m instanceof Shot)
+    		{
+    			for (Entity e: nme)
+    			{
+    				colls.add(m.collide(e));
+    			}
+    		}
+    	}
+    	
+    	for (Collision c : colls)
+    	{
+    		
+    		try {
+				c.update();
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+  
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
     	if(jeuFini) {
             //Fade to EndGameScreen

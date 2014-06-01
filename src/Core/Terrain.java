@@ -80,6 +80,7 @@ public class Terrain
 			System.out.println();
 		}
 		*/
+		System.out.println("Terrain chargé");
 	}
 	
 	
@@ -199,22 +200,25 @@ public class Terrain
 	 *  Retourne le point de spawn des monstres
 	 * @return PointInt
 	 */
-	public List<PointInt> monsters()
-	{
-		List<PointInt> monsterspawn=new ArrayList<PointInt>();
-		
+	public PointInt monsters()
+	{		
 		for(int i=0;i<10;i++)
 		{
 			for(int j=0;j<10;j++)
 			{
 				if(blocks[i][j]==3)
 				{
-					monsterspawn.add(new PointInt(i*80,j*60));
+					return new PointInt(i*80,j*60);
 				}
 			}					
 		}		
-		return monsterspawn;
+		return null;
 	}
 	
+	public static void main(String[] args)
+	{
+    	Terrain terrain=new Terrain("res/map/terrain.txt");
+
+	}
 }
 

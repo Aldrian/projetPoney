@@ -31,12 +31,12 @@ public class Main {
 	 *			Player
 	 *		else if Monster
 	 *			Shot
-	 *			Pit
+	 *			(Pit --> NME
 	 *			Wall
-	 *			Platform
+	 *			Platform)
 	 *		else if Shot
-	 *			Wall
-	 *			Platform
+	 *			(Wall --> NME (test inutiles : pit, bomb,box (max5 test)
+	 *			Platform)
 	 *
 	 *	Appeller sur player et monsters voir si certain doivent tomber.
 	 */

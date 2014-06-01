@@ -24,6 +24,7 @@ public class Collision
 	 */
 	public void update() throws Throwable
 	{
+		System.out.println(toString());
 		if (e1 instanceof Player)
 		{
 			if (e2 instanceof Monster)
@@ -119,4 +120,11 @@ public class Collision
 			e1.update(Event.Death);			
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Collision [e1=" + e1.ID + ", e2=" + e2.ID + "]";
+	}
+	
+	
 }
