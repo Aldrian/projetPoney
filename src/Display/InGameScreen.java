@@ -31,12 +31,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
     private boolean jeuFini;
+    private int seconde = 0;
 
 	Window w;
     Player P1;
     Player P2;
     MyInputProcessor in;
-    Little mouche;
     AnimatorCountDown countDown;
     ElapsedTime t;
     Set <MovingEntity> me;
@@ -99,6 +99,19 @@ public class InGameScreen implements GameScreen {
     	
 
     	colls=new ArrayList<Collision>();
+    	if (this.t.sec() == 0) {
+    		this.seconde++;
+    	}
+    	else if (this.t.sec()==this.seconde) {
+    		Little petitMonstre = new Little();
+    		mstrs.add(petitMonstre);
+    		this.seconde++;
+    		
+    	}
+    	
+    	
+    	
+    	
     	P1.setAir(true);
     	P2.setAir(true);
     	for(Monster m:mstrs)
@@ -191,10 +204,15 @@ public class InGameScreen implements GameScreen {
      * Effectue une interpolation linéaire des objets en mouvement
      */
     public void interpolate(GameContainer gc, float alpha) {	
+<<<<<<< HEAD
     	for (MovingEntity m :me)
     	{
     		m.interpolate(alpha);
     	}
+=======
+    	P1.interpolate(alpha);
+    	P2.interpolate(alpha);
+>>>>>>> 5810054bf9fd98250965427df4facf127c0f190f
     }
 
     /**

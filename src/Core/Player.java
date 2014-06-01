@@ -42,7 +42,7 @@ public class Player extends MovingEntity implements Cloneable
 	
 	public boolean canJump() {
 		
-		/*PointInt posInit = this.currentPosition;
+		PointInt posInit = this.currentPosition;
 		Player p = (Player) this.clone();
 		
 		
@@ -68,7 +68,7 @@ public class Player extends MovingEntity implements Cloneable
 				p.currentPosition.setX(p.currentPosition.getX()-2);
 				p.currentPosition.setY(p.currentPosition.getY()+4);
 			}
-		}*/
+		}
 	return true;
 	}
 	

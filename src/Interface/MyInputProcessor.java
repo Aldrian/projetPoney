@@ -125,16 +125,20 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
-			P2.compteurSaut=0;
-			P2.saut=true;
-			P2.posInitSaut = P2.currentPosition;
+			if (P2.canJump()) {
+				P2.compteurSaut=0;
+				P2.saut=true;
+				P2.posInitSaut = P2.currentPosition;
+			}
 		break;
 		
 		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
 			System.out.println("Saut demandé");
-			P1.compteurSaut=0;
-			P1.saut=true;
-			P1.posInitSaut = P1.currentPosition;
+			if (P1.canJump()) {
+				P1.compteurSaut=0;
+				P1.saut=true;
+				P1.posInitSaut = P1.currentPosition;
+			}
 		break;
 		}
 		// TODO Auto-generated method stub
