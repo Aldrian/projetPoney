@@ -142,7 +142,7 @@ public class MyInputProcessor implements InputProcessor
 			System.out.println("Saut terminé");
 		break;
 		
-		case /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
+		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
 			System.out.println("Saut demandé");
 			if(P2.saut==false) P2.jump(directionP2);
 			P2.droite=false;
