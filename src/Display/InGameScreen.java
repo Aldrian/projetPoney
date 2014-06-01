@@ -141,7 +141,7 @@ public class InGameScreen implements GameScreen {
     		}
     	}
     	
-    	System.out.println(colls.toString());
+    	//System.out.println(colls.toString());
     	for (Collision c : colls)
     	{    		
     		if(c!=null)
