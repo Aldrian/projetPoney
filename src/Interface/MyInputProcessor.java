@@ -42,18 +42,14 @@ public class MyInputProcessor implements InputProcessor
 		if (!P1.saut) {
 			P1.update(directionP1);
 		}
-<<<<<<< HEAD
 		else P1.update(P1.jump());
 		if (!P2.saut) {
 			P2.update(directionP2);
 		}
 		else P2.update(P2.jump());
-=======
 		if (!P2.saut) {
 			P2.update(directionP2);
-		}
->>>>>>> 364aebb39ff195ed1fe19b2ed380d5d62038a4c1
-		
+		}	
 	}
 	
 	/**
