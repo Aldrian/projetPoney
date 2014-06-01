@@ -13,7 +13,7 @@ public abstract class Entity
 	protected int width;
 	protected int height;
 	
-    protected PointInt currentPosition; // Position actuelle
+    public PointInt currentPosition; // Position actuelle
 	
     /**
      * Constructeur d'Entity ne prenant que la position en compte

@@ -13,6 +13,8 @@ public class Player extends MovingEntity implements Cloneable
 	public boolean droite= true;
 	public boolean saut=false;
 	private boolean air;
+	public int compteurSaut = 0;
+	public PointInt posInitSaut = new PointInt(0,0);
 	
 	/**
 	 * Constructeur des joueurs
@@ -71,40 +73,33 @@ public class Player extends MovingEntity implements Cloneable
 	}
 	
 	//en cours de refonte
-	public PointInt jump() {
+	public PointInt jump(PointInt posInit,PointInt mouvement) {
 		// jump height = 200p;
 		// jump width = 100p;
 		
-		PointInt posInit = this.currentPosition;
-		this.saut=true;
-		System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
-		
-		if (this.canJump()) {
+		if (this.currentPosition.getX() <= posInit.getX()+100) {
 			
 			if (this.droite) {
 				System.out.println("Saut à droite en cours");
 				this.move=false;
 				this.tir=false;
-				
-				for (int i = 0; i<50;i++) {
-					if(i<25) {
-						if (this.currentPosition.getY() == posInit.getY() + 180) {
-							this.tir=true;
-						}
-						
-						mouvement.set(2,8);
-						//this.update(mouvement);
-						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
-					}
 					
-					else {
-						if (this.currentPosition.getY() == posInit.getY() + 180) {
-							this.tir=false;
-						}
-						mouvement.set(2,-8);
-						//this.update(mouvement);
-						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
+				if(this.compteurSaut<25) {
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=true;
 					}
+					mouvement.set(2,8);
+					this.compteurSaut++;
+					return(mouvement);
+				}
+				
+				else {
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=false;
+					}
+					mouvement.set(2,-8);
+					this.compteurSaut++;
+					return(mouvement);
 				}	
 			}
 			
@@ -114,30 +109,32 @@ public class Player extends MovingEntity implements Cloneable
 				this.move=false;
 				this.tir=false;
 				
-				for (int i = 0; i<50;i++) {
-					if(i<25) {
-						if (this.currentPosition.getY() == posInit.getY() + 180) {
-							this.tir=true;
-						}
-						mouvement.set(-2,8);
-						//this.update(mouvement);
-						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
+				if(this.compteurSaut<25) {
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=true;
 					}
-					
-					else {
-						if (this.currentPosition.getY() == posInit.getY() + 180) {
-							this.tir=false;
-						}
-						mouvement.set(-2,-8);
-						//this.update(mouvement);
-						System.out.println("currentPos" + this.currentPosition.getX() + "  /  " + this.currentPosition.getY());
+					mouvement.set(-2,8);
+					this.compteurSaut++;
+					return(mouvement);
+				}
+				
+				else {
+					if (this.currentPosition.getY() == posInit.getY() + 180) {
+						this.tir=false;
 					}
+					mouvement.set(-2,-8);
+					this.compteurSaut++;
+					return mouvement;
 				}	
 			}
 		}
-		System.out.println("Saut impossible");
-		this.move=true;
-		this.saut=false;
+		else {
+			this.saut=false;
+			this.posInitSaut.set(0, 0);
+			mouvement.set(0, 0);
+			System.out.println("Saut terminé");
+			return (mouvement);
+		}
 	}
 
 

@@ -1,7 +1,6 @@
 package Interface;
 
 import Core.Player;
-import Core.Saut;
 import Game.PointInt;
 
 import com.badlogic.gdx.Input.Keys;
@@ -42,14 +41,12 @@ public class MyInputProcessor implements InputProcessor
 		if (!P1.saut) {
 			P1.update(directionP1);
 		}
-		else P1.update(P1.jump());
+		else P1.update(P1.jump(P1.posInitSaut,directionP1));
+		
 		if (!P2.saut) {
 			P2.update(directionP2);
 		}
-		else P2.update(P2.jump());
-		if (!P2.saut) {
-			P2.update(directionP2);
-		}	
+		else P2.update(P2.jump(P1.posInitSaut,directionP2));
 	}
 	
 	/**
@@ -73,11 +70,6 @@ public class MyInputProcessor implements InputProcessor
 			
 		break;
 		
-		/*case Keys.UP :
-			System.out.println("Saut demandé");
-			if(P1.saut==false) P1.jump(directionP1);
-			
-		break;*/
 		case Keys.D :
 			System.out.println("Déplacement à droite demandé");
 			directionP2.set(2,0);
@@ -88,11 +80,6 @@ public class MyInputProcessor implements InputProcessor
 			directionP2.set(-2,0);
 			
 		break;
-		/*case Keys.Z :
-			System.out.println("Saut demandé");
-			if(P1.saut==false) P2.jump(directionP2);
-			
-		break;*/
 		}
 		return true;
 	}
@@ -116,11 +103,6 @@ public class MyInputProcessor implements InputProcessor
 			directionP1.set(0,0);
 			P1.droite=false;
 		break;
-		/*case Keys.UP :
-			System.out.println("Saut terminé");
-			if(P1.saut==true) directionP1.set(0,0);
-			P1.saut=false;
-		break;*/
 		case Keys.D :
 			System.out.println("Déplacement à droite arrêté");
 			directionP2.set(0,0);
@@ -131,12 +113,7 @@ public class MyInputProcessor implements InputProcessor
 			directionP2.set(0,0);
 			P2.droite=false;
 		break;
-		/*case Keys.Z :
-			System.out.println("Saut demandé");
-			if(P1.saut==true) directionP2.set(0,0);
-			P2.saut=false;
-			
-		break;*/
+
 		}
 		return true;
 	}
@@ -148,28 +125,16 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
-<<<<<<< HEAD
+			P2.compteurSaut=0;
 			P2.saut=true;
-=======
-			if(P2.saut==false)   {
-				Saut sautP2 = new Saut(P2);
-				sautP2.jump(directionP2);
-			}
-			directionP2.set(0, 0);
-			P2.saut=false;
->>>>>>> 364aebb39ff195ed1fe19b2ed380d5d62038a4c1
-			System.out.println("Saut terminé");
+			P2.posInitSaut = P2.currentPosition;
 		break;
 		
 		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
 			System.out.println("Saut demandé");
-			if(P1.saut==false)   {
-				Saut sautP1 = new Saut(P1);
-				sautP1.jump(directionP1);
-			}
-			directionP1.set(0, 0);
-			P1.saut=false;
-			System.out.println("Saut terminé");
+			P1.saut=true;
+			P1.compteurSaut=0;
+			P1.posInitSaut = P1.currentPosition;
 		break;
 		}
 		// TODO Auto-generated method stub
