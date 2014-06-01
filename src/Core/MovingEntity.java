@@ -67,10 +67,7 @@ public abstract class MovingEntity extends Entity {
 	 * @return Collision
 	 */
 	public Collision collide (Entity e)
-	{
-		//System.out.println("this(ID="+this.ID+" Class="+this.getClass().getName() +") : CPX,CPy,EdgeX,EdgeY      "+this.getCPx()+","+this.getCPy()+","+this.getEdgeX()+","+this.getEdgeY());
-		//System.out.println("Entity(ID="+e.ID+" Class="+e.getClass().getName() +": CPX,CPy,EdgeX,EdgeY      "+e.getCPx()+","+e.getCPy()+","+e.getEdgeX()+","+e.getEdgeY());
-		
+	{		
 		if(this.getCPx()>e.getEdgeX())
 		{
 			//System.out.println("Gauche");

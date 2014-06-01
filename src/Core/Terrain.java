@@ -53,6 +53,15 @@ public class Terrain
 			e.printStackTrace();
 		}
 		
+		for (int i=9;i>-1;i--)
+		{
+			String s=new String();
+			for (int j=9;j>-1;j--)
+			{
+				s+=blocks[i][j];
+			}
+			System.out.println(s);
+		}
 		System.out.println("Terrain chargé");
 	}
 	
@@ -72,18 +81,18 @@ public class Terrain
 		Platform plateforme = null;
 		Pit lePit = null;
 			
-		while(j!=10) {
+		while(i!=10) {
 		
-			for(i=0;i<10;i++) {
+			for(j=0;j<10;j++) {
 					
 				if(blocks[i][j]==1) {
 					
 					plateforme = new Platform(new PointInt(i*80,j*60)); 
 					plateforme.setHeight(60);
 					
-					while (i<10 && blocks[i][j]==1) {
+					while (j<10 && blocks[i][j]==1) {
 						plateforme.setWidth(plateforme.getWidth()+80);
-						i++;
+						j++;
 					}
 					list.add(plateforme);
 				}
@@ -93,15 +102,15 @@ public class Terrain
 					lePit = new Pit(new PointInt(i*80,j*60));
 					lePit.setHeight(60);
 						
-					while (i<10 && blocks[i][j]==2) {
+					while (j<10 && blocks[i][j]==2) {
 						lePit.setWidth(lePit.getWidth()+80);
-						i++;
+						j++;
 					}
 					list.add(lePit);
 				}
 					
 			}
-			j++;
+			i++;
 		}
 		
 		list.add(new Wall(new PointInt(-1,0),1,600));

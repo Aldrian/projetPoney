@@ -53,12 +53,14 @@ public class Collision
 			else if (e2 instanceof Platform)
 			{
 				//Collision entre le bas de e1 et le haut de e2
-				if(e1.getCPy()==e2.getEdgeY())
+				if(e1.getCPy()<=e2.getEdgeY())
 				{
 					if(e1.previousPosition.getY()>e1.getCPy()) // le joueur était dans les airs avant
 					{
+						System.out.println("LAND");
 						e1.update(Event.Land);
 					}
+					System.out.println("plateforme touch");
 					((Player) e1).setAir(false);
 				}
 				
@@ -121,7 +123,7 @@ public class Collision
 
 	@Override
 	public String toString() {
-		return "Collision [e1=" + e1.ID + ", e2=" + e2.ID + "]";
+		return "=========================Collision====================================\nEntity1(ID="+e1.ID+" Class="+e1.getClass().getName() +": CPX,CPy,EdgeX,EdgeY      "+e1.getCPx()+","+e1.getCPy()+","+e1.getEdgeX()+","+e1.getEdgeY()+"\nEntity2(ID="+e2.ID+" Class="+e2.getClass().getName() +": CPX,CPy,EdgeX,EdgeY      "+e2.getCPx()+","+e2.getCPy()+","+e2.getEdgeX()+","+e2.getEdgeY()+"\n";
 	}
 	
 	

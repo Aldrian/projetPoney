@@ -70,6 +70,10 @@ public class InGameScreen implements GameScreen {
     	terrain=new Terrain("res/map/terrain.txt");
     	me=new HashSet<MovingEntity>();
     	nme=terrain.plateforme();
+    	for(NotMovingEntity e1: nme)
+    	{
+    		System.out.println("Entity1(ID="+e1.hashCode()+" Class="+e1.getClass().getName() +": CPX,CPy,EdgeX,EdgeY "+e1.getCPx()+","+e1.getCPy()+","+e1.getEdgeX()+","+e1.getEdgeY());
+    	}
     	mstrs=new HashSet<Monster>();
     	shots=new HashSet<Shot>();
     	colls=new ArrayList<Collision>();
@@ -77,7 +81,9 @@ public class InGameScreen implements GameScreen {
     	Monster.setSpawn(terrain.monsters());
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players());
+    	System.out.println(P1.hashCode());
     	P2 = new Player(terrain.players());
+    	System.out.println(P2.hashCode());
     	
     	me.add(P1);
     	me.add(P2);
@@ -118,33 +124,49 @@ public class InGameScreen implements GameScreen {
     	{
     		m.setAir(true);
     	}
+    	
+    	
     	for(MovingEntity m:me)
     	{
     		if (m instanceof Player)
     		{
     			for (Entity e : nme)
     			{
-    				colls.add(m.collide(e));
-    				
+    				if (m.collide(e)!=null)
+    				{
+    					colls.add(m.collide(e));
+    				}  				
     			}
     			for (Entity e :mstrs)
     			{
-    				colls.add(m.collide(e));
+    				if (m.collide(e)!=null)
+    				{
+    					colls.add(m.collide(e));
+    				} 
     			}
     			if (m.equals(P1))
     			{
-    				colls.add(m.collide(P2));
+    				if (m.collide(P2)!=null)
+    				{
+    					colls.add(m.collide(P2));
+    				} 
     			}
     		}
     		else if (m instanceof Monster)
     		{
     			for (Entity e : shots)
     			{
-    				colls.add(m.collide(e));
+    				if (m.collide(e)!=null)
+    				{
+    					colls.add(m.collide(e));
+    				} 
     			}
     			for (Entity e: nme)
     			{
-    				colls.add(m.collide(e));
+    				if (m.collide(e)!=null)
+    				{
+    					colls.add(m.collide(e));
+    				} 
     			}
     		}
     		
@@ -152,12 +174,15 @@ public class InGameScreen implements GameScreen {
     		{
     			for (Entity e: nme)
     			{
-    				colls.add(m.collide(e));
+    				if (m.collide(e)!=null)
+    				{
+    					colls.add(m.collide(e));
+    				} 
     			}
     		}
     	}
     	
-    	//System.out.println(colls.toString());
+    	System.out.println(colls.toString());
     	for (Collision c : colls)
     	{    		
     		if(c!=null)
