@@ -132,8 +132,8 @@ public class MyInputProcessor implements InputProcessor
 		
 		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
 			System.out.println("Saut demandé");
-			P1.saut=true;
 			P1.compteurSaut=0;
+			P1.saut=true;
 			P1.posInitSaut = P1.currentPosition;
 		break;
 		}
