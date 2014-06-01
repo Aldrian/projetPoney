@@ -42,9 +42,17 @@ public class MyInputProcessor implements InputProcessor
 		if (!P1.saut) {
 			P1.update(directionP1);
 		}
+<<<<<<< HEAD
+		else P1.update(P1.jump());
 		if (!P2.saut) {
 			P2.update(directionP2);
 		}
+		else P2.update(P2.jump());
+=======
+		if (!P2.saut) {
+			P2.update(directionP2);
+		}
+>>>>>>> 364aebb39ff195ed1fe19b2ed380d5d62038a4c1
 		
 	}
 	
@@ -144,12 +152,16 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
+<<<<<<< HEAD
+			P2.saut=true;
+=======
 			if(P2.saut==false)   {
 				Saut sautP2 = new Saut(P2);
 				sautP2.jump(directionP2);
 			}
 			directionP2.set(0, 0);
 			P2.saut=false;
+>>>>>>> 364aebb39ff195ed1fe19b2ed380d5d62038a4c1
 			System.out.println("Saut terminé");
 		break;
 		
