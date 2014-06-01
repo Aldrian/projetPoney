@@ -62,11 +62,11 @@ public class MyInputProcessor implements InputProcessor
 			
 		break;
 		
-		case Keys.UP :
+		/*case Keys.UP :
 			System.out.println("Saut demandé");
 			if(P1.saut==false) P1.jump(directionP1);
 			
-		break;
+		break;*/
 		case Keys.D :
 			System.out.println("Déplacement à droite demandé");
 			directionP2.set(2,0);
@@ -77,11 +77,11 @@ public class MyInputProcessor implements InputProcessor
 			directionP2.set(-2,0);
 			
 		break;
-		case Keys.Z :
+		/*case Keys.Z :
 			System.out.println("Saut demandé");
 			if(P1.saut==false) P2.jump(directionP2);
 			
-		break;
+		break;*/
 		}
 		return true;
 	}
@@ -105,11 +105,11 @@ public class MyInputProcessor implements InputProcessor
 			directionP1.set(0,0);
 			P1.droite=false;
 		break;
-		case Keys.UP :
+		/*case Keys.UP :
 			System.out.println("Saut terminé");
 			if(P1.saut==true) directionP1.set(0,0);
 			P1.saut=false;
-		break;
+		break;*/
 		case Keys.D :
 			System.out.println("Déplacement à droite arrêté");
 			directionP2.set(0,0);
@@ -120,12 +120,12 @@ public class MyInputProcessor implements InputProcessor
 			directionP2.set(0,0);
 			P2.droite=false;
 		break;
-		case Keys.Z :
+		/*case Keys.Z :
 			System.out.println("Saut demandé");
 			if(P1.saut==true) directionP2.set(0,0);
 			P2.saut=false;
 			
-		break;
+		break;*/
 		}
 		return true;
 	}
@@ -133,6 +133,22 @@ public class MyInputProcessor implements InputProcessor
 
 	@Override
 	public boolean keyTyped(char arg0) {
+		switch(arg0)
+		{
+		case 'z' :
+			System.out.println("Saut demandé");
+			if(P2.saut==false) P2.jump(directionP2);
+			P2.droite=false;
+			System.out.println("Saut terminé");
+		break;
+		
+		case /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
+			System.out.println("Saut demandé");
+			if(P2.saut==false) P2.jump(directionP2);
+			P2.droite=false;
+			System.out.println("Saut terminé");
+		break;
+		}
 		// TODO Auto-generated method stub
 		return false;
 	}
