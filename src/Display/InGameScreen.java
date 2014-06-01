@@ -204,15 +204,10 @@ public class InGameScreen implements GameScreen {
      * Effectue une interpolation linéaire des objets en mouvement
      */
     public void interpolate(GameContainer gc, float alpha) {	
-<<<<<<< HEAD
     	for (MovingEntity m :me)
     	{
     		m.interpolate(alpha);
     	}
-=======
-    	P1.interpolate(alpha);
-    	P2.interpolate(alpha);
->>>>>>> 5810054bf9fd98250965427df4facf127c0f190f
     }
 
     /**
