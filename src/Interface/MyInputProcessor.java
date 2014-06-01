@@ -1,6 +1,7 @@
 package Interface;
 
 import Core.Player;
+import Core.Saut;
 import Game.PointInt;
 
 import com.badlogic.gdx.Input.Keys;
@@ -37,8 +38,14 @@ public class MyInputProcessor implements InputProcessor
 	 * De cette façon les joueurs sont mis à jour constamment par la direction qui lui est associée dans cette classe
 	 */
 	public void keyboardProcessing(){
-		P1.update(directionP1);
-		P2.update(directionP2);
+		
+		if (!P1.saut) {
+			P1.update(directionP1);
+		}
+		if (!P2.saut) {
+			P2.update(directionP2);
+		}
+		
 	}
 	
 	/**
@@ -137,15 +144,23 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
-			if(P2.saut==false) P2.jump(directionP2);
-			P2.droite=false;
+			if(P2.saut==false)   {
+				Saut sautP2 = new Saut(P2);
+				sautP2.jump(directionP2);
+			}
+			directionP2.set(0, 0);
+			P2.saut=false;
 			System.out.println("Saut terminé");
 		break;
 		
 		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
 			System.out.println("Saut demandé");
-			if(P2.saut==false) P2.jump(directionP2);
-			P2.droite=false;
+			if(P1.saut==false)   {
+				Saut sautP1 = new Saut(P1);
+				sautP1.jump(directionP1);
+			}
+			directionP1.set(0, 0);
+			P1.saut=false;
 			System.out.println("Saut terminé");
 		break;
 		}

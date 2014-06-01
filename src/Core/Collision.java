@@ -24,7 +24,7 @@ public class Collision
 	 */
 	public void update() throws Throwable
 	{
-		System.out.println(toString());
+		//System.out.println(toString());
 		if (e1 instanceof Player)
 		{
 			if (e2 instanceof Monster)
