@@ -36,7 +36,7 @@ public class Terrain
 			
 			for (int i=9;i>-1;i--)
 			{
-				for (int j=9;j>-1;j--)
+				for (int j=0;j<10;j++)
 				{
 					blocks[i][j]=Character.getNumericValue(fis.read());
 				}
@@ -56,7 +56,7 @@ public class Terrain
 		for (int i=9;i>-1;i--)
 		{
 			String s=new String();
-			for (int j=9;j>-1;j--)
+			for (int j=0;j<10;j++)
 			{
 				s+=blocks[i][j];
 			}
@@ -81,36 +81,41 @@ public class Terrain
 		Platform plateforme = null;
 		Pit lePit = null;
 			
-		while(i!=10) {
-		
-			for(j=0;j<10;j++) {
-					
-				if(blocks[i][j]==1) {
-					
-					plateforme = new Platform(new PointInt(i*80,j*60)); 
+		for(i=0;i<10;i++)
+		{
+			j=0;
+			while(j<10)
+			{
+				if(blocks[i][j]==1)
+				{
+					plateforme = new Platform(new PointInt(j*80,i*60)); 
 					plateforme.setHeight(60);
+					plateforme.setWidth(0);
 					
-					while (j<10 && blocks[i][j]==1) {
+					while (j<10 && blocks[i][j]==1)
+					{
 						plateforme.setWidth(plateforme.getWidth()+80);
 						j++;
-					}
+					} 
 					list.add(plateforme);
-				}
-					
-				else if(blocks[i][j]==2) {
-					
-					lePit = new Pit(new PointInt(i*80,j*60));
+				}	
+				
+				if(j<10 && blocks[i][j]==2)
+				{
+					lePit = new Pit(new PointInt(j*80,i*60));
 					lePit.setHeight(60);
+					lePit.setWidth(0);
 						
-					while (j<10 && blocks[i][j]==2) {
+					while (j<10 && blocks[i][j]==2)
+					{
 						lePit.setWidth(lePit.getWidth()+80);
 						j++;
 					}
 					list.add(lePit);
 				}
-					
+				
+				j++;
 			}
-			i++;
 		}
 		
 		list.add(new Wall(new PointInt(-1,0),1,600));
