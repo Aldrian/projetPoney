@@ -20,7 +20,6 @@ import Game.PointInt;
  */
 public class Terrain
 {
-	private int [][] pixels;
 	private int [][] blocks;
 	
 	/**
@@ -35,9 +34,9 @@ public class Terrain
 		{
 			FileInputStream fis = new FileInputStream(file);
 			
-			for (int i=0;i<10;i++)
+			for (int i=9;i>-1;i--)
 			{
-				for (int j=0;j<10;j++)
+				for (int j=9;j>-1;j--)
 				{
 					blocks[i][j]=Character.getNumericValue(fis.read());
 				}
@@ -54,32 +53,6 @@ public class Terrain
 			e.printStackTrace();
 		}
 		
-		pixels=new int[800][600];
-		
-		for(int i = 0; i<10; i++)
-		{
-			for (int x=i*80;x<(i+1)*80;x++)
-			{  
-				for (int j = 0; j < 10; j++)
-				{
-					for (int y=j*60;y<(j+1)*60;y++)
-					{
-						pixels[x][y]=blocks[i][j];
-					}
-				}
-			}			
-		}
-		
-		/*//Affichage console des blocks
-		for (int i=0;i<800;i+=80)
-		{
-			for (int j=0;j<600;j+=60)
-			{
-				System.out.print(pixels[i][j]);
-			}
-			System.out.println();
-		}
-		*/
 		System.out.println("Terrain chargé");
 	}
 	

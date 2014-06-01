@@ -69,7 +69,8 @@ public class BackgroundElement {
 			case '0' : type = ElementType.None; break;
 			case '1' :  type = ElementType.Platform; break;
 			case '2' :  type = ElementType.Spawner; break;
-			case '3' :  type = ElementType.Pit; break;			
+			case '3' :  type = ElementType.Pit; break;	
+			default : type = ElementType.None; break;
 		}
 	}
 	

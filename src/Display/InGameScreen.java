@@ -78,7 +78,6 @@ public class InGameScreen implements GameScreen {
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players());
     	P2 = new Player(terrain.players());
-    	mouche = new Little();
     	
     	me.add(P1);
     	me.add(P2);
@@ -102,6 +101,10 @@ public class InGameScreen implements GameScreen {
     	colls=new ArrayList<Collision>();
     	P1.setAir(true);
     	P2.setAir(true);
+    	for(Monster m:mstrs)
+    	{
+    		m.setAir(true);
+    	}
     	for(MovingEntity m:me)
     	{
     		if (m instanceof Player)
@@ -159,17 +162,17 @@ public class InGameScreen implements GameScreen {
     	{
     		if (m.isAir())
     		{
-    			m.update(new PointInt(0,0));
+    			m.update(new PointInt(0,-1));
     		}
     	}
     	
     	if(P1.isAir())
     	{
-    		P1.update(new PointInt(0,0));
+    		P1.update(new PointInt(0,-1));
     	}
     	if (P2.isAir())
     	{
-    		P2.update(new PointInt(0,0));
+    		P2.update(new PointInt(0,-1));
     	}
     	
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;
@@ -188,9 +191,10 @@ public class InGameScreen implements GameScreen {
      * Effectue une interpolation linéaire des objets en mouvement
      */
     public void interpolate(GameContainer gc, float alpha) {	
-    	P1.interpolate(alpha);
-    	P2.interpolate(alpha);
-    	mouche.interpolate(alpha);
+    	for (MovingEntity m :me)
+    	{
+    		m.interpolate(alpha);
+    	}
     }
 
     /**

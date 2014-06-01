@@ -155,6 +155,8 @@ public class Map {
 					isPlatformRight = false;
 					noPlatformYet = true;
 					break;
+				default:
+					break;
 				}
 				
 				

@@ -6,6 +6,6 @@ package Display;
  *
  */
 public enum ElementType {
-	None, Platform, Pit, Spawner;
+	None, Platform, Pit, Spawner,Player,Bomb,Box;
 		
 }
