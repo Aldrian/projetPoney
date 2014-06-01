@@ -98,6 +98,8 @@ public class InGameScreen implements GameScreen {
      */
     public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
+
+    	colls=new ArrayList<Collision>();
     	P1.setAir(true);
     	P2.setAir(true);
     	for(MovingEntity m:me)
@@ -139,8 +141,9 @@ public class InGameScreen implements GameScreen {
     		}
     	}
     	
+    	System.out.println(colls.toString());
     	for (Collision c : colls)
-    	{
+    	{    		
     		if(c!=null)
 			{
     			try {
@@ -156,17 +159,17 @@ public class InGameScreen implements GameScreen {
     	{
     		if (m.isAir())
     		{
-    			m.update(new PointInt(0,-9));
+    			m.update(new PointInt(0,0));
     		}
     	}
     	
     	if(P1.isAir())
     	{
-    		P1.update(new PointInt(0,-9));
+    		P1.update(new PointInt(0,0));
     	}
     	if (P2.isAir())
     	{
-    		P2.update(new PointInt(0,-9));
+    		P2.update(new PointInt(0,0));
     	}
     	
     	if (Gdx.input.isKeyPressed(Keys.SPACE)) jeuFini = true;

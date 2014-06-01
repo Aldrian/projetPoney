@@ -68,11 +68,33 @@ public abstract class MovingEntity extends Entity {
 	 */
 	public Collision collide (Entity e)
 	{
-		System.out.println("this(ID="+this.ID+") : CPX,CPy,EdgeX,EdgeY      "+this.getCPx()+","+this.getCPy()+","+this.getEdgeX()+","+this.getEdgeY());
-		System.out.println("Entity(ID="+e.ID+") : CPX,CPy,EdgeX,EdgeY      "+e.getCPx()+","+e.getCPy()+","+e.getEdgeX()+","+e.getEdgeY());
-		if(this.getEdgeX()==e.getCPx()||this.getEdgeY()==e.getCPy()||e.getEdgeX()==this.getCPx()||e.getEdgeY()==this.getCPy())
-			return new Collision(this,e);
-		return null;		
+		//System.out.println("this(ID="+this.ID+" Class="+this.getClass().getName() +") : CPX,CPy,EdgeX,EdgeY      "+this.getCPx()+","+this.getCPy()+","+this.getEdgeX()+","+this.getEdgeY());
+		//System.out.println("Entity(ID="+e.ID+" Class="+e.getClass().getName() +": CPX,CPy,EdgeX,EdgeY      "+e.getCPx()+","+e.getCPy()+","+e.getEdgeX()+","+e.getEdgeY());
+		
+		if(this.getCPx()>e.getEdgeX())
+		{
+			System.out.println("Gauche");
+			return null;	
+		}
+		
+		if(this.getCPy()>e.getEdgeY())
+		{
+			System.out.println("Bas");
+			return null;	
+		}
+		
+		if(this.getEdgeX()<e.getCPx())
+		{
+			System.out.println("Droite");
+			return null;	
+		}
+		
+		if(this.getEdgeY()<e.getCPy())
+		{
+			System.out.println("Haut");
+			return null;	
+		}
+		return new Collision(this,e);
 	}
 	
 	
