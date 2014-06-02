@@ -57,10 +57,10 @@ public class Collision
 				{
 					if(e1.previousPosition.getY()>e1.getCPy()) // le joueur était dans les airs avant
 					{
-						System.out.println("LAND");
+						//System.out.println("LAND");
 						e1.update(Event.Land);
 					}
-					System.out.println("plateforme touch");
+					//System.out.println("plateforme touch");
 					((Player) e1).setAir(false);
 				}
 				

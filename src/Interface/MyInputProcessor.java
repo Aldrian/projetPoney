@@ -33,6 +33,7 @@ public class MyInputProcessor implements InputProcessor
 		directionP2 = new PointInt();
 	}
 	
+	
 	/**
 	 * Méthode appelée dans la boucle principale du jeu.
 	 * De cette façon les joueurs sont mis à jour constamment par la direction qui lui est associée dans cette classe
@@ -126,6 +127,7 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
+			//System.out.println("position =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
 			if (P2.canJump()) {
 				P2.compteurSaut=0;
 				P2.saut=true;

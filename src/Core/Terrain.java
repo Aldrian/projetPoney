@@ -22,13 +22,14 @@ public class Terrain
 {
 	int [][] blocks;
 	
+	
 	/**
 	 * Constructeur de terrain
 	 * @param file
 	 */
 	public Terrain(String file)
 	{
-		blocks=new int[10][10];
+		this.blocks=new int[10][10];
 		
 		try
 		{
@@ -38,7 +39,7 @@ public class Terrain
 			{
 				for (int j=0;j<10;j++)
 				{
-					blocks[i][j]=Character.getNumericValue(fis.read());
+					this.blocks[i][j]=Character.getNumericValue(fis.read());
 				}
 				fis.skip(2);
 			}
@@ -58,7 +59,7 @@ public class Terrain
 			String s=new String();
 			for (int j=0;j<10;j++)
 			{
-				s+=blocks[i][j];
+				s+=this.blocks[i][j];
 			}
 			System.out.println(s);
 		}
@@ -86,13 +87,13 @@ public class Terrain
 			j=0;
 			while(j<10)
 			{
-				if(blocks[i][j]==1)
+				if(this.blocks[i][j]==1)
 				{
 					plateforme = new Platform(new PointInt(j*80,i*60)); 
 					plateforme.setHeight(60);
 					plateforme.setWidth(0);
 					
-					while (j<10 && blocks[i][j]==1)
+					while (j<10 && this.blocks[i][j]==1)
 					{
 						plateforme.setWidth(plateforme.getWidth()+80);
 						j++;
@@ -100,13 +101,13 @@ public class Terrain
 					list.add(plateforme);
 				}	
 				
-				if(j<10 && blocks[i][j]==2)
+				if(j<10 && this.blocks[i][j]==2)
 				{
 					lePit = new Pit(new PointInt(j*80,i*60));
 					lePit.setHeight(60);
 					lePit.setWidth(0);
 						
-					while (j<10 && blocks[i][j]==2)
+					while (j<10 && this.blocks[i][j]==2)
 					{
 						lePit.setWidth(lePit.getWidth()+80);
 						j++;
@@ -138,7 +139,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==5)
 				{
-					bombspawn.add(new PointInt(i*80,j*60));
+					bombspawn.add(new PointInt(i*60,j*80));
 				}
 			}					
 		}		
@@ -157,7 +158,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==6)
 				{
-					return new PointInt(i*80,j*60);
+					return new PointInt(i*60,j*80);
 				}
 			}					
 		}
@@ -176,7 +177,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==4)
 				{
-					return new PointInt(i*80,j*60);
+					return new PointInt(i*60,j*80);
 				}
 			}					
 		}
@@ -195,7 +196,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==3)
 				{
-					return new PointInt(i*80,j*60);
+					return new PointInt(i*60,j*80);
 				}
 			}					
 		}		

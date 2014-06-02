@@ -44,7 +44,7 @@ public class Player extends MovingEntity implements Cloneable
 	
 	public boolean canJump() {
 		
-		Player p = (Player) this.clone();
+		/*Player p = (Player) this.clone();
 		int ligne = p.currentPosition.getX()/60;
 		int colonne = p.currentPosition.getX()/80;
 		System.out.println("ligne " + ligne);
@@ -53,7 +53,7 @@ public class Player extends MovingEntity implements Cloneable
 		if (this.droite==true) {
 			
 			for (int i = 0; i<25;i++) {
-				if (blocks[ligne][colonne]==1) {
+				if (this.blocks[ligne][colonne]==1) {
 					return false;
 				}
 					
@@ -69,7 +69,7 @@ public class Player extends MovingEntity implements Cloneable
 		else {
 			
 			for (int i = 0; i<25;i++) {
-				if (blocks[ligne][colonne]==1) {
+				if (this.blocks[ligne][colonne]==1) {
 					return false;
 				}
 					
@@ -79,7 +79,7 @@ public class Player extends MovingEntity implements Cloneable
 				ligne = p.currentPosition.getX()/60;
 				colonne = p.currentPosition.getY()/80;
 			}
-		}
+		}*/
 	return true;
 	}
 	
@@ -99,6 +99,7 @@ public class Player extends MovingEntity implements Cloneable
 						this.tir=true;
 					}
 					mouvement.set(2,8);
+					//System.out.println("CompteurSaut = " + compteurSaut);
 					this.compteurSaut++;
 					return(mouvement);
 				}
@@ -114,7 +115,6 @@ public class Player extends MovingEntity implements Cloneable
 			}
 			
 			else {
-				System.out.println("Saut à gauche en cours");
 				this.move=false;
 				this.tir=false;
 				

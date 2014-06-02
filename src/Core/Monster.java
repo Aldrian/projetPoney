@@ -9,14 +9,14 @@ public abstract class Monster extends MovingEntity
 {
 	protected  int health;
 	protected boolean air;
-	protected static PointInt spawn;
+	//protected static PointInt spawn;
 	private static Random r;
 	
 	
-	public static void setSpawn(PointInt p)
+	/*public static void setSpawn(PointInt p)
 	{
 		spawn=p;
-	}
+	}*/
 	
 	public boolean isAir() {
 		return air;
@@ -33,9 +33,9 @@ public abstract class Monster extends MovingEntity
 	 * @param h height
 	 * @param a animation
 	 */
-	public Monster(PointInt p,int w,int h, Animator a)
+	public Monster(PointInt p,PointInt direction, int w,int h, Animator a)
 	{
-		super(p,new PointInt(0,-9),w,h,a);
+		super(p,new PointInt(0,0),w,h,a);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public abstract class Monster extends MovingEntity
 		
 		else if (e==Event.Repop)
 		{
-			this.currentPosition.set(spawn.getX(), spawn.getY());
+			this.currentPosition.set(400, 540);
 		}
 		
 		else if (e==Event.Otherside)

@@ -31,7 +31,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class InGameScreen implements GameScreen {
     public static int ID = 2;
     private boolean jeuFini;
-    private int seconde = 0;
+    private int seconde = 1;
+    private int compteurBombe = 0;
+    private boolean[] emplacementBombeLibre;
 
 	Window w;
     Player P1;
@@ -70,20 +72,19 @@ public class InGameScreen implements GameScreen {
     	terrain=new Terrain("res/map/terrain.txt");
     	me=new HashSet<MovingEntity>();
     	nme=terrain.plateforme();
-    	for(NotMovingEntity e1: nme)
+    	/*for(NotMovingEntity e1: nme)
     	{
     		System.out.println("Entity1(ID="+e1.hashCode()+" Class="+e1.getClass().getName() +": CPX,CPy,EdgeX,EdgeY "+e1.getCPx()+","+e1.getCPy()+","+e1.getEdgeX()+","+e1.getEdgeY());
-    	}
+    	}*/
     	mstrs=new HashSet<Monster>();
     	shots=new HashSet<Shot>();
     	colls=new ArrayList<Collision>();
     	
-    	Monster.setSpawn(terrain.monsters());
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players(),terrain);
-    	System.out.println(P1.hashCode());
+    	//System.out.println(P1.hashCode());
     	P2 = new Player(terrain.players(),terrain);
-    	System.out.println(P2.hashCode());
+    	//System.out.println(P2.hashCode());
     	
     	me.add(P1);
     	me.add(P2);
@@ -93,6 +94,12 @@ public class InGameScreen implements GameScreen {
     	countDown = new AnimatorCountDown(new Point(0,0));
     	countDown.create();
     	
+    	emplacementBombeLibre = new boolean[3];
+    	emplacementBombeLibre[0]=true;
+    	emplacementBombeLibre[1]=true;
+    	emplacementBombeLibre[2]=true;
+
+    	
     	
     }
 
@@ -101,19 +108,51 @@ public class InGameScreen implements GameScreen {
      * appelle la fonction update de la fenêtre
      * Récupère la touche saisie par l'utilisateur
      */
-    public void update(GameContainer gc, ScreenManager screenManager, float delta) {
+    @SuppressWarnings("static-access")
+	public void update(GameContainer gc, ScreenManager screenManager, float delta) {
     	
 
     	colls=new ArrayList<Collision>();
-    	if (this.t.sec() == 0) {
-    		this.seconde++;
-    	}
-    	else if (this.t.sec()==this.seconde) {
-    		Little petitMonstre = new Little();
+
+    	if (this.t.sec()==this.seconde) {
+    		
+    		Little petitMonstre = new Little(terrain.monsters());
     		mstrs.add(petitMonstre);
+    		System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes.");
+    		
+    		if (this.seconde%5 == 0) {
+    			if (compteurBombe < 3) {
+    				int random = (int)(Math.random() * 3) +1;
+    				if(!emplacementBombeLibre[random-1]) {
+	    				while (!emplacementBombeLibre[random-1]){
+	    					random = (int)(Math.random() * 3)+1;
+	    				}
+    				}
+    				Bomb bomb = new Bomb(terrain.bombs().get(random-1),terrain);
+    				emplacementBombeLibre[random-1]=false;
+
+    				nme.add(bomb);
+                	compteurBombe++;
+                	System.out.println(random);
+                	System.out.println("Bombe créé ! AT : " + this.t.secCount +" secondes." + "AT : " + bomb.getCPx() + " / " + bomb.getCPy());
+    			}
+        	}
+    		
+    		if (this.seconde%20 == 0) {
+        		Big grosMonstre = new Big(terrain.monsters());
+        		mstrs.add(grosMonstre);
+        		System.out.println("Gros monstre créé ! AT : " + this.t.secCount +" secondes.");
+        		
+        		Box box = new Box(terrain.box());
+        		nme.add(box);
+        		System.out.println("Laser créé ! AT : " + this.t.secCount +" secondes.");
+   
+        	}
+    		
     		this.seconde++;
     		
     	}
+    	
     	
     	
     	
@@ -182,7 +221,7 @@ public class InGameScreen implements GameScreen {
     		}
     	}
     	
-    	System.out.println(colls.toString());
+    	//System.out.println(colls.toString());
     	for (Collision c : colls)
     	{    		
     		if(c!=null)
@@ -225,7 +264,12 @@ public class InGameScreen implements GameScreen {
 
     
     
-    /**
+    private boolean emplacementBombeLibre(int random) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
      * Effectue une interpolation linéaire des objets en mouvement
      */
     public void interpolate(GameContainer gc, float alpha) {	

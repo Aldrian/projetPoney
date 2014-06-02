@@ -9,9 +9,9 @@ public class Little extends Monster
 	 * Constructeur de Little Monster
 	 * @param p
 	 */
-	public Little()
+	public Little(PointInt spawn)
 	{
-		super(spawn,60,80,new AnimatorSmallEnnemy(spawn.pointValue()));// Valeurs brutes de la hitbox à préciser !
+		super(spawn,new PointInt(0,0) ,60,80,new AnimatorSmallEnnemy(spawn.pointValue()));// Valeurs brutes de la hitbox à préciser !
 		health = 1;
 	}
 
