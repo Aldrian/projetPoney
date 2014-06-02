@@ -9,9 +9,11 @@ public class Bomb extends NotMovingEntity
 	 * Constructeur de bomb
 	 * @param p spawn point de la bombe
 	 */
-	public Bomb(PointInt p)
+	
+	public Bomb(PointInt p, Terrain terrain)
 	{
 		super(p);
+
 	}
 		
 	@Override
