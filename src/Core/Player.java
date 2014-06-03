@@ -146,6 +146,7 @@ public class Player extends MovingEntity implements Cloneable
 		}
 		else {
 			this.saut=false;
+			this.setAir(true);
 			System.out.println("positionFinSaut =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 			System.out.println("CompteurSautFin = " + compteurSaut);
 			this.compteurSaut=0;

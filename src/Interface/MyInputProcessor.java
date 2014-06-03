@@ -1,5 +1,7 @@
 package Interface;
 
+import java.awt.event.KeyEvent;
+
 import Core.Player;
 import Core.Terrain;
 import Game.PointInt;
@@ -128,24 +130,27 @@ public class MyInputProcessor implements InputProcessor
 		case 'z' :
 			System.out.println("Saut demandé");
 			if (P2.canJump()) {
+				P2.setAir(false);
 				P2.compteurSaut=0;
 				P2.saut=true;
 				P2.posInitSaut = P2.currentPosition;
 				System.out.println("positionDebutSaut =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
 			}
 		break;
-		
-		case 38 /*LE PUTAIN DE CHAR CORRESPONDANT A LA TOUCHE ARROW UP*/:
-			System.out.println("Saut demandé");
+		}
+		return false;
+	}
+	
+	public void keyPressed(KeyEvent event) {
+        if (event.getKeyCode()==KeyEvent.VK_UP) {
+	    	System.out.println("Saut demandé");
 			if (P1.canJump()) {
+				P1.setAir(false);
 				P1.compteurSaut=0;
 				P1.saut=true;
 				P1.posInitSaut = P1.currentPosition;
 			}
-		break;
-		}
-		// TODO Auto-generated method stub
-		return false;
+	    }
 	}
 	
 	@Override
