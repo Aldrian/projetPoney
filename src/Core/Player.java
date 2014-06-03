@@ -44,7 +44,7 @@ public class Player extends MovingEntity implements Cloneable
 	
 	public boolean canJump() {
 		
-		Player p = (Player) this.clone();
+		/*Player p = (Player) this.clone();
 		int ligne = p.currentPosition.getY()/60;
 		int colonne = p.currentPosition.getX()/80;
 		System.out.println("ligne " + ligne);
@@ -79,7 +79,7 @@ public class Player extends MovingEntity implements Cloneable
 				ligne = p.currentPosition.getY()/60;
 				colonne = p.currentPosition.getX()/80;
 			}
-		}
+		}*/
 	return true;
 	}
 	
@@ -100,7 +100,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}
@@ -111,7 +111,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,-8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}	
@@ -127,7 +127,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}
@@ -138,7 +138,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,-8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}	
@@ -148,10 +148,10 @@ public class Player extends MovingEntity implements Cloneable
 			this.saut=false;
 			this.setAir(true);
 			System.out.println("positionFinSaut =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
-			System.out.println("CompteurSautFin = " + compteurSaut);
+			//System.out.println("CompteurSautFin = " + compteurSaut);
 			this.compteurSaut=0;
-			mouvement.set(0, 0);
-			this.posInitSaut.set(0, 0);
+			mouvement.set(0,0);
+			this.posInitSaut.set(0,0);
 			System.out.println("Saut terminé");
 			return (mouvement);
 		}

@@ -118,7 +118,7 @@ public class InGameScreen implements GameScreen {
     		
     		Little petitMonstre = new Little(terrain.monsters());
     		mstrs.add(petitMonstre);
-    		System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes.");
+    		//System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes.");
     		
     		if (this.seconde%5 == 0) {
     			if (compteurBombe < 3) {
@@ -133,19 +133,19 @@ public class InGameScreen implements GameScreen {
 
     				nme.add(bomb);
                 	compteurBombe++;
-                	System.out.println(random);
-                	System.out.println("Bombe créé ! AT : " + this.t.secCount +" secondes." + "AT : " + bomb.getCPx() + " / " + bomb.getCPy());
+                	//System.out.println(random);
+                	//System.out.println("Bombe créé ! AT : " + this.t.secCount +" secondes." + "AT : " + bomb.getCPx() + " / " + bomb.getCPy());
     			}
         	}
     		
     		if (this.seconde%20 == 0) {
         		Big grosMonstre = new Big(terrain.monsters());
         		mstrs.add(grosMonstre);
-        		System.out.println("Gros monstre créé ! AT : " + this.t.secCount +" secondes.");
+        		//System.out.println("Gros monstre créé ! AT : " + this.t.secCount +" secondes.");
         		
         		Box box = new Box(terrain.box());
         		nme.add(box);
-        		System.out.println("Laser créé ! AT : " + this.t.secCount +" secondes.");
+        		//System.out.println("Laser créé ! AT : " + this.t.secCount +" secondes.");
    
         	}
     		

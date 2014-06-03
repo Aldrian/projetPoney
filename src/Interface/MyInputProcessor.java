@@ -44,7 +44,6 @@ public class MyInputProcessor implements InputProcessor
 		
 		if (!P1.saut) {
 			P1.update(directionP1);
-			P1.setAir(true);
 		}
 		else P1.update(P1.jump(P1.posInitSaut,directionP1));
 		
@@ -68,22 +67,26 @@ public class MyInputProcessor implements InputProcessor
 		case Keys.RIGHT :
 			System.out.println("Déplacement à droite demandé");
 			directionP1.set(2,0);
+			P1.setAir(true);
 			
 		break;
 		case Keys.LEFT : 
 			System.out.println("Déplacement à gauche demandé");
 			directionP1.set(-2,0);
+			P1.setAir(true);
 			
 		break;
 		
 		case Keys.D :
 			System.out.println("Déplacement à droite demandé");
 			directionP2.set(2,0);
+			P2.setAir(true);
 			
 		break;
 		case Keys.Q : 
 			System.out.println("Déplacement à gauche demandé");
 			directionP2.set(-2,0);
+			P2.setAir(true);
 			
 		break;
 		}
@@ -132,7 +135,7 @@ public class MyInputProcessor implements InputProcessor
 		case 'z' :
 			System.out.println("Saut demandé");
 			if (P2.canJump()) {
-				P2.setAir(true);
+				P2.setAir(false);
 				P2.compteurSaut=0;
 				P2.saut=true;
 				P2.posInitSaut = P2.currentPosition;
@@ -147,7 +150,7 @@ public class MyInputProcessor implements InputProcessor
         if (event.getKeyCode()==KeyEvent.VK_UP) {
 	    	System.out.println("Saut demandé");
 			if (P1.canJump()) {
-				P1.setAir(true);
+				P1.setAir(false);
 				P1.compteurSaut=0;
 				P1.saut=true;
 				P1.posInitSaut = P1.currentPosition;
