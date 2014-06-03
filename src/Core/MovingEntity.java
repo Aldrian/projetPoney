@@ -61,6 +61,13 @@ public abstract class MovingEntity extends Entity {
 		animation.create();
 	}
 	
+	
+	public MovingEntity clone() {
+		MovingEntity doublon = null;
+		doublon = (MovingEntity) super.clone();
+		return doublon;
+	}
+	
 	/** Teste si deux entit고rentrent en collision
 	 * Sup곩eur ou ꨡl /!\
 	 * @param e

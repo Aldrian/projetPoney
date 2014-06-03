@@ -3,7 +3,6 @@ package Interface;
 import java.awt.event.KeyEvent;
 
 import Core.Player;
-import Core.Terrain;
 import Game.PointInt;
 
 import com.badlogic.gdx.Input.Keys;
@@ -49,7 +48,6 @@ public class MyInputProcessor implements InputProcessor
 		
 		if (!P2.saut) {
 			P2.update(directionP2);
-	    	P2.setAir(true);
 		}
 		else P2.update(P2.jump(P2.posInitSaut,directionP2));
 	}
@@ -65,28 +63,39 @@ public class MyInputProcessor implements InputProcessor
 		switch(key)
 		{
 		case Keys.RIGHT :
-			System.out.println("Déplacement à droite demandé");
-			directionP1.set(2,0);
-			P1.setAir(true);
+			//System.out.println("Déplacement à droite demandé");
+			if (P1.move){
+				directionP1.set(2,0);
+				
+			}
+			
 			
 		break;
 		case Keys.LEFT : 
-			System.out.println("Déplacement à gauche demandé");
-			directionP1.set(-2,0);
-			P1.setAir(true);
+			//System.out.println("Déplacement à gauche demandé");
+			if (P1.move){
+				directionP1.set(-2,0);
+				//P1.setAir(true);
+			}
 			
 		break;
 		
 		case Keys.D :
-			System.out.println("Déplacement à droite demandé");
-			directionP2.set(2,0);
-			P2.setAir(true);
+			//System.out.println("Déplacement à droite demandé");
+			if (P2.move) {
+				directionP2.set(2,0);
+				//P2.setAir(true);
+			}
+			
 			
 		break;
 		case Keys.Q : 
-			System.out.println("Déplacement à gauche demandé");
-			directionP2.set(-2,0);
-			P2.setAir(true);
+			//System.out.println("Déplacement à gauche demandé");
+			if (P2.move) {
+				directionP2.set(-2,0);
+				//P2.setAir(true);
+			}
+			
 			
 		break;
 		}
@@ -102,25 +111,40 @@ public class MyInputProcessor implements InputProcessor
 		switch(key)
 		{
 		case Keys.RIGHT :
-			System.out.println("Déplacement à droite arrêté");
-			directionP1.set(0,0);
-			P1.droite=true;
+			//System.out.println("Déplacement à droite arrêté");
+			if (P1.move) {
+				directionP1.set(0,0);
+				P1.droite=true;
+				//P1.setAir(true);
+			}
+			
 			
 		break;
 		case Keys.LEFT : 
-			System.out.println("Déplacement à gauche arrêté");
-			directionP1.set(0,0);
-			P1.droite=false;
+			//System.out.println("Déplacement à gauche arrêté");
+			if (P1.move) {
+				directionP1.set(0,0);
+				P1.droite=false;
+				//P1.setAir(true);
+			}
+			
 		break;
 		case Keys.D :
-			System.out.println("Déplacement à droite arrêté");
-			directionP2.set(0,0);
-			P2.droite=true;
+			//System.out.println("Déplacement à droite arrêté");
+			if (P2.move){
+				directionP2.set(0,0);
+				P2.droite=true;
+				//P2.setAir(true);
+			}
+			
 		break;
 		case Keys.Q : 
-			System.out.println("Déplacement à gauche arrêté");
-			directionP2.set(0,0);
-			P2.droite=false;
+			//System.out.println("Déplacement à gauche arrêté");
+			if (P2.move){
+				directionP2.set(0,0);
+				P2.droite=true;
+				//P2.setAir(true);
+			}
 		break;
 
 		}
@@ -130,18 +154,19 @@ public class MyInputProcessor implements InputProcessor
 
 	@Override
 	public boolean keyTyped(char arg0) {
-		switch(arg0)
-		{
-		case 'z' :
+		if(arg0 == 'z') {
 			System.out.println("Saut demandé");
-			if (P2.canJump()) {
-				P2.setAir(false);
+			if (P2.canJump(P2)) {
+				//P2.setAir(true);
 				P2.compteurSaut=0;
 				P2.saut=true;
 				P2.posInitSaut = P2.currentPosition;
 				System.out.println("positionDebutSaut =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
 			}
-		break;
+			else {
+				directionP2.set(0,0);
+				//P2.setAir(true);
+			}
 		}
 		return false;
 	}
@@ -149,11 +174,15 @@ public class MyInputProcessor implements InputProcessor
 	public void keyPressed(KeyEvent event) {
         if (event.getKeyCode()==KeyEvent.VK_UP) {
 	    	System.out.println("Saut demandé");
-			if (P1.canJump()) {
-				P1.setAir(false);
+			if (P1.canJump(P1)) {
+				//P1.setAir(false);
 				P1.compteurSaut=0;
 				P1.saut=true;
 				P1.posInitSaut = P1.currentPosition;
+			}
+			else {
+				directionP1.set(0,0);
+				//P1.setAir(true);
 			}
 	    }
 	}

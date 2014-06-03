@@ -3,7 +3,7 @@ package Core;
 import Game.PointInt;	
 
 
-public abstract class Entity
+public abstract class Entity implements Cloneable
 {
 	protected int ID;
 	private static int nbE=0;//Nombre d'Entity instanci�es --> ID 
@@ -23,6 +23,16 @@ public abstract class Entity
 	{
 		ID=nbE++;
 		this.currentPosition=p;
+	}
+	
+	public Entity clone() {
+		Entity doublon = null;
+		try {
+			doublon = (Entity) super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			cnse.printStackTrace(System.err);
+		}
+		return doublon;
 	}
 	
 	/**

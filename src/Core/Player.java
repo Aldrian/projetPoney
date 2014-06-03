@@ -4,7 +4,7 @@ import Game.PointInt;
 import Interface.AnimatorPlayer;
 
 
-public class Player extends MovingEntity implements Cloneable
+public class Player extends MovingEntity 
 {
 	private boolean state;
 	private Weapon wp;
@@ -26,42 +26,32 @@ public class Player extends MovingEntity implements Cloneable
 		super(p,p,54,54,new AnimatorPlayer(p.pointValue()));
 		this.blocks=terrain.blocks;
 	}
+
 	
-	public Player clone() {
-		Player doublon = null;
-		try {
-			// On récupère l'instance à renvoyer par l'appel de la 
-			// méthode super.clone()
-			doublon = (Player) super.clone();
-		} catch(CloneNotSupportedException cnse) {
-			// Ne devrait jamais arriver car nous implémentons 
-			// l'interface Cloneable
-			cnse.printStackTrace(System.err);
-		}
-		// on renvoie le clone
-		return doublon;
-	}
-	
-	public boolean canJump() {
+	public boolean canJump(Player player) {
 		
-		/*Player p = (Player) this.clone();
-		int ligne = p.currentPosition.getY()/60;
-		int colonne = p.currentPosition.getX()/80;
+		int posX = player.currentPosition.getX();
+		int posY = player.currentPosition.getY();
+		int ligne = posY/60;
+		int colonne = posX/80;
 		System.out.println("ligne " + ligne);
 		System.out.println("colonne " + colonne);
 		
 		if (this.droite==true) {
 			
 			for (int i = 0; i<25;i++) {
-				if (this.blocks[ligne][colonne]==1) {
+				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || (posX > 800-54) || (posY < 0) || (posY > 600-54)) {
+					//System.out.println("Faux !");
 					return false;
 				}
+				else {
 					
-				p.currentPosition.setX(p.currentPosition.getX()+2);
-				p.currentPosition.setY(p.currentPosition.getY()+8);
-				
-				ligne = p.currentPosition.getY()/60;
-				colonne = p.currentPosition.getX()/80;
+					posX=posX+2;
+					posY=posY+8;
+					
+					ligne = posY/60;
+					colonne = posX/80;
+				}
 
 			}
 		}
@@ -69,17 +59,19 @@ public class Player extends MovingEntity implements Cloneable
 		else {
 			
 			for (int i = 0; i<25;i++) {
-				if (this.blocks[ligne][colonne]==1) {
+				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || (posX > 800-54) || (posY < 0) || (posY > 600-54)) {
+					//System.out.println("Faux !");
 					return false;
 				}
+				else {
+					posX=posX-2;
+					posY=posY+8;
 					
-				p.currentPosition.setX(p.currentPosition.getX()-2);
-				p.currentPosition.setY(p.currentPosition.getY()+8);
-				
-				ligne = p.currentPosition.getY()/60;
-				colonne = p.currentPosition.getX()/80;
+					ligne = posY/60;
+					colonne = posX/80;
+				}
 			}
-		}*/
+		}
 	return true;
 	}
 	
@@ -100,7 +92,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}
@@ -111,7 +103,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(2,-8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}	
@@ -127,7 +119,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}
@@ -138,7 +130,7 @@ public class Player extends MovingEntity implements Cloneable
 					}
 					mouvement.set(-2,-8);
 					//System.out.println("CompteurSaut = " + compteurSaut);
-					//System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
+					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
 					return mouvement;
 				}	
@@ -146,6 +138,7 @@ public class Player extends MovingEntity implements Cloneable
 		}
 		else {
 			this.saut=false;
+			this.move=true;
 			this.setAir(true);
 			System.out.println("positionFinSaut =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 			//System.out.println("CompteurSautFin = " + compteurSaut);
