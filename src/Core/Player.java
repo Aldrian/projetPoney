@@ -12,7 +12,7 @@ public class Player extends MovingEntity implements Cloneable
 	public boolean move=true;
 	public boolean droite= true;
 	public boolean saut=false;
-	private boolean air;
+	private boolean air=true;
 	public int compteurSaut = 0;
 	public PointInt posInitSaut = new PointInt(0,0);
 	private int[][] blocks;
