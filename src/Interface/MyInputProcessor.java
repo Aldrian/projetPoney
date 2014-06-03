@@ -48,7 +48,7 @@ public class MyInputProcessor implements InputProcessor
 		if (!P2.saut) {
 			P2.update(directionP2);
 		}
-		else P2.update(P2.jump(P1.posInitSaut,directionP2));
+		else P2.update(P2.jump(P2.posInitSaut,directionP2));
 	}
 	
 	/**
@@ -127,11 +127,11 @@ public class MyInputProcessor implements InputProcessor
 		{
 		case 'z' :
 			System.out.println("Saut demandé");
-			//System.out.println("position =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
 			if (P2.canJump()) {
 				P2.compteurSaut=0;
 				P2.saut=true;
 				P2.posInitSaut = P2.currentPosition;
+				System.out.println("positionDebutSaut =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
 			}
 		break;
 		

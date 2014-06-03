@@ -139,7 +139,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==5)
 				{
-					bombspawn.add(new PointInt(i*60,j*80));
+					bombspawn.add(new PointInt(j*80,i*60));
 				}
 			}					
 		}		
@@ -158,7 +158,7 @@ public class Terrain
 			{
 				if(blocks[i][j]==6)
 				{
-					return new PointInt(i*60,j*80);
+					return new PointInt(j*80,i*60);
 				}
 			}					
 		}
@@ -177,7 +177,8 @@ public class Terrain
 			{
 				if(blocks[i][j]==4)
 				{
-					return new PointInt(i*60,j*80);
+					return new PointInt(j*80,i*60);
+					
 				}
 			}					
 		}
@@ -196,17 +197,17 @@ public class Terrain
 			{
 				if(blocks[i][j]==3)
 				{
-					return new PointInt(i*60,j*80);
+					return new PointInt(j*80+50,i*80-10);
 				}
 			}					
 		}		
 		return null;
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
     	Terrain terrain=new Terrain("res/map/terrain.txt");
 
-	}
+	}*/
 }
 

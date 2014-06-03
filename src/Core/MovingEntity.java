@@ -128,7 +128,6 @@ public abstract class MovingEntity extends Entity {
 		
 		this.currentPosition.setX(this.currentPosition.getX()+direction.getX());
 		this.currentPosition.setY(this.currentPosition.getY()+direction.getY());
-		//System.out.println("currentPosition =  " + currentPosition.getX() + "   /    " + currentPosition.getY() );
 		
 
 	}
