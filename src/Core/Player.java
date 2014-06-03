@@ -12,7 +12,7 @@ public class Player extends MovingEntity
 	public boolean move=true;
 	public boolean droite= true;
 	public boolean saut=false;
-	private boolean air;
+	public boolean air=true;
 	public int compteurSaut = 0;
 	public PointInt posInitSaut = new PointInt(0,0);
 	private int[][] blocks;
@@ -137,6 +137,7 @@ public class Player extends MovingEntity
 		else {
 			this.saut=false;
 			this.move=true;
+			this.air=true;
 			System.out.println("positionFinSaut =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 			//System.out.println("CompteurSautFin = " + compteurSaut);
 			this.compteurSaut=0;

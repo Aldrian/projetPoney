@@ -142,7 +142,7 @@ public class MyInputProcessor implements InputProcessor
 			//System.out.println("Déplacement à gauche arrêté");
 			if (P2.move){
 				directionP2.set(0,0);
-				P2.droite=true;
+				P2.droite=false;
 				//P2.setAir(true);
 			}
 		break;
