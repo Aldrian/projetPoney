@@ -88,7 +88,7 @@ public class Player extends MovingEntity
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=true;
 					}
-					mouvement.set(2,8);
+					mouvement.set(2,10);
 					//System.out.println("CompteurSaut = " + compteurSaut);
 					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
@@ -99,7 +99,7 @@ public class Player extends MovingEntity
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=false;
 					}
-					mouvement.set(2,-8);
+					mouvement.set(2,-10);
 					//System.out.println("CompteurSaut = " + compteurSaut);
 					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
@@ -115,7 +115,7 @@ public class Player extends MovingEntity
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=true;
 					}
-					mouvement.set(-2,8);
+					mouvement.set(-2,10);
 					//System.out.println("CompteurSaut = " + compteurSaut);
 					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;
@@ -126,7 +126,7 @@ public class Player extends MovingEntity
 					if (this.currentPosition.getY() == posInit.getY() + 180) {
 						this.tir=false;
 					}
-					mouvement.set(-2,-8);
+					mouvement.set(-2,-10);
 					//System.out.println("CompteurSaut = " + compteurSaut);
 					System.out.println("position =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 					this.compteurSaut++;

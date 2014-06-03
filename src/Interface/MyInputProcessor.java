@@ -79,7 +79,13 @@ public class MyInputProcessor implements InputProcessor
 			}
 			
 		break;
-		
+		case Keys.UP :
+			//System.out.println("Déplacement à droite demandé");
+			P1.move=false;
+			directionP1.set(0,2);
+			
+			
+		break;
 		case Keys.D :
 			//System.out.println("Déplacement à droite demandé");
 			if (P2.move) {
@@ -95,6 +101,12 @@ public class MyInputProcessor implements InputProcessor
 				directionP2.set(-2,0);
 				//P2.setAir(true);
 			}
+			
+		break;
+		case Keys.Z :
+			//System.out.println("Déplacement à droite demandé");
+			P2.move=false;
+			directionP2.set(0,2);
 			
 			
 		break;
@@ -129,6 +141,13 @@ public class MyInputProcessor implements InputProcessor
 			}
 			
 		break;
+		case Keys.UP :
+			//System.out.println("Déplacement à droite demandé");
+			P1.move=true;
+			directionP1.set(0,0);
+			
+			
+		break;
 		case Keys.D :
 			//System.out.println("Déplacement à droite arrêté");
 			if (P2.move){
@@ -146,6 +165,13 @@ public class MyInputProcessor implements InputProcessor
 				//P2.setAir(true);
 			}
 		break;
+		case Keys.Z :
+			//System.out.println("Déplacement à droite demandé");
+			P2.move=true;
+			directionP2.set(0,0);
+			
+			
+		break;
 
 		}
 		return true;
@@ -154,7 +180,7 @@ public class MyInputProcessor implements InputProcessor
 
 	@Override
 	public boolean keyTyped(char arg0) {
-		if(arg0 == 'z') {
+		/*if(arg0 == 'z') {
 			System.out.println("Saut demandé");
 			if (P2.canJump()) {
 				//P2.setAir(true);
@@ -167,12 +193,12 @@ public class MyInputProcessor implements InputProcessor
 				directionP2.set(0,0);
 				//P2.setAir(true);
 			}
-		}
+		}*/
 		return false;
 	}
 	
 	public void keyPressed(KeyEvent event) {
-        if (event.getKeyCode()==KeyEvent.VK_UP) {
+        /*if (event.getKeyCode()==KeyEvent.VK_UP) {
 	    	System.out.println("Saut demandé");
 			if (P1.canJump()) {
 				//P1.setAir(false);
@@ -184,7 +210,7 @@ public class MyInputProcessor implements InputProcessor
 				directionP1.set(0,0);
 				//P1.setAir(true);
 			}
-	    }
+	    }*/
 	}
 	
 	@Override
