@@ -98,6 +98,9 @@ public abstract class Animator implements ApplicationListener
 		spriteBatch.begin();
 		spriteBatch.draw(currentFrame, renderPosition.x , renderPosition.y);
 		spriteBatch.end();
+		
+		//System.out.println(renderPosition.x);
+		//System.out.println(renderPosition.y);
 	}
 
 	@Override
