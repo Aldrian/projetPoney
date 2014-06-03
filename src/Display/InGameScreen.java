@@ -128,7 +128,7 @@ public class InGameScreen implements GameScreen {
 	    					random = (int)(Math.random() * 3)+1;
 	    				}
     				}
-    				Bomb bomb = new Bomb(terrain.bombs().get(random-1),terrain);
+    				Bomb bomb = new Bomb(terrain.bombs().get(random-1));
     				emplacementBombeLibre[random-1]=false;
 
     				nme.add(bomb);

@@ -10,7 +10,7 @@ public class Bomb extends NotMovingEntity
 	 * @param p spawn point de la bombe
 	 */
 	
-	public Bomb(PointInt p, Terrain terrain)
+	public Bomb(PointInt p)
 	{
 		super(p);
 
