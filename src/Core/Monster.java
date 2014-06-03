@@ -33,7 +33,7 @@ public abstract class Monster extends MovingEntity
 	 * @param h height
 	 * @param a animation
 	 */
-	public Monster(PointInt p, int w,int h, Animator a)
+	public Monster(PointInt p, PointInt direction, int w,int h, Animator a)
 	{
 		super(p,new PointInt(0,0),w,h,a);
 	}

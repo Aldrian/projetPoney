@@ -196,8 +196,8 @@ public class Terrain
 			for(int j=0;j<10;j++)
 			{
 				if(blocks[i][j]==3)
-				{
-					return new PointInt(j*80+50,i*80-10);
+				{	
+					return new PointInt(j*60,i*80);
 				}
 			}					
 		}		
