@@ -82,9 +82,9 @@ public class InGameScreen implements GameScreen {
     	
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players(),terrain);
-    	//System.out.println(P1.hashCode());
+    	System.out.println(P1.hashCode());
     	P2 = new Player(terrain.players(),terrain);
-    	//System.out.println(P2.hashCode());
+    	System.out.println(P2.hashCode());
     	
     	me.add(P1);
     	me.add(P2);
@@ -113,12 +113,13 @@ public class InGameScreen implements GameScreen {
     	
 
     	colls=new ArrayList<Collision>();
-
+    	
     	if (this.t.sec()==this.seconde) {
     		
     		Little petitMonstre = new Little(terrain.monsters());
     		mstrs.add(petitMonstre);
-    		//System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes.");
+    		me.add(petitMonstre);
+    		System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes."+petitMonstre.getCPx()+" "+petitMonstre.getCPy());
     		
     		if (this.seconde%5 == 0) {
     			if (compteurBombe < 3) {
@@ -141,6 +142,7 @@ public class InGameScreen implements GameScreen {
     		if (this.seconde%20 == 0) {
         		Big grosMonstre = new Big(terrain.monsters());
         		mstrs.add(grosMonstre);
+        		me.add(grosMonstre);
         		//System.out.println("Gros monstre créé ! AT : " + this.t.secCount +" secondes.");
         		
         		Box box = new Box(terrain.box());
@@ -157,8 +159,8 @@ public class InGameScreen implements GameScreen {
     	
     	
     	
-    	//P1.setAir(true);
-    	//P2.setAir(true);
+    	P1.setAir(true);
+    	P2.setAir(true);
     	for(Monster m:mstrs)
     	{
     		m.setAir(true);
@@ -285,8 +287,10 @@ public class InGameScreen implements GameScreen {
     public void render(GameContainer gc, Graphics g) {
 
     	w.render(g);
-    	P1.render(g);
-    	P2.render(g);
+    	for (MovingEntity m :me)
+    	{
+    		m.render(g);
+    	}
     	countDown.render();
    }
     
