@@ -156,7 +156,7 @@ public class MyInputProcessor implements InputProcessor
 	public boolean keyTyped(char arg0) {
 		if(arg0 == 'z') {
 			System.out.println("Saut demandé");
-			if (P2.canJump(P2)) {
+			if (P2.canJump()) {
 				//P2.setAir(true);
 				P2.compteurSaut=0;
 				P2.saut=true;
@@ -174,7 +174,7 @@ public class MyInputProcessor implements InputProcessor
 	public void keyPressed(KeyEvent event) {
         if (event.getKeyCode()==KeyEvent.VK_UP) {
 	    	System.out.println("Saut demandé");
-			if (P1.canJump(P1)) {
+			if (P1.canJump()) {
 				//P1.setAir(false);
 				P1.compteurSaut=0;
 				P1.saut=true;

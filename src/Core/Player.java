@@ -12,7 +12,7 @@ public class Player extends MovingEntity
 	public boolean move=true;
 	public boolean droite= true;
 	public boolean saut=false;
-	private boolean air=true;
+	private boolean air;
 	public int compteurSaut = 0;
 	public PointInt posInitSaut = new PointInt(0,0);
 	private int[][] blocks;
@@ -28,48 +28,46 @@ public class Player extends MovingEntity
 	}
 
 	
-	public boolean canJump(Player player) {
+	public boolean canJump() {
 		
-		int posX = player.currentPosition.getX();
-		int posY = player.currentPosition.getY();
-		int ligne = posY/60;
-		int colonne = posX/80;
-		System.out.println("ligne " + ligne);
-		System.out.println("colonne " + colonne);
+		int posX = this.currentPosition.getX();
+		int posY = this.currentPosition.getY();
 		
 		if (this.droite==true) {
-			
+			int ligne = (posY+54)/60;
+			int colonne = (posX+54)/80;
+			System.out.println("ligne " + ligne);
+			System.out.println("colonne " + colonne);
 			for (int i = 0; i<25;i++) {
+				posX=posX+2;
+				posY=posY+8;
+				
+				ligne = posY/60;
+				colonne = posX/80;
 				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || (posX > 800-54) || (posY < 0) || (posY > 600-54)) {
-					//System.out.println("Faux !");
+					System.out.println("Faux !");
 					return false;
-				}
-				else {
-					
-					posX=posX+2;
-					posY=posY+8;
-					
-					ligne = posY/60;
-					colonne = posX/80;
 				}
 
 			}
 		}
 			
 		else {
-			
+			int ligne = (posY+54)/60;
+			int colonne = (posX-54)/80;
+			System.out.println("ligne " + ligne);
+			System.out.println("colonne " + colonne);
 			for (int i = 0; i<25;i++) {
+				posX=posX-2;
+				posY=posY+8;
+				
+				ligne = posY/60;
+				colonne = posX/80;
 				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || (posX > 800-54) || (posY < 0) || (posY > 600-54)) {
-					//System.out.println("Faux !");
+					System.out.println("Faux !");
 					return false;
 				}
-				else {
-					posX=posX-2;
-					posY=posY+8;
-					
-					ligne = posY/60;
-					colonne = posX/80;
-				}
+
 			}
 		}
 	return true;
@@ -139,7 +137,6 @@ public class Player extends MovingEntity
 		else {
 			this.saut=false;
 			this.move=true;
-			this.setAir(true);
 			System.out.println("positionFinSaut =  " + this.currentPosition.getX() + "   /    " + this.currentPosition.getY() );
 			//System.out.println("CompteurSautFin = " + compteurSaut);
 			this.compteurSaut=0;
