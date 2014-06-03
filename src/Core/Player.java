@@ -1,5 +1,9 @@
 package Core;
 
+import java.util.Set;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import Game.PointInt;
 import Interface.AnimatorPlayer;
 
@@ -16,6 +20,8 @@ public class Player extends MovingEntity
 	public int compteurSaut = 0;
 	public PointInt posInitSaut = new PointInt(0,0);
 	private int[][] blocks;
+	private Set<Shot> tirs = null;
+	private Weapon arme = new Gun();
 	
 	/**
 	 * Constructeur des joueurs
@@ -173,6 +179,13 @@ public class Player extends MovingEntity
 		// Pas d'autres cas
 	}
 
+	/*
+	 * Active un tir
+	 */
+	public void shot()
+	{
+		tirs.add(arme.shoot(this.mouvement.getOrigin(), this.mouvement.getDirection()));
+	}
 	/*
 	 * Getters et setters
 	 */
