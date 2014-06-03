@@ -158,12 +158,16 @@ public class InGameScreen implements GameScreen {
     	
     	
     	
-    	if (!P1.saut) {
-    		P1.setAir(true);
+    	if (P1.saut) {
+    		P1.setAir(false);
     	}
-    	if (!P2.saut) {
-    		P2.setAir(true);
+    	else P1.setAir(true);
+    	
+    	if (P2.saut) {
+    		P2.setAir(false);
     	}
+    	else P1.setAir(true);
+    	
     	for(Monster m:mstrs)
     	{
     		m.setAir(true);
