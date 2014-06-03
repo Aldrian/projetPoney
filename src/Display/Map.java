@@ -120,7 +120,7 @@ public class Map {
 				case Platform :
 					if(noPlatformYet)
 					{
-						platformLeft.setPosition(x-34, y);
+						platformLeft.setPosition(x-10, y+5);
 						g.drawSprite(platformLeft);
 					}
 					noPlatformYet = false;
@@ -129,27 +129,27 @@ public class Map {
 					g.drawSprite(platform);
 			      	break;
 				case Spawner : 
-					if (isPlatformRight) {
-						platformRight.setPosition(x,y);
+					/*if (isPlatformRight) {
+						platformRight.setPosition(x,y+3);
 						g.drawSprite(platformRight);						
-					}
+					}*/
 					isPlatformRight = false;
 					
-					noPlatformYet = true;
+					noPlatformYet = false;
 			        break;
 				case Pit : 
-					if (isPlatformRight) {
-						platformRight.setPosition(x,y);
+					/*if (isPlatformRight) {
+						platformRight.setPosition(x,y+3);
 						g.drawSprite(platformRight);						
-					}
+					}*/
 					isPlatformRight = false;
 					
-					noPlatformYet = true;
+					noPlatformYet = false;
 			        break;				
 				
 				case None :
 					if (isPlatformRight) {
-						platformRight.setPosition(x,y);
+						platformRight.setPosition(x,y+3);
 						g.drawSprite(platformRight);						
 					}
 					isPlatformRight = false;
