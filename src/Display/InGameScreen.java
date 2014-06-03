@@ -119,7 +119,7 @@ public class InGameScreen implements GameScreen {
     		Little petitMonstre = new Little(terrain.monsters());
     		mstrs.add(petitMonstre);
     		me.add(petitMonstre);
-    		System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes."+petitMonstre.getCPx()+" "+petitMonstre.getCPy());
+    		//System.out.println("Monstre créé ! AT : " + this.t.secCount +" secondes."+petitMonstre.getCPx()+" "+petitMonstre.getCPy());
     		
     		if (this.seconde%5 == 0) {
     			if (compteurBombe < 3) {

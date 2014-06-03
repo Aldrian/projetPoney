@@ -52,8 +52,20 @@ public class Collision
 			}
 			else if (e2 instanceof Platform)
 			{
+				//Droite
+				if (e1.getCPx()>=e2.getEdgeX())
+				{
+					e1.update(Event.Stop);
+					//e1.currentPosition.setX(e2.getEdgeX());
+				}
+				//Gauche
+				else if (e1.getEdgeX()<=e2.getCPx())
+				{
+					e1.update(Event.Stop);
+					//e1.currentPosition.setX(e2.getCPx()); Fait flotter le putain de poney ????
+				}
 				//Collision entre le bas de e1 et le haut de e2
-				if(e1.getCPy()<=e2.getEdgeY())
+				else if(e1.getCPy()<=e2.getEdgeY())
 				{
 					if(e1.previousPosition.getY()>e1.getCPy()) // le joueur était dans les airs avant
 					{
@@ -62,12 +74,6 @@ public class Collision
 					}
 					//System.out.println("plateforme touch");
 					((Player) e1).setAir(false);
-				}
-				
-				//Gauche ou droite
-				else if (e1.getCPx()==e2.getEdgeX() || e1.getEdgeX()==e2.getCPx())
-				{
-					 e1.update(Event.Stop);
 				}
 			}
 			else if (e2 instanceof Wall)

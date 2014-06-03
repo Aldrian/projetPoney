@@ -40,7 +40,7 @@ public class Player extends MovingEntity
 		if (this.droite==true) {
 			
 			for (int i = 0; i<25;i++) {
-				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || (posX > 800-54) || (posY < 0) || (posY > 600-54)) {
+				if ((this.blocks[ligne][colonne]==1) || (posX < 0) || ( posX > 800-54) || (posY < 0) || (posY > 600-54)) {
 					//System.out.println("Faux !");
 					return false;
 				}
