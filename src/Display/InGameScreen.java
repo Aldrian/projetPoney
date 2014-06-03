@@ -82,9 +82,9 @@ public class InGameScreen implements GameScreen {
     	
     	//Initialisation du poney et du déplacement
     	P1 = new Player(terrain.players(),terrain);
-    	System.out.println(P1.hashCode());
+    	//System.out.println(P1.hashCode());
     	P2 = new Player(terrain.players(),terrain);
-    	System.out.println(P2.hashCode());
+    	//System.out.println(P2.hashCode());
     	
     	me.add(P1);
     	me.add(P2);
@@ -158,9 +158,12 @@ public class InGameScreen implements GameScreen {
     	
     	
     	
-    	
-    	P1.setAir(true);
-    	P2.setAir(true);
+    	if (!P1.saut) {
+    		P1.setAir(true);
+    	}
+    	if (!P2.saut) {
+    		P2.setAir(true);
+    	}
     	for(Monster m:mstrs)
     	{
     		m.setAir(true);
