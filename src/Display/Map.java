@@ -18,7 +18,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  */
 public class Map {
 	
-	Sprite fond, platform, pit;
+	Sprite fond, platform, pit, spawner;
 	Sprite platformRight, platformLeft;
 	BackgroundElement mapElements[][];
 	
@@ -38,6 +38,8 @@ public class Map {
 	{
 		fond = new Sprite(new Texture(Gdx.files.internal("res/img/Background/bg.png")));		
 		platform = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platform.png")));	
+		pit = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/spawner.png")));	
+		spawner = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/pit.png")));	
 		platformRight = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformRight.png")));	
 		platformLeft = new Sprite(new Texture(Gdx.files.internal("res/img/Platform/platformLeft.png")));	
 		mapElements = new BackgroundElement[10][10];
@@ -129,19 +131,16 @@ public class Map {
 					g.drawSprite(platform);
 			      	break;
 				case Spawner : 
-					/*if (isPlatformRight) {
-						platformRight.setPosition(x,y+3);
-						g.drawSprite(platformRight);						
-					}*/
+					pit.setPosition(x,y);
+					g.drawSprite(pit);
 					isPlatformRight = false;
 					
 					noPlatformYet = false;
 			        break;
 				case Pit : 
-					/*if (isPlatformRight) {
-						platformRight.setPosition(x,y+3);
-						g.drawSprite(platformRight);						
-					}*/
+					spawner.setPosition(x,y-9);
+					g.drawSprite(spawner);
+					
 					isPlatformRight = false;
 					
 					noPlatformYet = false;
