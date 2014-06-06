@@ -46,7 +46,7 @@ public class LoadingScreen implements GameScreen {
     /** 
      * Attends un appui sur une touche avant de passer à l'état InGamescreen
      */
-    public void update(GameContainer gc, ScreenManager screenManager, float delta) {
+    public void update(GameContainer gc, @SuppressWarnings("rawtypes") ScreenManager screenManager, float delta) {
     	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
     	if(appuiTouche) {
             //Fade to InGameScreen

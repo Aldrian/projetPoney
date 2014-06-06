@@ -1,7 +1,5 @@
 package Interface;
 
-import java.awt.event.KeyEvent;
-
 import Core.Player;
 import Game.PointInt;
 

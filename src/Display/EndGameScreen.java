@@ -63,7 +63,7 @@ public class EndGameScreen implements GameScreen {
      * Rappelle la fonction d'initialiation des autres écran pour revenir à l'écran 
      * de départ.
      */
-    public void update(GameContainer gc, ScreenManager screenManager, float delta) {
+    public void update(GameContainer gc, @SuppressWarnings("rawtypes") ScreenManager screenManager, float delta) {
     	if (Gdx.input.isKeyPressed(Keys.ANY_KEY)) appuiTouche = true;
     	if(appuiTouche) {
     		screenManager.getGameScreen(EndGameScreen.ID).initialise(gc);

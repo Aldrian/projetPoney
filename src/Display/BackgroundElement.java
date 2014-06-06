@@ -1,7 +1,5 @@
 package Display;
 import org.mini2Dx.core.geom.Point;
-import org.mini2Dx.core.graphics.Graphics;
-
 /**
  * @author Julien
  * Classe gérant un élément présent en fond de jeu.

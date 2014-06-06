@@ -21,7 +21,6 @@ import Interface.MyInputProcessor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  * Etat principal du jeu, définit l'état dans lequel la partie se joue.
@@ -108,8 +107,7 @@ public class InGameScreen implements GameScreen {
      * appelle la fonction update de la fenêtre
      * Récupère la touche saisie par l'utilisateur
      */
-    @SuppressWarnings("static-access")
-	public void update(GameContainer gc, ScreenManager screenManager, float delta) {
+    public void update(GameContainer gc, @SuppressWarnings("rawtypes") ScreenManager screenManager, float delta) {
     	
 
     	colls=new ArrayList<Collision>();
@@ -267,7 +265,8 @@ public class InGameScreen implements GameScreen {
 
     
     
-    private boolean emplacementBombeLibre(int random) {
+    @SuppressWarnings("unused")
+	private boolean emplacementBombeLibre(int random) {
 		// TODO Auto-generated method stub
 		return false;
 	}
