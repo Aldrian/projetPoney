@@ -24,7 +24,7 @@ public class AnimatorBigEnnemy extends Animator {
 	}
 
 	/**
-	 * initialisation de l'animation
+	 * initialisation de l'animation sur le spritSheet correspondant
 	 */
 	@Override
 	public void create() {

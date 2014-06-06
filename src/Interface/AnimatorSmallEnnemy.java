@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Classe dérivée d'animation d'un petit ennemi
+ * Classe dérivée d'animation d'un petit ennemi sur le spritSheet correspondant
  * @author Gaëtan
  *
  */
