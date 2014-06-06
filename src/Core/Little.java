@@ -7,7 +7,7 @@ public class Little extends Monster
 {
 	/**
 	 * Constructeur de Little Monster
-	 * @param p
+	 * @param p point d'apparition du petit monstre
 	 */
 	public Little(PointInt spawn)
 	{

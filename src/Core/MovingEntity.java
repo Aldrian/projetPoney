@@ -10,7 +10,7 @@ import Interface.Animator;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Entit�s associ�es � une animation. Cette classe factorise Monster et Player afin de rendre plus simple l'utilisation des animations
+ * Entités associées à une animation. Cette classe factorise Monster et Player afin de rendre plus simple l'utilisation des animations
  * 
  * @author Ga�tan
  *
@@ -20,12 +20,12 @@ public abstract class MovingEntity extends Entity {
 	protected PointInt previousPosition;
 	
 	/**
-	 * Animation associ�e
+	 * Animation associée
 	 */
 
 	protected Animator animation; 
 	/**
-	 * Mouvement courant associ�
+	 * Mouvement courant associé
 	 */
 	protected Move mouvement;
 		
@@ -68,8 +68,7 @@ public abstract class MovingEntity extends Entity {
 		return doublon;
 	}
 	
-	/** Teste si deux entit고rentrent en collision
-	 * Sup곩eur ou ꨡl /!\
+	/** Teste si deux entités rentrent en collision
 	 * @param e
 	 * @return Collision
 	 */
@@ -124,9 +123,9 @@ public abstract class MovingEntity extends Entity {
 	}
 
 	/**
-	 * Met � jour la direction la direction prise par l'entit�
+	 * Met à jour la direction la direction prise par l'entité
 	 * Utilise un PointInt
-	 * La direction �gale � la derni�re position donnera un mouvement nul
+	 * La direction égale à la dernière position donnera un mouvement nul
 	 * @param direction
 	 */
 	public void  update(PointInt direction)
@@ -141,8 +140,8 @@ public abstract class MovingEntity extends Entity {
 	
 	
 	/**
-	 * Interpolation lin�raire de la direction du personnage : permet ainsi de calculer ses coordonn�es de rendu
-	 * synchronis�es avec l'horloge du jeu
+	 * Interpolation linéaire de la direction du personnage : permet ainsi de calculer ses coordonnées de rendu
+	 * synchronisées avec l'horloge du jeu
 	 * @param alpha
 	 */
 	public void interpolate(float alpha) 
@@ -156,7 +155,7 @@ public abstract class MovingEntity extends Entity {
 	}
 	
 	/**
-	 * Rendu graphique. Prend en param�tre le graphic.
+	 * Rendu graphique. Prend en paramètre le graphic.
 	 * @param g
 	 */
 	public void render(Graphics g) 

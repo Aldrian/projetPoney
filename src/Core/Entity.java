@@ -76,7 +76,7 @@ public abstract class Entity implements Cloneable
 	}
 
 	
-	/** Fonction appelï¿½e en cas de collision avec une autre entitï¿½
+	/** Fonction appelée en cas de collision avec une autre entité
 	 * 
 	 * @param e
 	 * @throws Throwable 
@@ -94,7 +94,7 @@ public abstract class Entity implements Cloneable
 	}
 	
 	/**  
-	 * @return y l'ordonnï¿½e de la position actuelle
+	 * @return y l'ordonnée de la position actuelle
 	 */
 	public int getCPy()
 	{
@@ -110,7 +110,7 @@ public abstract class Entity implements Cloneable
 	}
 	
 	/** 
-	 * @return y l'ordonnï¿½e du bord haut de la hitbox
+	 * @return y l'ordonnée du bord haut de la hitbox
 	 */
 	public int getEdgeY()
 	{

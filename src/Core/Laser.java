@@ -25,10 +25,3 @@ public class Laser extends Weapon
 	}
 }
 
-/*
- *  LASER : Cahier des charges:
- *  Un seul tir à la fois 
- *  Possiblité de l'utiliser pendant 5 secondes après pickup
- *  Le laser traverse les ennemis et ne disparait que contre un mur ou une plateforme
- *	1PV par ennemi traversé   
- */

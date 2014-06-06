@@ -6,7 +6,7 @@ public class Box extends NotMovingEntity {
 
 	/**
 	 * Constructeur de Box
-	 * @param p spawn point
+	 * @param p point d'apparition de la boite
 	 */
 	public Box(PointInt p) {
 		super(p);

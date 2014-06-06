@@ -2,8 +2,6 @@ package Core;
 
 import java.util.Set;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import Game.PointInt;
 import Interface.AnimatorPlayer;
 
@@ -33,7 +31,9 @@ public class Player extends MovingEntity
 		this.blocks=terrain.blocks;
 	}
 
-	
+	/**
+	 * Fonction permettant d'autoriser ou non un saut
+	 */
 	public boolean canJump() {
 		
 		int posX = this.currentPosition.getX();
@@ -79,7 +79,12 @@ public class Player extends MovingEntity
 	return true;
 	}
 	
-	//en cours de refonte
+	/**
+	 * Fonction de saut
+	 * @param posInit position initiale du joueur à l'appel de la fonction
+	 * @param mouvement vierge d'un joueur
+	 * @return mouvement à effectuer
+	 */
 	public PointInt jump(PointInt posInit,PointInt mouvement) {
 		// jump height = 200p;
 		// jump width = 100p;

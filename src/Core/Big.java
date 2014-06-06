@@ -7,7 +7,7 @@ public class Big extends Monster
 {
 	/**
 	 * Constructeur des gros monstres
-	 * @param p point de spawn
+	 * @param p point d'apparition du gros monstre
 	 */
 	public Big(PointInt spawn)
 	{
