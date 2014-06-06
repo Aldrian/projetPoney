@@ -25,7 +25,7 @@ public class PointInt {
 	
 	/**
 	 * Constrcteur de recopie à partir d'un Point LibGDX
-	 * @param p
+	 * @param Point libgdx à convertir
 	 */
 	public PointInt(Point p)
 	{
@@ -35,8 +35,8 @@ public class PointInt {
 	
 	/**
 	 * Constructeur par paramètres
-	 * @param a
-	 * @param b
+	 * @param coordonnée x
+	 * @param coordonnée y
 	 */
 	public PointInt(int a, int b)
 	{
@@ -46,7 +46,7 @@ public class PointInt {
 	
 	/**
 	 * Constructeur par recopie
-	 * @param p
+	 * @param PointInt
 	 */
 	public PointInt(PointInt p)
 	{
@@ -56,7 +56,7 @@ public class PointInt {
 	
 	/**
 	 * Conversion du PointInt en Point LibGDX
-	 * @return
+	 * @return Point libgdx
 	 */
 	public Point pointValue()
 	{

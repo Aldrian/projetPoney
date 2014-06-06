@@ -95,8 +95,9 @@ public class AnimatorCountDown extends Animator {
 	
 	/**
 	 * Mise à jour des coordonnées courantes de l'animation
-	 * @param x
-	 * @param y
+	 * @param coordonée de render x
+	 * @param coordonée de render y
+	 * @param mouvement associé
 	 */
 	public void update(float x, float y, Move mouvement)
 	{

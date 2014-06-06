@@ -27,8 +27,8 @@ public class Move
 	
 	/**
 	 * Constructeur par paramètres
-	 * @param origin
-	 * @param direction
+	 * @param point d'origine
+	 * @param point donnant la direction
 	 */
 	public Move(PointInt origin, PointInt direction) {
 		super();
@@ -38,7 +38,7 @@ public class Move
 
 	/**
 	 * Retourne vrai si le mouvement est dirigé vers la droite
-	 * @return
+	 * @return vrai si le mouvement est dirigé vers la droite
 	 */
 	public boolean isRight()
 	{
@@ -47,7 +47,7 @@ public class Move
 	
 	/**
 	 * Retourne vrai si le mouvement est dirigé vers la gauche
-	 * @return
+	 * @return vrai si le mouvement est dirigé vers la gauche
 	 */
 	public boolean isLeft()
 	{
@@ -56,7 +56,7 @@ public class Move
 	
 	/**
 	 * Retourne vrai si le mouvement est statique (i.d. ne bouge pas)
-	 * @return
+	 * @return vrai si le mouvement est statique (i.d. ne bouge pas)
 	 */
 	public boolean isStatic()
 	{
@@ -65,7 +65,7 @@ public class Move
 	
 	/**
 	 * Retourne vrai si le mouvement est un saut (i.d. dirigé vers le haut)
-	 * @return
+	 * @return vrai si le mouvement est un saut (i.d. dirigé vers le haut)
 	 */
 	public boolean isJump()
 	{
@@ -74,7 +74,7 @@ public class Move
 	
 	/**
 	 * Retourne vrai si le mouvement est une chute (i.d. dirigé vers le bas)
-	 * @return
+	 * @return vrai si le mouvement est une chute (i.d. dirigé vers le bas)
 	 */
 	public boolean isFall()
 	{
@@ -83,8 +83,8 @@ public class Move
 	
 	/**
 	 * Incrémente : met la direction en origine et ajoute une nouvelle direction
-	 * @param x
-	 * @param y
+	 * @param coordonnée x de la nouvelle direction
+	 * @param coordonnée y de la nouvelle direction
 	 */
 	public void incrementDirection(int x, int y){
 		origin = new PointInt(direction);
@@ -94,7 +94,7 @@ public class Move
 	
 	/**
 	 * Donne l'origine
-	 * @return
+	 * @return l'origine
 	 */
 	public PointInt getOrigin()
 	{
@@ -112,7 +112,7 @@ public class Move
 	
 	/**
 	 * Donne la direction
-	 * @return
+	 * @return direction
 	 */
 	public PointInt getDirection()
 	{

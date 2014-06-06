@@ -24,7 +24,8 @@ public class MyInputProcessor implements InputProcessor
 
 	/**
 	 * Constructeur par paramètres
-	 * @param p
+	 * @param Joueur 1
+	 * @param Joueur 2
 	 */
 	public MyInputProcessor(Player p1, Player p2)
 	{
@@ -55,6 +56,7 @@ public class MyInputProcessor implements InputProcessor
 	/**
 	 * Méthode des entrées appuis clavier.
 	 * A chaque appuie sur une touche, cette méthode est appelée avec comme argument l'entier correspondant à la touche appuyée
+	 * @param entier correspondant à la touche tapée
 	 */
 	@Override
 	public boolean keyDown(int key) 
@@ -123,6 +125,7 @@ public class MyInputProcessor implements InputProcessor
 	/**
 	 * Méthode des entrées retours clavier.
 	 * A chaque relachement d'une touche, cette méthode est appelée avec comme argument l'entier correspondant à la touche relâchée
+	 * @param entier correspondant à la touche tapée
 	 */
 	@Override
 	public boolean keyUp(int key) {
@@ -182,42 +185,6 @@ public class MyInputProcessor implements InputProcessor
 		}
 		return true;
 	}
-
-
-	@Override
-	public boolean keyTyped(char arg0) {
-		/*if(arg0 == 'z') {
-			System.out.println("Saut demandé");
-			if (P2.canJump()) {
-				//P2.setAir(true);
-				P2.compteurSaut=0;
-				P2.saut=true;
-				P2.posInitSaut = P2.currentPosition;
-				System.out.println("positionDebutSaut =  " + P2.currentPosition.getX() + "   /    " + P2.currentPosition.getY() );
-			}
-			else {
-				directionP2.set(0,0);
-				//P2.setAir(true);
-			}
-		}*/
-		return false;
-	}
-	
-	public void keyPressed(KeyEvent event) {
-        /*if (event.getKeyCode()==KeyEvent.VK_UP) {
-	    	System.out.println("Saut demandé");
-			if (P1.canJump()) {
-				//P1.setAir(false);
-				P1.compteurSaut=0;
-				P1.saut=true;
-				P1.posInitSaut = P1.currentPosition;
-			}
-			else {
-				directionP1.set(0,0);
-				//P1.setAir(true);
-			}
-	    }*/
-	}
 	
 	@Override
 	public boolean mouseMoved(int arg0, int arg1) {
@@ -245,6 +212,13 @@ public class MyInputProcessor implements InputProcessor
 
 	@Override
 	public boolean touchUp(int arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean keyTyped(char arg0) {
 		// TODO Auto-generated method stub
 		return false;
 	}

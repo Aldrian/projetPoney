@@ -41,7 +41,7 @@ public abstract class Animator implements ApplicationListener
 
 	/**
 	 * Constructeur par défaut, prenant en paramètre le point où l'animation apparaîtra à sa création
-	 * @param origin
+	 * @param point d'origine
 	 */
 	public Animator(Point origin)
 	{
@@ -55,8 +55,9 @@ public abstract class Animator implements ApplicationListener
 	 * Mise à jour des coordonnées courantes de l'animation
 	 * Prend en paramètres les float de la position de rendu et le mouvement de l'entité
 	 * En déduit la direction que 'animation doit prendre
-	 * @param x
-	 * @param y
+	 * @param coordonnée de render x
+	 * @param coordonnée de render y
+	 * @param mouvement associé
 	 */
 	public void update(float x, float y, Move mouvement)
 	{
