@@ -110,12 +110,12 @@ public class MyInputProcessor implements InputProcessor
 			
 			
 		break;
-		case Keys.F : 
+		/*case Keys.F : 
 			P2.shot();
 		break;
 		case Keys.M : 
 			P1.shot();
-		break;
+		break;*/
 		}
 		return true;
 	}
